@@ -36,13 +36,13 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col">
-            <span className="font-oswald text-muted text-xs uppercase tracking-widest mb-4">Built With</span>
-            <ul className="flex flex-col gap-2 font-oswald text-sm text-text">
-              <li>React 18</li>
-              <li>Vite & TypeScript</li>
-              <li>Tailwind CSS</li>
-              <li>Cloudflare Workers</li>
-              <li>GitHub Pages</li>
+            <span className="font-anton text-xl text-text mb-4 uppercase">App Highlights</span>
+            <ul className="flex flex-col gap-2 font-oswald text-sm text-muted">
+              <li>⚡ 100% Free on Android</li>
+              <li>🎲 Zero Algorithm · Pure Randomness</li>
+              <li>💾 Save Directly to Phone Gallery</li>
+              <li>🔒 Personal Meme Vault</li>
+              <li>🚀 Instant Social Sharing</li>
             </ul>
           </div>
           

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FEATURES } from '../constants/features'
-import { Zap, Shuffle, Share2, Download, Heart } from 'lucide-react'
+import { Zap, Shuffle, Share2, Download, Heart, Sparkles } from 'lucide-react'
 
 const iconMap: Record<string, React.ElementType> = {
   Zap,
@@ -8,6 +8,7 @@ const iconMap: Record<string, React.ElementType> = {
   Share2,
   Download,
   Heart,
+  Sparkles,
 }
 
 export function Features() {

@@ -30,9 +30,9 @@ export const FEATURES = [
     color: 'purple',
   },
   {
-    icon: 'Zap',
-    title: 'NO ADS IN THE WAY',
-    description: 'Ads are infrequent and never interrupt your meme experience.',
+    icon: 'Sparkles',
+    title: 'ZERO SIGN-UP',
+    description: 'No account, no login, no passwords. Open the app and start dropping memes immediately.',
     color: 'pink',
   },
 ]

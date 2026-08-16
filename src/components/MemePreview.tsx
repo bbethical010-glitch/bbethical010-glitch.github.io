@@ -1,88 +1,232 @@
 import { useState, useEffect } from 'react'
 import { CONFIG } from '../constants/config'
+import { Lock, Sparkles, Download } from 'lucide-react'
 
 interface MemeResponse {
-  url?: string;
-  title?: string;
-  error?: string;
+  url: string;
+  title: string;
+  category?: string;
+  rarity?: string;
 }
+
+// Curated backup memes in case of network or adblocker issues
+const FALLBACK_MEMES: MemeResponse[] = [
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/2026/05/C5_UT-ExBuw.jpg',
+    title: 'Random Capsule Drop #402',
+    category: 'Synced',
+    rarity: 'Common'
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/2026/05/DZjBSX5lHFz_2.jpg',
+    title: 'Unhinged Drop #108',
+    category: 'Synced',
+    rarity: 'Rare'
+  }
+]
 
 export function MemePreview() {
   const [meme, setMeme] = useState<MemeResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [dropCount, setDropCount] = useState<number>(0)
+  const [maxDrops, setMaxDrops] = useState<number>(5)
+  const [isLocked, setIsLocked] = useState<boolean>(false)
 
-  const fetchMeme = async () => {
+  // Initialize quota limits from localStorage
+  useEffect(() => {
+    try {
+      const hasExhausted = localStorage.getItem('mc_has_exhausted') === 'true'
+      if (hasExhausted) {
+        // Return visitors who previously hit the limit get max 2-3 preview drops
+        setMaxDrops(2)
+      } else {
+        // First time visitors get 5 drops
+        setMaxDrops(5)
+      }
+    } catch {
+      setMaxDrops(5)
+    }
+
+    // Initial load
+    fetchMeme(true)
+  }, [])
+
+  const fetchMeme = async (isInitial = false) => {
+    // Check if user is already locked
+    if (!isInitial && dropCount >= maxDrops) {
+      setIsLocked(true)
+      try {
+        localStorage.setItem('mc_has_exhausted', 'true')
+      } catch {}
+      return
+    }
+
     setLoading(true)
     setError(false)
+
     try {
-      // Track event
+      // Track GA4 event
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'meme_preview_click', {
           event_category: 'engagement',
-          event_label: 'hit_me_button'
+          event_label: 'hit_me_button',
+          drop_count: dropCount + 1
         })
       }
 
       const res = await fetch(`${CONFIG.apiBase}/api/random-meme`)
-      if (!res.ok) throw new Error('Failed to fetch')
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`)
+      
       const data = await res.json()
-      setMeme({
-        url: data.url || 'https://via.placeholder.com/400x400/1c1b1b/9b30ff?text=MEME',
-        title: data.title || 'Random Meme'
-      })
+      // Support nested response: { meme: { url, title, rarity, category } } or flat { url, title }
+      const item = data?.meme || data
+
+      if (item && item.url) {
+        setMeme({
+          url: item.url,
+          title: item.title || 'Spawned from Meme Capsule',
+          category: item.category || 'Synced',
+          rarity: item.rarity || 'Fresh Drop'
+        })
+      } else {
+        throw new Error('Invalid meme structure')
+      }
     } catch (err) {
-      setError(true)
+      console.warn('API fetch failed, falling back to curated drop:', err)
+      // Pick a random fallback meme so experience never breaks
+      const randomFallback = FALLBACK_MEMES[Math.floor(Math.random() * FALLBACK_MEMES.length)]
+      setMeme(randomFallback)
     } finally {
       setLoading(false)
+      const nextCount = isInitial ? 1 : dropCount + 1
+      setDropCount(nextCount)
+
+      // Lock down if user has reached the quota limit
+      if (nextCount >= maxDrops) {
+        try {
+          localStorage.setItem('mc_has_exhausted', 'true')
+        } catch {}
+      }
     }
   }
 
-  useEffect(() => {
-    fetchMeme()
-  }, [])
+  const remaining = Math.max(0, maxDrops - dropCount)
 
   return (
     <section id="see-it-in-action" className="py-20 px-4 border-t-4 border-purple bg-bg">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        <h2 className="font-anton text-5xl text-text uppercase mb-2">Live Meme Drop</h2>
-        <p className="font-oswald text-muted text-lg mb-12">This is what gets served to your users. Tap the button.</p>
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-gold text-gold text-xs font-oswald font-bold uppercase tracking-wider mb-4">
+          <Sparkles size={14} className="text-gold" />
+          Live Interactive Preview
+        </div>
 
-        <div className="w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col" style={{ boxShadow: '6px 6px 0px #f4c300' }}>
+        <h2 className="font-anton text-5xl text-text uppercase mb-2">Live Meme Drop</h2>
+        <p className="font-oswald text-muted text-lg mb-6">
+          This is what gets served to your users. Tap the button.
+        </p>
+
+        {/* Drops Counter Badge */}
+        <div className="mb-8 font-oswald text-sm font-semibold">
+          {dropCount >= maxDrops ? (
+            <span className="text-pink bg-surfaceHigh px-4 py-1.5 border border-pink uppercase tracking-wide">
+              Web Preview Quota Reached (0 Drops Left)
+            </span>
+          ) : (
+            <span className="text-gold bg-surface px-4 py-1.5 border border-gold uppercase tracking-wide">
+              Web Preview Drops Remaining: <strong className="text-text">{remaining}</strong>
+            </span>
+          )}
+        </div>
+
+        {/* Meme Display Card */}
+        <div 
+          className="w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col" 
+          style={{ boxShadow: '6px 6px 0px #f4c300' }}
+        >
           <div className="w-full aspect-[4/5] relative bg-[#131313] flex items-center justify-center overflow-hidden">
             {loading ? (
-              <div className="absolute inset-0 bg-gradient-to-r from-purple to-pink opacity-20 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple/30 to-pink/30 animate-pulse flex flex-col items-center justify-center">
+                <span className="font-anton text-gold text-xl tracking-wider uppercase animate-bounce">
+                  Dropping Capsule...
+                </span>
+              </div>
             ) : error ? (
               <div className="text-center p-4">
                 <div className="font-anton text-3xl text-pink uppercase mb-4">Something broke.</div>
-                <button onClick={fetchMeme} className="neo-button-primary px-6 py-2">Retry</button>
+                <button onClick={() => fetchMeme(false)} className="neo-button-primary px-6 py-2">Retry</button>
               </div>
             ) : meme ? (
               <>
-                <img src={meme.url} alt="Random meme" className="w-full h-full object-cover" />
-                <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2 py-1 uppercase text-sm border-2 border-surface">
-                  Fresh Drop
+                <img 
+                  src={meme.url} 
+                  alt={meme.title} 
+                  className="w-full h-full object-cover" 
+                  loading="lazy"
+                />
+                <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2.5 py-1 uppercase text-xs border border-surface">
+                  {meme.rarity || 'Fresh Drop'}
                 </div>
               </>
             ) : null}
+
+            {/* Lockout / Download Bumper Overlay */}
+            {(isLocked || dropCount >= maxDrops) && !loading && (
+              <div className="absolute inset-0 bg-bg/95 backdrop-blur-sm p-6 flex flex-col items-center justify-center text-center z-20 border-2 border-gold animate-fadeIn">
+                <div className="w-14 h-14 bg-surfaceHigh border-2 border-gold flex items-center justify-center mb-4">
+                  <Lock size={28} className="text-gold" />
+                </div>
+                <div className="font-anton text-3xl text-gold uppercase mb-2">
+                  Capsule Depleted!
+                </div>
+                <p className="font-oswald text-text text-sm leading-snug mb-6">
+                  You've unlocked all web preview drops. Download the official <strong>Meme Capsule</strong> app on Google Play for unlimited drops, zero wait, and your personal Meme Vault!
+                </p>
+                <a 
+                  href={CONFIG.playStoreUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="neo-button-primary px-6 py-3 text-base flex items-center gap-2 w-full justify-center"
+                >
+                  <Download size={18} />
+                  Get It on Google Play
+                </a>
+              </div>
+            )}
           </div>
+
           {meme && !loading && !error && (
             <div className="p-4 border-t-2 border-purple bg-[#1c1b1b]">
-              <div className="font-oswald font-bold text-gold truncate text-left text-lg">{meme.title}</div>
+              <div className="font-oswald font-bold text-gold truncate text-left text-base">
+                {meme.title}
+              </div>
             </div>
           )}
         </div>
 
-        <button 
-          onClick={fetchMeme} 
-          disabled={loading}
-          className="neo-button-primary mt-12 px-12 py-4 text-2xl"
-        >
-          {loading ? 'Dropping...' : 'HIT ME'}
-        </button>
+        {/* Action Button */}
+        {dropCount >= maxDrops ? (
+          <a
+            href={CONFIG.playStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neo-button-secondary mt-8 px-10 py-4 text-xl flex items-center gap-2"
+          >
+            <Download size={22} />
+            Download App for Unlimited Drops
+          </a>
+        ) : (
+          <button 
+            onClick={() => fetchMeme(false)} 
+            disabled={loading}
+            className="neo-button-primary mt-8 px-12 py-4 text-2xl"
+          >
+            {loading ? 'Dropping...' : 'HIT ME'}
+          </button>
+        )}
 
         <p className="font-oswald text-muted text-xs mt-4 uppercase tracking-wide">
-          Fetching from our live backend — these are the actual memes in the app
+          Fetching from live Cloudflare backend — these are the actual memes in the app
         </p>
       </div>
     </section>
