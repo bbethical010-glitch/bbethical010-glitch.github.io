@@ -10,7 +10,7 @@ export const CONFIG = {
   giscusRepoId:    'R_kgDOSPHs7w',
   giscusCategory:  'Announcements',
   giscusCategoryId:'DIC_kwDOSPHs784DDfrj',
-  gaId:            'G-XXXXXXXXXX',
+  gaId:            'G-8VMD4ZNQQK',
   githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',
   developerName:   'Pratham Pandey',
   contactEmail:    'bbethical010@gmail.com',
