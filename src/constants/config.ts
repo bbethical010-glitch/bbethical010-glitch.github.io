@@ -5,7 +5,7 @@ export const CONFIG = {
   playStoreUrl:    'https://play.google.com/store/apps/details?id=com.meme.capsule',
   packageId:       'com.meme.capsule',
   apiBase:         'https://meme-capsule-eww.pages.dev',
-  formspreeId:     'YOUR_FORMSPREE_FORM_ID',
+  formspreeId:     'xwlenwzr',
   giscusRepo:      'bbethical010-glitch/bbethical010-glitch.github.io',
   giscusRepoId:    'R_kgDOSPHs7w',
   giscusCategory:  'Announcements',
