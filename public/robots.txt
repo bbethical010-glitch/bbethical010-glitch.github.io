@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bbethical010-glitch.github.io/sitemap.xml

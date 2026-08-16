@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-text font-oswald antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-anton uppercase;
+  }
+}
+
+@layer components {
+  .neo-card {
+    @apply border-2 border-purple rounded-none;
+    box-shadow: 4px 4px 0px #f4c300;
+  }
+  
+  .neo-button-primary {
+    @apply bg-purple border-2 border-gold text-gold font-bold uppercase rounded-none transition-transform duration-200;
+    box-shadow: 4px 4px 0px #f4c300;
+  }
+  .neo-button-primary:hover {
+    @apply translate-x-1 translate-y-1;
+    box-shadow: 0px 0px 0px transparent;
+  }
+
+  .neo-button-secondary {
+    @apply bg-gold border-2 border-pink text-bg font-bold uppercase rounded-none transition-transform duration-200;
+    box-shadow: 4px 4px 0px #dd0061;
+  }
+  .neo-button-secondary:hover {
+    @apply translate-x-1 translate-y-1;
+    box-shadow: 0px 0px 0px transparent;
+  }
+}

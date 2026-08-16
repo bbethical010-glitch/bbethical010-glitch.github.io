@@ -1,0 +1,18 @@
+export const CONFIG = {
+  appName:         'Meme Capsule',
+  tagline:         'One tap. One capsule drop. Pure chaos.',
+  description:     'The randomest meme delivery app on Android. No algorithm. No feed. Just one button and pure unhinged entertainment.',
+  playStoreUrl:    'https://play.google.com/store/apps/details?id=com.meme.capsule',
+  packageId:       'com.meme.capsule',
+  apiBase:         'https://meme-capsule-eww.pages.dev',
+  formspreeId:     'YOUR_FORMSPREE_FORM_ID',
+  giscusRepo:      'bbethical010-glitch/bbethical010-glitch.github.io',
+  giscusRepoId:    'YOUR_REPO_ID',
+  giscusCategory:  'Comments',
+  giscusCategoryId:'YOUR_CATEGORY_ID',
+  gaId:            'G-XXXXXXXXXX',
+  githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',
+  developerName:   'Pratham Pandey',
+  contactEmail:    'bbethical010@gmail.com',
+  siteUrl:         'https://bbethical010-glitch.github.io',
+}
