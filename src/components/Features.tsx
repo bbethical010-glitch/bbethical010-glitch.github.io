@@ -1,5 +1,14 @@
+import React from 'react'
 import { FEATURES } from '../constants/features'
-import * as Icons from 'lucide-react'
+import { Zap, Shuffle, Share2, Download, Heart } from 'lucide-react'
+
+const iconMap: Record<string, React.ElementType> = {
+  Zap,
+  Shuffle,
+  Share2,
+  Download,
+  Heart,
+}
 
 export function Features() {
   return (
@@ -9,8 +18,7 @@ export function Features() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {FEATURES.map((feature, idx) => {
-            // @ts-ignore
-            const IconComponent = Icons[feature.icon] || Icons.Zap
+            const IconComponent = iconMap[feature.icon] || Zap
             
             return (
               <div key={idx} className="neo-card bg-surface p-6 flex flex-col items-start transition-transform hover:-translate-y-1 duration-300">
