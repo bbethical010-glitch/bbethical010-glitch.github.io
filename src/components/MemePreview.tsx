@@ -114,20 +114,22 @@ export function MemePreview() {
   const remaining = Math.max(0, maxDrops - dropCount)
 
   return (
-    <section id="see-it-in-action" className="py-20 px-4 border-t-4 border-purple bg-bg">
+    <section id="see-it-in-action" className="py-20 px-4 border-t border-purple/20 bg-bg relative">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-gold text-gold text-xs font-oswald font-bold uppercase tracking-wider mb-4">
+        <div className="sec-marker" data-rv="fade"><b>01</b> — LIVE MEME DROP<span className="rule"></span></div>
+        
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-gold text-gold text-xs font-oswald font-bold uppercase tracking-wider mb-4" data-rv="fade">
           <Sparkles size={14} className="text-gold" />
           Live Interactive Preview
         </div>
 
-        <h2 className="font-anton text-5xl text-text uppercase mb-2">Live Meme Drop</h2>
-        <p className="font-oswald text-muted text-lg mb-6">
+        <h2 className="font-anton text-5xl text-text uppercase mb-2" data-rv="up">Live Meme Drop</h2>
+        <p className="font-oswald text-muted text-lg mb-6" data-rv="up" style={{ transitionDelay: '100ms' }}>
           This is what gets served to your users. Tap the button.
         </p>
 
         {/* Drops Counter Badge */}
-        <div className="mb-8 font-oswald text-sm font-semibold">
+        <div className="mb-8 font-oswald text-sm font-semibold" data-rv="up" style={{ transitionDelay: '200ms' }}>
           {dropCount >= maxDrops ? (
             <span className="text-pink bg-surfaceHigh px-4 py-1.5 border border-pink uppercase tracking-wide">
               Web Preview Quota Reached (0 Drops Left)
@@ -142,7 +144,8 @@ export function MemePreview() {
         {/* Meme Display Card */}
         <div 
           className="w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col" 
-          style={{ boxShadow: '6px 6px 0px #f4c300' }}
+          style={{ boxShadow: '6px 6px 0px #f4c300', transitionDelay: '300ms' }}
+          data-rv="up"
         >
           <div className="w-full aspect-[4/5] relative bg-[#131313] flex items-center justify-center overflow-hidden">
             {loading ? (
@@ -154,7 +157,7 @@ export function MemePreview() {
             ) : error ? (
               <div className="text-center p-4">
                 <div className="font-anton text-3xl text-pink uppercase mb-4">Something broke.</div>
-                <button onClick={() => fetchMeme(false)} className="neo-button-primary px-6 py-2">Retry</button>
+                <button onClick={() => fetchMeme(false)} className="neo-button-primary px-6 py-2" data-cursor>Retry</button>
               </div>
             ) : meme ? (
               <>
@@ -187,6 +190,7 @@ export function MemePreview() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="neo-button-primary px-6 py-3 text-base flex items-center gap-2 w-full justify-center"
+                  data-cursor
                 >
                   <Download size={18} />
                   Get It on Google Play
@@ -211,6 +215,8 @@ export function MemePreview() {
             target="_blank"
             rel="noopener noreferrer"
             className="neo-button-secondary mt-8 px-10 py-4 text-xl flex items-center gap-2"
+            data-cursor
+            data-rv="up" style={{ transitionDelay: '400ms' }}
           >
             <Download size={22} />
             Download App for Unlimited Drops
@@ -220,12 +226,14 @@ export function MemePreview() {
             onClick={() => fetchMeme(false)} 
             disabled={loading}
             className="neo-button-primary mt-8 px-12 py-4 text-2xl"
+            data-cursor
+            data-rv="up" style={{ transitionDelay: '400ms' }}
           >
             {loading ? 'Dropping...' : 'HIT ME'}
           </button>
         )}
 
-        <p className="font-oswald text-muted text-xs mt-4 uppercase tracking-wide">
+        <p className="font-oswald text-muted text-xs mt-4 uppercase tracking-wide" data-rv="fade" style={{ transitionDelay: '500ms' }}>
           Fetching from live Cloudflare backend — these are the actual memes in the app
         </p>
       </div>

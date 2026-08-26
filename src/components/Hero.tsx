@@ -16,42 +16,54 @@ export function Hero() {
         backgroundSize: '40px 40px'
       }}
     >
+      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 origin-center font-anton text-[8vh] text-surfaceHigh opacity-50 whitespace-nowrap pointer-events-none select-none">
+        MEME CAPSULE
+      </div>
+
       <div className="flex flex-col items-center z-10 px-4 text-center">
-        <div className="border border-gold text-gold text-xs uppercase tracking-widest py-1 px-3 rounded-full mb-8 font-oswald font-bold">
+        <div className="border border-gold text-gold text-xs uppercase tracking-widest py-1 px-3 rounded-full mb-8 font-oswald font-bold" data-rv="fade">
           Now on Google Play
         </div>
         
         <h1 className="font-anton text-6xl md:text-8xl lg:text-9xl uppercase flex flex-col items-center leading-none">
-          <span className="text-text">MEME</span>
-          <span className="text-purple" style={{ textShadow: '3px 3px 0px #f4c300, -1px -1px 0px #f4c300, 1px -1px 0px #f4c300, -1px 1px 0px #f4c300, 1px 1px 0px #f4c300' }}>
-            CAPSULE
+          <span className="text-text word-mask"><span className="word" style={{ '--word-delay': '0ms' } as any}>MEME</span></span>
+          <span className="text-purple word-mask" style={{ textShadow: '3px 3px 0px #f4c300, -1px -1px 0px #f4c300, 1px -1px 0px #f4c300, -1px 1px 0px #f4c300, 1px 1px 0px #f4c300' }}>
+            <span className="word" style={{ '--word-delay': '100ms' } as any}>CAPSULE</span>
           </span>
         </h1>
         
-        <h2 className="font-oswald text-gold text-xl md:text-2xl tracking-wide mt-6 font-semibold uppercase">
+        <h2 className="font-oswald text-gold text-xl md:text-2xl tracking-wide mt-6 font-semibold uppercase" data-rv="up" style={{ transitionDelay: '200ms' }}>
           One Tap. One Meme. Pure Chaos.
         </h2>
         
-        <p className="font-oswald text-muted text-base md:text-lg max-w-[600px] mt-4">
+        <p className="font-oswald text-muted text-base md:text-lg max-w-[600px] mt-4" data-rv="up" style={{ transitionDelay: '300ms' }}>
           {CONFIG.description}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="neo-button-primary px-8 py-4 text-lg">
+        <div className="flex flex-col sm:flex-row gap-4 mt-8" data-rv="up" style={{ transitionDelay: '400ms' }}>
+          <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="neo-button-primary px-8 py-4 text-lg" data-cursor>
             Get it on Google Play
           </a>
-          <button onClick={() => handleScroll('see-it-in-action')} className="neo-button-secondary px-8 py-4 text-lg">
+          <button onClick={() => handleScroll('see-it-in-action')} className="neo-button-secondary px-8 py-4 text-lg" data-cursor>
             See it in Action
           </button>
         </div>
         
-        <div className="font-oswald text-muted text-sm mt-6 font-medium">
+        <div className="font-oswald text-muted text-sm mt-6 font-medium" data-rv="fade" style={{ transitionDelay: '500ms' }}>
           Entertainment &middot; Memes &middot; Android
         </div>
       </div>
       
-      <div className="absolute bottom-8 animate-bounce text-gold cursor-pointer" onClick={() => handleScroll('see-it-in-action')}>
-        <ChevronDown size={48} strokeWidth={3} />
+      <div className="absolute bottom-24 flex items-center gap-3 text-muted text-xs tracking-[0.3em] uppercase">
+        <span>Scroll to explore</span>
+        <span className="track"><i className="animate-scroll-cue" /></span>
+      </div>
+
+      <div className="absolute bottom-8 flex flex-wrap justify-center gap-4 px-4 w-full" data-rv="fade" style={{ transitionDelay: '600ms' }}>
+        <button onClick={() => handleScroll('see-it-in-action')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>01 Live Drop</button>
+        <button onClick={() => handleScroll('features')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>02 Features</button>
+        <button onClick={() => handleScroll('how-it-works')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>03 How It Works</button>
+        <button onClick={() => handleScroll('comments')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>04 Community</button>
       </div>
     </section>
   )
