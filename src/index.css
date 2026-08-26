@@ -269,6 +269,21 @@
   #preloader.done {
     opacity: 0; visibility: hidden; pointer-events: none;
   }
+
+  /* 3D and Scrollbar Utilities */
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
