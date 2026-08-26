@@ -259,6 +259,39 @@
     .cur-dot { opacity: 1; }
   }
 
+  /* Glitch / Cyberpunk Acid Theme */
+  html.theme-glitch {
+    filter: hue-rotate(115deg) saturate(1.6) contrast(1.15);
+  }
+  
+  html.theme-glitch body {
+    background-color: #050505;
+    animation: glitch-anim 5s infinite;
+  }
+  
+  html.theme-glitch::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+    background-size: 100% 4px, 4px 100%;
+    animation: scanlines 10s linear infinite;
+  }
+
+  @keyframes scanlines {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 0 400px, 0 0; }
+  }
+
+  @keyframes glitch-anim {
+    0%, 95%, 98%, 100% { transform: none; filter: none; }
+    96% { transform: translate(-2px, 2px) skewX(1deg); filter: invert(0.1); }
+    99% { transform: translate(2px, -2px) skewX(-1deg); filter: hue-rotate(90deg); }
+  }
+
   /* Preloader */
   #preloader {
     position: fixed; inset: 0; z-index: 100;

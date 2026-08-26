@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Zap } from 'lucide-react'
 import logoImg from '../assets/logo.png'
 
 interface NavbarProps {
@@ -9,6 +9,7 @@ interface NavbarProps {
 
 export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isGlitch, setIsGlitch] = useState(false)
 
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
@@ -21,6 +22,27 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
       document.body.classList.remove('overflow-hidden')
     }
   }, [isOpen])
+
+  // Initialize glitch state from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('theme-glitch')
+    if (saved === 'true') {
+      setIsGlitch(true)
+      document.documentElement.classList.add('theme-glitch')
+    }
+  }, [])
+
+  const toggleGlitch = () => {
+    const nextState = !isGlitch
+    setIsGlitch(nextState)
+    if (nextState) {
+      document.documentElement.classList.add('theme-glitch')
+      localStorage.setItem('theme-glitch', 'true')
+    } else {
+      document.documentElement.classList.remove('theme-glitch')
+      localStorage.setItem('theme-glitch', 'false')
+    }
+  }
 
   const handleScroll = (id: string) => {
     setIsOpen(false)
@@ -60,7 +82,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               <button 
                 onClick={() => handleScroll('hero')} 
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" 
@@ -89,26 +111,57 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 <span>Contact</span><span className="alt">Contact</span>
               </button>
+
+              {/* Glitch Toggle (Desktop) */}
+              <button 
+                onClick={toggleGlitch}
+                className={`flex items-center gap-2 font-oswald uppercase font-bold text-xs lg:text-sm px-3 py-1.5 border-2 transition-colors ${
+                  isGlitch 
+                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]' 
+                    : 'border-purple/50 text-purple hover:border-gold hover:text-gold hover:bg-surface'
+                }`}
+                data-cursor
+                title="Toggle Cyberpunk Glitch Mode"
+              >
+                <Zap size={16} className={isGlitch ? 'animate-pulse' : ''} />
+                <span>{isGlitch ? 'Acid ON' : 'Acid OFF'}</span>
+              </button>
+
               <a 
                 href="https://play.google.com/store/apps/details?id=com.meme.capsule" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="neo-button-primary px-6 py-2 ml-4 inline-block" 
+                className="neo-button-primary px-6 py-2 inline-block ml-2" 
                 data-cursor
               >
                 Get App
               </a>
             </div>
 
-            {/* Mobile Hamburger Toggle Button */}
-            <div className="md:hidden flex items-center">
+            {/* Mobile Actions */}
+            <div className="md:hidden flex items-center gap-3">
+              {/* Glitch Toggle (Mobile) */}
+              <button 
+                onClick={toggleGlitch}
+                className={`p-1.5 sm:p-2 border-2 transition-colors ${
+                  isGlitch 
+                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]' 
+                    : 'border-purple/50 text-purple bg-surface'
+                }`}
+                aria-label="Toggle Glitch Mode"
+                data-cursor
+              >
+                <Zap size={20} className={isGlitch ? 'animate-pulse' : ''} />
+              </button>
+
+              {/* Mobile Hamburger Toggle Button */}
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
-                className="text-gold p-2 border border-purple/40 bg-surface focus:outline-none" 
+                className="text-gold p-1.5 sm:p-2 border border-purple/40 bg-surface focus:outline-none" 
                 aria-label="Toggle Menu"
                 data-cursor
               >
-                {isOpen ? <X size={26} strokeWidth={2.5} /> : <Menu size={26} strokeWidth={2.5} />}
+                {isOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
               </button>
             </div>
           </div>
