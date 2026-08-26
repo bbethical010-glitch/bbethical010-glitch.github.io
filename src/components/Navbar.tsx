@@ -71,7 +71,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               }}
             >
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-surface border-2 border-purple p-1 flex items-center justify-center group-hover:rotate-6 transition-transform shadow-[2px_2px_0px_#f4c300]">
-                <img src={logoImg} alt="Meme Capsule Icon" className="w-full h-full object-contain" />
+                <img src={logoImg} alt="Meme Capsule Icon" className="w-full h-full object-contain" width="128" height="128" />
               </div>
               <span className="font-anton text-xl sm:text-2xl md:text-3xl text-purple uppercase tracking-wider">
                 Meme Capsule

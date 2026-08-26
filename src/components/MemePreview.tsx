@@ -166,6 +166,8 @@ export function MemePreview() {
                   alt={meme.title} 
                   className="w-full h-full object-cover" 
                   loading="lazy"
+                  width="400"
+                  height="500"
                 />
                 <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2.5 py-1 uppercase text-xs border border-surface">
                   {meme.rarity || 'Fresh Drop'}

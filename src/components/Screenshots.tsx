@@ -76,6 +76,8 @@ function PhoneMockup({ item, onClick, delay }: { item: any, onClick: (item: any)
               alt={item.title} 
               className="w-full h-full object-cover select-none pointer-events-none"
               loading="lazy"
+              width="720"
+              height="1560"
             />
             
             {/* Hover Action Overlay */}
@@ -219,6 +221,9 @@ export function Screenshots() {
               src={selectedItem.url} 
               alt={selectedItem.title} 
               className="w-full h-full object-cover"
+              loading="lazy"
+              width="720"
+              height="1560"
             />
             {/* Title Bar at bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-[#131313]/90 backdrop-blur-md p-6 border-t-[3px] border-purple text-center">

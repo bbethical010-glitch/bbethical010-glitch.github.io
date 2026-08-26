@@ -1,6 +1,7 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG } from '../constants/config'
 import logoImg from '../assets/logo.png'
+import playStoreBadge from '../assets/google-play-badge.svg'
 
 export function Hero() {
   const handleScroll = (id: string) => {
@@ -44,6 +45,8 @@ export function Hero() {
               src={logoImg} 
               alt="Meme Capsule Official Logo" 
               className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none" 
+              width="512"
+              height="512"
             />
             <div className="absolute -bottom-3 -right-3 bg-gold text-bg font-anton text-xs px-2.5 py-0.5 border-2 border-purple shadow-sm">
               OFFICIAL
@@ -77,9 +80,9 @@ export function Hero() {
           {CONFIG.description}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 mt-8" data-rv="up" style={{ transitionDelay: '400ms' }}>
-          <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="neo-button-primary px-8 py-4 text-lg" data-cursor>
-            Get it on Google Play
+        <div className="flex flex-col sm:flex-row gap-6 mt-10 items-center justify-center" data-rv="up" style={{ transitionDelay: '400ms' }}>
+          <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="transform hover:scale-[1.03] transition-transform duration-300" data-cursor>
+            <img src={playStoreBadge} alt="Get it on Google Play" className="h-[64px] md:h-[72px] w-auto" width="200" height="60" />
           </a>
           <button onClick={() => handleScroll('see-it-in-action')} className="neo-button-secondary px-8 py-4 text-lg" data-cursor>
             See it in Action

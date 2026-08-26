@@ -51,7 +51,7 @@ export function Preloader() {
     >
       <div className="flex flex-col items-center w-full max-w-sm px-6">
         <div className="w-16 h-16 mb-6 bg-surface border-2 border-purple p-1.5 shadow-[4px_4px_0px_#f4c300]">
-          <img src={logoImg} alt="Meme Capsule Logo" className="w-full h-full object-contain" />
+          <img src={logoImg} alt="Meme Capsule Logo" className="w-full h-full object-contain" width="128" height="128" />
         </div>
         <h1 className="font-anton text-4xl text-[#e5e2e1] mb-8 tracking-wider">MEME CAPSULE</h1>
         
