@@ -17,12 +17,19 @@ export function Navbar({ isHidden = false, isStuck = false, isMenuOpen = false, 
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-transitioning ${isHidden ? 'nav-hidden' : ''} ${isStuck ? 'nav-stuck' : ''}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-transitioning bg-[#131313]/90 backdrop-blur-md border-b-2 border-purple/40 ${isHidden ? 'nav-hidden' : ''} ${isStuck ? 'nav-stuck shadow-lg' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-2" data-cursor>
-            <span className="font-anton text-3xl text-purple uppercase tracking-wider">Meme Capsule</span>
-            <span className="font-anton text-sm text-gold bg-surface px-2 py-0.5 border border-gold">v1.0</span>
+          <div 
+            className="flex items-center gap-2 cursor-pointer" 
+            data-cursor
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div className="w-8 h-8 bg-surface border-2 border-purple flex items-center justify-center rotate-[-10deg]">
+              <div className="w-4 h-4 bg-gradient-to-br from-purple to-pink rounded-sm"></div>
+            </div>
+            <span className="font-anton text-2xl sm:text-3xl text-purple uppercase tracking-wider">Meme Capsule</span>
+            <span className="font-anton text-xs text-gold bg-surface px-2 py-0.5 border border-gold">v1.0</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
