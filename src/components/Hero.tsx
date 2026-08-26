@@ -1,4 +1,4 @@
-import { Sparkles } from 'lucide-react'
+import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG } from '../constants/config'
 import logoImg from '../assets/logo.png'
 
@@ -12,7 +12,7 @@ export function Hero() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden bg-[#131313]"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#131313]"
       style={{
         backgroundImage: `linear-gradient(rgba(155, 48, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(155, 48, 255, 0.08) 1px, transparent 1px)`,
         backgroundSize: '40px 40px'
@@ -85,24 +85,15 @@ export function Hero() {
             See it in Action
           </button>
         </div>
-        
-        <div className="font-oswald text-muted text-sm mt-6 font-medium" data-rv="fade" style={{ transitionDelay: '500ms' }}>
-          Entertainment &middot; Memes &middot; Android
-        </div>
       </div>
       
-      <div className="absolute bottom-24 hidden md:flex items-center gap-3 text-muted text-xs tracking-[0.3em] uppercase">
-        <span>Scroll to explore</span>
-        <span className="w-8 h-[1px] bg-purple/30 overflow-hidden relative inline-block">
-          <i className="absolute inset-0 bg-purple animate-scroll-cue" />
-        </span>
-      </div>
-
-      <div className="absolute bottom-6 flex flex-wrap justify-center gap-2 md:gap-4 px-4 w-full" data-rv="fade" style={{ transitionDelay: '600ms' }}>
-        <button onClick={() => handleScroll('see-it-in-action')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>01 Live Drop</button>
-        <button onClick={() => handleScroll('features')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>02 Features</button>
-        <button onClick={() => handleScroll('how-it-works')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>03 How It Works</button>
-        <button onClick={() => handleScroll('comments')} className="font-oswald text-xs font-bold uppercase tracking-wider text-text border border-purple/30 bg-surface px-4 py-2 hover:bg-surfaceHigh hover:border-gold transition-colors" data-cursor>04 Community</button>
+      {/* Subtle Scroll Down Arrow */}
+      <div 
+        className="absolute bottom-6 text-gold/80 hover:text-gold cursor-pointer transition-colors animate-bounce" 
+        onClick={() => handleScroll('see-it-in-action')}
+        data-cursor
+      >
+        <ChevronDown size={36} strokeWidth={2.5} />
       </div>
     </section>
   )
