@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { MemePreview } from '../components/MemePreview'
@@ -26,7 +25,6 @@ export default function Home() {
 
   // Initialize navbar and scroll rail state
   const { isHidden, isStuck, activeSection } = useNavbarScroll()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <div className="relative min-h-screen bg-bg">
@@ -40,8 +38,6 @@ export default function Home() {
       <Navbar 
         isHidden={isHidden} 
         isStuck={isStuck} 
-        isMenuOpen={isMenuOpen} 
-        onToggleMenu={() => setIsMenuOpen(!isMenuOpen)} 
       />
       
       <div id="hero">
