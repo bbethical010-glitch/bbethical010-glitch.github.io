@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import logoImg from '../assets/logo.png';
 
 export function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -49,7 +50,10 @@ export function Preloader() {
       style={{ transitionDuration: '800ms' }}
     >
       <div className="flex flex-col items-center w-full max-w-sm px-6">
-        <h1 className="font-anton text-4xl text-[#e5e2e1] mb-12 tracking-wider">MEME CAPSULE</h1>
+        <div className="w-16 h-16 mb-6 bg-surface border-2 border-purple p-1.5 shadow-[4px_4px_0px_#f4c300]">
+          <img src={logoImg} alt="Meme Capsule Logo" className="w-full h-full object-contain" />
+        </div>
+        <h1 className="font-anton text-4xl text-[#e5e2e1] mb-8 tracking-wider">MEME CAPSULE</h1>
         
         <div className="w-full flex justify-between text-[#988ca1] text-xs font-oswald uppercase tracking-widest mb-3">
           <span>Loading capsules...</span>

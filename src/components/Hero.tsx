@@ -1,5 +1,6 @@
 import { Sparkles } from 'lucide-react'
 import { CONFIG } from '../constants/config'
+import logoImg from '../assets/logo.png'
 
 export function Hero() {
   const handleScroll = (id: string) => {
@@ -31,29 +32,20 @@ export function Hero() {
           Now on Google Play
         </div>
         
-        {/* App Logo Emblem */}
+        {/* App Logo */}
         <div className="mb-6 flex items-center justify-center" data-rv="up">
           <div 
-            className="relative w-24 h-24 md:w-28 md:h-28 bg-surface border-4 border-purple p-3 flex items-center justify-center transform hover:rotate-6 hover:scale-105 transition-all duration-300 group cursor-pointer" 
-            style={{ boxShadow: '6px 6px 0px #f4c300' }}
+            className="relative w-28 h-28 md:w-36 md:h-36 bg-surface border-4 border-purple p-2 flex items-center justify-center transform hover:rotate-3 hover:scale-105 transition-all duration-300 group cursor-pointer" 
+            style={{ boxShadow: '8px 8px 0px #f4c300' }}
             data-cursor
             onClick={() => window.open(CONFIG.playStoreUrl, '_blank')}
           >
-            {/* Custom stylized Meme Capsule logo mark */}
-            <svg viewBox="0 0 64 64" fill="none" className="w-full h-full drop-shadow-md">
-              <g transform="rotate(-45 32 32)">
-                {/* Capsule top half */}
-                <path d="M18 32C18 24.268 24.268 18 32 18C39.732 18 46 24.268 46 32H18Z" fill="#9b30ff" stroke="#f4c300" strokeWidth="3.5" />
-                {/* Capsule bottom half */}
-                <path d="M18 32C18 39.732 24.268 46 32 46C39.732 46 46 39.732 46 32H18Z" fill="#dd0061" stroke="#f4c300" strokeWidth="3.5" />
-                {/* Center Divider Belt */}
-                <line x1="16" y1="32" x2="48" y2="32" stroke="#131313" strokeWidth="4.5" />
-                {/* Sparkle/Gloss Accent */}
-                <circle cx="28" cy="24" r="3" fill="#ffe399" />
-                <circle cx="36" cy="40" r="2.5" fill="#ffe399" />
-              </g>
-            </svg>
-            <div className="absolute -bottom-2.5 -right-2.5 bg-gold text-bg font-anton text-xs px-2 py-0.5 border-2 border-purple shadow-sm">
+            <img 
+              src={logoImg} 
+              alt="Meme Capsule Official Logo" 
+              className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none" 
+            />
+            <div className="absolute -bottom-3 -right-3 bg-gold text-bg font-anton text-xs px-2.5 py-0.5 border-2 border-purple shadow-sm">
               OFFICIAL
             </div>
           </div>

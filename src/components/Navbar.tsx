@@ -1,4 +1,5 @@
 import { Menu, X } from 'lucide-react'
+import logoImg from '../assets/logo.png'
 
 interface NavbarProps {
   isHidden?: boolean
@@ -21,12 +22,12 @@ export function Navbar({ isHidden = false, isStuck = false, isMenuOpen = false, 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="flex justify-between items-center h-20">
           <div 
-            className="flex items-center gap-2 cursor-pointer" 
+            className="flex items-center gap-3 cursor-pointer group" 
             data-cursor
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-8 h-8 bg-surface border-2 border-purple flex items-center justify-center rotate-[-10deg]">
-              <div className="w-4 h-4 bg-gradient-to-br from-purple to-pink rounded-sm"></div>
+            <div className="w-10 h-10 bg-surface border-2 border-purple p-1 flex items-center justify-center group-hover:rotate-6 transition-transform">
+              <img src={logoImg} alt="Meme Capsule Icon" className="w-full h-full object-contain" />
             </div>
             <span className="font-anton text-2xl sm:text-3xl text-purple uppercase tracking-wider">Meme Capsule</span>
             <span className="font-anton text-xs text-gold bg-surface px-2 py-0.5 border border-gold">v1.0</span>
