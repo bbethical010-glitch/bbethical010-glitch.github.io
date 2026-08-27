@@ -35,19 +35,7 @@ export function MemePreview() {
 
   // Initialize quota limits from localStorage
   useEffect(() => {
-    try {
-      const hasExhausted = localStorage.getItem('mc_has_exhausted') === 'true'
-      if (hasExhausted) {
-        // Return visitors who previously hit the limit get max 2-3 preview drops
-        setMaxDrops(2)
-      } else {
-        // First time visitors get 5 drops
-        setMaxDrops(5)
-      }
-    } catch {
-      setMaxDrops(5)
-    }
-
+    setMaxDrops(5)
     // Initial load
     fetchMeme(true)
   }, [])
@@ -234,10 +222,6 @@ export function MemePreview() {
             {loading ? 'Dropping...' : 'HIT ME'}
           </button>
         )}
-
-        <p className="font-oswald text-muted text-xs mt-4 uppercase tracking-wide" data-rv="fade" style={{ transitionDelay: '500ms' }}>
-          Fetching from live Cloudflare backend — these are the actual memes in the app
-        </p>
       </div>
     </section>
   )
