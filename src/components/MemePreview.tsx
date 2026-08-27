@@ -9,19 +9,37 @@ interface MemeResponse {
   rarity?: string;
 }
 
-// Curated backup memes in case of network or adblocker issues
+// Curated backup memes with verified 200 OK URLs
 const FALLBACK_MEMES: MemeResponse[] = [
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/2026/05/C5_UT-ExBuw.jpg',
-    title: 'Random Capsule Drop #402',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Dal4WDODYI-_1.jpg',
+    title: 'Capsule Drop #101',
     category: 'Synced',
     rarity: 'Common'
   },
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/2026/05/DZjBSX5lHFz_2.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DatCw2NGlOu_3.jpg',
+    title: 'Unhinged Drop #102',
+    category: 'Synced',
+    rarity: 'Rare'
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DbXOjEERFrR.jpg',
+    title: 'Chaos Vault #103',
+    category: 'Synced',
+    rarity: 'Epic'
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZjBSX5lHFz_2.jpg',
     title: 'Unhinged Drop #108',
     category: 'Synced',
     rarity: 'Rare'
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C5_UT-ExBuw.jpg',
+    title: 'Random Capsule Drop #402',
+    category: 'Synced',
+    rarity: 'Common'
   }
 ]
 
@@ -150,12 +168,19 @@ export function MemePreview() {
             ) : meme ? (
               <>
                 <img 
+                  key={meme.url}
                   src={meme.url} 
                   alt={meme.title} 
                   className="w-full h-full object-cover" 
-                  loading="lazy"
                   width="400"
                   height="500"
+                  onError={(e) => {
+                    const target = e.currentTarget
+                    const nextFallback = FALLBACK_MEMES[Math.floor(Math.random() * FALLBACK_MEMES.length)].url
+                    if (target.src !== nextFallback) {
+                      target.src = nextFallback
+                    }
+                  }}
                 />
                 <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2.5 py-1 uppercase text-xs border border-surface">
                   {meme.rarity || 'Fresh Drop'}
