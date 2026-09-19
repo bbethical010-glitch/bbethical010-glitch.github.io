@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { CONFIG } from '../constants/config'
 export function Footer() {
   const handleScroll = (id: string) => {
@@ -18,11 +17,11 @@ export function Footer() {
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '100ms' }}>
             <span className="font-anton text-xl text-text mb-4 uppercase">Links</span>
             <div className="flex flex-col gap-2 font-oswald text-sm">
-              <Link to="/" onClick={() => handleScroll('hero')} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</Link>
-              <button onClick={() => handleScroll('features')} className="text-muted hover:text-gold uppercase w-fit text-left" data-cursor>Features</button>
-              <button onClick={() => handleScroll('faq')} className="text-muted hover:text-gold uppercase w-fit text-left" data-cursor>FAQ</button>
-              <button onClick={() => handleScroll('contact')} className="text-muted hover:text-gold uppercase w-fit text-left" data-cursor>Contact</button>
-              <Link to="/privacy" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</Link>
+              <a href="#hero" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
+              <a href="#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
+              <a href="#faq" onClick={(e) => { e.preventDefault(); handleScroll('faq') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
+              <a href="/privacy.html" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</a>
             </div>
           </div>
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '200ms' }}>

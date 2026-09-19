@@ -54,7 +54,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
 
   return (
     <>
-      <nav 
+      <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-[#131313]/95 backdrop-blur-md border-b-2 border-purple/60 ${
           isHidden && !isOpen ? '-translate-y-full' : 'translate-y-0'
         } ${isStuck ? 'shadow-[0_4px_20px_rgba(0,0,0,0.8)]' : ''}`}
@@ -62,8 +62,8 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Brand Logo & Title */}
-            <div 
-              className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none" 
+            <div
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none"
               data-cursor
               onClick={() => {
                 setIsOpen(false)
@@ -83,41 +83,45 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <button 
-                onClick={() => handleScroll('hero')} 
-                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" 
+              <a
+                href="#hero"
+                onClick={(e) => { e.preventDefault(); handleScroll('hero') }}
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>Home</span><span className="alt">Home</span>
-              </button>
-              <button 
-                onClick={() => handleScroll('features')} 
-                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" 
+              </a>
+              <a
+                href="#features"
+                onClick={(e) => { e.preventDefault(); handleScroll('features') }}
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>Features</span><span className="alt">Features</span>
-              </button>
-              <button 
-                onClick={() => handleScroll('faq')} 
-                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" 
+              </a>
+              <a
+                href="#faq"
+                onClick={(e) => { e.preventDefault(); handleScroll('faq') }}
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>FAQ</span><span className="alt">FAQ</span>
-              </button>
-              <button 
-                onClick={() => handleScroll('contact')} 
-                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" 
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); handleScroll('contact') }}
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>Contact</span><span className="alt">Contact</span>
-              </button>
+              </a>
 
               {/* Glitch Toggle (Desktop) */}
-              <button 
+              <button
                 onClick={toggleGlitch}
                 className={`flex items-center gap-2 font-oswald uppercase font-bold text-xs lg:text-sm px-3 py-1.5 border-2 transition-colors ${
-                  isGlitch 
-                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]' 
+                  isGlitch
+                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]'
                     : 'border-purple/50 text-purple hover:border-gold hover:text-gold hover:bg-surface'
                 }`}
                 data-cursor
@@ -127,11 +131,11 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
                 <span>{isGlitch ? 'Acid ON' : 'Acid OFF'}</span>
               </button>
 
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.meme.capsule" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="neo-button-primary px-6 py-2 inline-block ml-2" 
+              <a
+                href="https://play.google.com/store/apps/details?id=com.meme.capsule"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neo-button-primary px-6 py-2 inline-block ml-2"
                 data-cursor
               >
                 Get App
@@ -141,11 +145,11 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
             {/* Mobile Actions */}
             <div className="md:hidden flex items-center gap-3">
               {/* Glitch Toggle (Mobile) */}
-              <button 
+              <button
                 onClick={toggleGlitch}
                 className={`p-1.5 sm:p-2 border-2 transition-colors ${
-                  isGlitch 
-                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]' 
+                  isGlitch
+                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]'
                     : 'border-purple/50 text-purple bg-surface'
                 }`}
                 aria-label="Toggle Glitch Mode"
@@ -155,9 +159,9 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               </button>
 
               {/* Mobile Hamburger Toggle Button */}
-              <button 
-                onClick={() => setIsOpen(!isOpen)} 
-                className="text-gold p-1.5 sm:p-2 border border-purple/40 bg-surface focus:outline-none" 
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-gold p-1.5 sm:p-2 border border-purple/40 bg-surface focus:outline-none"
                 aria-label="Toggle Menu"
                 data-cursor
               >
@@ -171,35 +175,39 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
         {isOpen && (
           <div className="md:hidden bg-[#131313] border-t-2 border-b-4 border-purple shadow-2xl animate-fadeIn">
             <div className="flex flex-col p-4 space-y-2">
-              <button 
-                onClick={() => handleScroll('hero')} 
+              <a
+                href="#hero"
+                onClick={(e) => { e.preventDefault(); handleScroll('hero') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Home
-              </button>
-              <button 
-                onClick={() => handleScroll('features')} 
+              </a>
+              <a
+                href="#features"
+                onClick={(e) => { e.preventDefault(); handleScroll('features') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Features
-              </button>
-              <button 
-                onClick={() => handleScroll('faq')} 
+              </a>
+              <a
+                href="#faq"
+                onClick={(e) => { e.preventDefault(); handleScroll('faq') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 FAQ
-              </button>
-              <button 
-                onClick={() => handleScroll('contact')} 
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); handleScroll('contact') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Contact
-              </button>
+              </a>
               <div className="pt-4 pb-2">
-                <a 
-                  href="https://play.google.com/store/apps/details?id=com.meme.capsule" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.meme.capsule"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="neo-button-primary w-full block text-center py-3 text-lg"
                   onClick={() => setIsOpen(false)}
                 >
@@ -213,7 +221,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
 
       {/* Backdrop overlay for mobile menu */}
       {isOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
           onClick={() => setIsOpen(false)}
         />

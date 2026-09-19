@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://memecapsule.wtf/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://memecapsule.wtf/privacy</loc>
-    <lastmod>2026-09-19</lastmod>
+    <loc>https://memecapsule.wtf/privacy.html</loc>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.5</priority>
   </url>
 </urlset>
