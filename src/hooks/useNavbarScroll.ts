@@ -9,7 +9,7 @@ export function useNavbarScroll() {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const sections = ['hero', 'see-it-in-action', 'features', 'how-it-works', 'changelog', 'faq', 'comments', 'contact'];
+    const sections = ['hero', 'see-it-in-action', 'features', 'screenshots', 'how-it-works', 'changelog', 'faq', 'contact'];
 
     const handleScroll = () => {
       if (!ticking) {
@@ -30,13 +30,14 @@ export function useNavbarScroll() {
           
           lastScrollY = currentScrollY;
 
-          // Check active section
-          let currentSection = '';
-          for (const sectionId of sections) {
+          // Check active section (reverse iterate for stacked sections)
+          let currentSection = sections[0];
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const sectionId = sections[i];
             const el = document.getElementById(sectionId);
             if (el) {
               const rect = el.getBoundingClientRect();
-              if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+              if (rect.top <= window.innerHeight * 0.4) {
                 currentSection = sectionId;
                 break;
               }

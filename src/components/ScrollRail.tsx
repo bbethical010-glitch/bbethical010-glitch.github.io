@@ -5,7 +5,7 @@ interface ScrollRailProps {
 }
 
 export function ScrollRail({ activeSection }: ScrollRailProps) {
-  const sections = ['hero', 'see-it-in-action', 'features', 'how-it-works', 'changelog', 'faq', 'comments', 'contact'];
+  const sections = ['hero', 'see-it-in-action', 'features', 'screenshots', 'how-it-works', 'changelog', 'faq', 'contact'];
 
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);

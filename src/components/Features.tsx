@@ -8,7 +8,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Features() {
   return (
-    <section id="features" className="py-20 px-4 border-t border-purple/20 bg-bg">
+    <section className="py-20 px-4 border-t border-purple/20 bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="sec-marker" data-rv="fade"><b>02</b> — WHY MEME CAPSULE<span className="rule"></span></div>
         <h2 className="font-anton text-5xl text-text uppercase mb-12 text-center" data-rv="up">Why Meme Capsule</h2>

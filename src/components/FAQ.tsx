@@ -4,7 +4,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const toggle = (idx: number) => { setOpenIndex(openIndex === idx ? null : idx) }
   return (
-    <section id="faq" className="py-20 px-4 border-t border-purple/20 bg-bg">
+    <section className="py-20 px-4 border-t border-purple/20 bg-bg">
       <div className="max-w-3xl mx-auto">
         <div className="sec-marker" data-rv="fade"><b>06</b> — QUESTIONS<span className="rule"></span></div>
         <h2 className="font-anton text-5xl text-text uppercase mb-12 text-center" data-rv="up">Questions</h2>

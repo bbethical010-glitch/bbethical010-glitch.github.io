@@ -120,7 +120,7 @@ export function MemePreview() {
   const remaining = Math.max(0, maxDrops - dropCount)
 
   return (
-    <section id="see-it-in-action" className="py-20 px-4 border-t border-purple/20 bg-bg relative">
+    <section className="py-20 px-4 border-t border-purple/20 bg-bg relative">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
         <div className="sec-marker" data-rv="fade"><b>01</b> — LIVE MEME DROP<span className="rule"></span></div>
         
