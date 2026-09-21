@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { CONFIG } from '../constants/config'
 import { Lock, Sparkles, Download } from 'lucide-react'
+import { AdBanner } from './AdBanner'
 
 interface MemeResponse {
   url: string;
@@ -247,6 +248,9 @@ export function MemePreview() {
             {loading ? 'Dropping...' : 'HIT ME'}
           </button>
         )}
+        
+        {/* Google AdSense: meme1 */}
+        <AdBanner slot="6291908699" />
       </div>
     </section>
   )
