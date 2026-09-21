@@ -7,6 +7,7 @@ export const CONFIG = {
   apiBase:         'https://meme-capsule-eww.pages.dev',
   formspreeId:     'xwlenwzr',
   gaId:            'G-8VMD4ZNQQK',
+  adsenseClientId: 'ca-pub-2093403233028868',
   githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',
   developerName:   'Pratham Pandey',
   contactEmail:    'bbethical010@gmail.com',

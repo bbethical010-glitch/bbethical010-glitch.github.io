@@ -34,7 +34,7 @@ export default function Privacy() {
           <section>
             <h2 className="font-anton text-2xl text-gold uppercase mb-4">3. Advertising</h2>
             <p>
-              Meme Capsule uses Google AdMob to display advertisements. AdMob may use device identifiers and other information to serve personalized ads. You can learn more about how Google uses your data by visiting{' '}
+              Meme Capsule uses Google AdSense on the Website and Google AdMob within the mobile application to display advertisements. Google and its advertising partners may use cookies, device identifiers, and similar technologies to serve personalized or non-personalized ads based on your visits to this website and other sites on the internet. You can learn more about how Google uses your data and manage your ad preferences by visiting{' '}
               <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-purple hover:text-pink underline">
                 Google's Privacy & Terms
               </a>.
