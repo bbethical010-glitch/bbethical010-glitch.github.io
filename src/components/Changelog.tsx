@@ -1,7 +1,7 @@
 import { CHANGELOG } from '../constants/changelog'
 export function Changelog() {
   return (
-    <section className="py-20 px-4 border-t border-purple/20 bg-bg">
+    <section id="changelog" className="py-20 px-4 border-t border-purple/20 bg-bg">
       <div className="max-w-3xl mx-auto">
         <div className="sec-marker" data-rv="fade"><b>05</b> — WHAT'S NEW<span className="rule"></span></div>
         <h2 className="font-anton text-5xl text-text uppercase mb-16 text-center" data-rv="up">What's New</h2>

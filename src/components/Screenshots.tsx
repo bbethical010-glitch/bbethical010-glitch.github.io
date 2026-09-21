@@ -145,7 +145,7 @@ export function Screenshots() {
 
   return (
     <>
-      <section className="py-24 px-0 border-t border-purple/20 bg-bg overflow-hidden relative">
+      <section id="screenshots" className="py-24 px-0 border-t border-purple/20 bg-bg overflow-hidden relative">
         <div className="px-4 max-w-7xl mx-auto mb-16 text-center">
           <div className="sec-marker justify-center" data-rv="fade">
             <span className="rule max-w-[100px]"></span>

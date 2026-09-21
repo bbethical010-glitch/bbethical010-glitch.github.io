@@ -9,7 +9,7 @@ export function ContactForm() {
     }
   }, [])
   return (
-    <section className="py-20 px-4 border-t border-purple/20 bg-[#131313]">
+    <section id="contact" className="py-20 px-4 border-t border-purple/20 bg-[#131313]">
       <div className="max-w-lg mx-auto">
         <div className="sec-marker" data-rv="fade"><b>07</b> — GET IN TOUCH<span className="rule"></span></div>
         <h2 className="font-anton text-5xl text-text uppercase mb-12 text-center" data-rv="up">Get in Touch</h2>

@@ -30,14 +30,13 @@ export function useNavbarScroll() {
           
           lastScrollY = currentScrollY;
 
-          // Check active section (reverse iterate for stacked sections)
-          let currentSection = sections[0];
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const sectionId = sections[i];
+          // Check active section
+          let currentSection = '';
+          for (const sectionId of sections) {
             const el = document.getElementById(sectionId);
             if (el) {
               const rect = el.getBoundingClientRect();
-              if (rect.top <= window.innerHeight * 0.4) {
+              if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
                 currentSection = sectionId;
                 break;
               }
