@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Zap } from 'lucide-react'
 import logoImg from '../assets/logo.png'
+import { CONFIG, trackInstallClick } from '../constants/config'
 
 interface NavbarProps {
   isHidden?: boolean
@@ -132,9 +133,10 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               </button>
 
               <a
-                href="https://play.google.com/store/apps/details?id=com.meme.capsule"
+                href={CONFIG.getPlayStoreUrl('navbar_desktop')}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackInstallClick('navbar_desktop')}
                 className="neo-button-primary px-6 py-2 inline-block ml-2"
                 data-cursor
               >
@@ -205,11 +207,14 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               </a>
               <div className="pt-4 pb-2">
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.meme.capsule"
+                  href={CONFIG.getPlayStoreUrl('navbar_mobile')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="neo-button-primary w-full block text-center py-3 text-lg"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    trackInstallClick('navbar_mobile')
+                    setIsOpen(false)
+                  }}
                 >
                   Get App
                 </a>

@@ -51,6 +51,12 @@ export function GrainOverlay() {
             opacity: 0.04;
             mix-blend-mode: overlay;
             animation: grain-animation 8s steps(10) infinite;
+            will-change: transform;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .grain-overlay {
+              animation: none;
+            }
           }
         `}
       </style>

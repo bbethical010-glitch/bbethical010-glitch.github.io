@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { CONFIG } from '../constants/config'
+import { CONFIG, trackInstallClick } from '../constants/config'
 import { Lock, Sparkles, Download } from 'lucide-react'
 import { AdBanner } from './AdBanner'
 
@@ -202,9 +202,10 @@ export function MemePreview() {
                   You've unlocked all web preview drops. Download the official <strong>Meme Capsule</strong> app on Google Play for unlimited drops, zero wait, and your personal Meme Vault!
                 </p>
                 <a 
-                  href={CONFIG.playStoreUrl} 
+                  href={CONFIG.getPlayStoreUrl('preview_depleted')} 
                   target="_blank" 
                   rel="noopener noreferrer" 
+                  onClick={() => trackInstallClick('preview_depleted')}
                   className="neo-button-primary px-6 py-3 text-base flex items-center gap-2 w-full justify-center"
                   data-cursor
                 >
@@ -227,9 +228,10 @@ export function MemePreview() {
         {/* Action Button */}
         {dropCount >= maxDrops ? (
           <a
-            href={CONFIG.playStoreUrl}
+            href={CONFIG.getPlayStoreUrl('preview_quota_btn')}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackInstallClick('preview_quota_btn')}
             className="neo-button-secondary mt-8 px-10 py-4 text-xl flex items-center gap-2"
             data-cursor
             data-rv="up" style={{ transitionDelay: '400ms' }}

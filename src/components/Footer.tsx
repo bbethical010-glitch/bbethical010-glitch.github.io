@@ -1,4 +1,4 @@
-import { CONFIG } from '../constants/config'
+import { CONFIG, trackInstallClick } from '../constants/config'
 export function Footer() {
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
@@ -12,7 +12,16 @@ export function Footer() {
           <div className="flex flex-col items-start" data-rv="up">
             <span className="font-anton text-3xl text-purple uppercase tracking-wider mb-2" data-cursor>Meme Capsule</span>
             <span className="font-oswald text-muted text-sm mb-6">{CONFIG.tagline}</span>
-            <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="neo-button-primary px-6 py-2 text-sm" data-cursor>Get App</a>
+            <a
+              href={CONFIG.getPlayStoreUrl('footer')}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackInstallClick('footer')}
+              className="neo-button-primary px-6 py-2 text-sm"
+              data-cursor
+            >
+              Get App
+            </a>
           </div>
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '100ms' }}>
             <span className="font-anton text-xl text-text mb-4 uppercase">Links</span>

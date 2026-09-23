@@ -12,4 +12,16 @@ export const CONFIG = {
   developerName:   'Pratham Pandey',
   contactEmail:    'memecapsule.app@gmail.com',
   siteUrl:         'https://memecapsule.wtf',
+  getPlayStoreUrl: (medium = 'direct') =>
+    `https://play.google.com/store/apps/details?id=com.meme.capsule&referrer=utm_source%3Dwebsite%26utm_medium%3D${medium}`,
+}
+
+export function trackInstallClick(location: string) {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'conversion_play_store_click', {
+      event_category: 'engagement',
+      event_label: location,
+      button_location: location,
+    })
+  }
 }

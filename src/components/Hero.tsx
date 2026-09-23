@@ -1,5 +1,5 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
-import { CONFIG } from '../constants/config'
+import { CONFIG, trackInstallClick } from '../constants/config'
 import logoImg from '../assets/logo.png'
 import playStoreBadge from '../assets/google-play-badge.svg'
 
@@ -39,7 +39,10 @@ export function Hero() {
             className="relative w-28 h-28 md:w-36 md:h-36 bg-surface border-4 border-purple p-2 flex items-center justify-center transform hover:rotate-3 hover:scale-105 transition-all duration-300 group cursor-pointer" 
             style={{ boxShadow: '8px 8px 0px #f4c300' }}
             data-cursor
-            onClick={() => window.open(CONFIG.playStoreUrl, '_blank')}
+            onClick={() => {
+              trackInstallClick('hero_logo')
+              window.open(CONFIG.getPlayStoreUrl('hero_logo'), '_blank')
+            }}
           >
             <img 
               src={logoImg} 
@@ -81,7 +84,14 @@ export function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 mt-10 items-center justify-center" data-rv="up" style={{ transitionDelay: '400ms' }}>
-          <a href={CONFIG.playStoreUrl} target="_blank" rel="noopener noreferrer" className="transform hover:scale-[1.03] transition-transform duration-300" data-cursor>
+          <a
+            href={CONFIG.getPlayStoreUrl('hero_badge')}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackInstallClick('hero_badge')}
+            className="transform hover:scale-[1.03] transition-transform duration-300"
+            data-cursor
+          >
             <img src={playStoreBadge} alt="Get it on Google Play" className="h-[64px] md:h-[72px] w-auto" width="200" height="60" />
           </a>
           <button onClick={() => handleScroll('see-it-in-action')} className="neo-button-secondary px-8 py-4 text-lg" data-cursor>
