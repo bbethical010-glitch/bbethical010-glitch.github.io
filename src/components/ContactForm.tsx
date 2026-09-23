@@ -41,6 +41,19 @@ export function ContactForm() {
             </div>
             <input type="hidden" name="_subject" value="New Meme Capsule Website Message" />
             <input type="hidden" name="_next" value={`${CONFIG.siteUrl}?submitted=true#contact`} />
+            <div data-rv="up" style={{ transitionDelay: '450ms' }} className="flex items-start gap-3 mt-1 text-left">
+              <input
+                type="checkbox"
+                id="privacy-consent"
+                name="privacy_consent"
+                required
+                className="mt-1 w-4 h-4 accent-purple cursor-pointer rounded-none border-2 border-purple bg-surfaceHigh"
+                data-cursor
+              />
+              <label htmlFor="privacy-consent" className="font-oswald text-xs sm:text-sm text-muted leading-relaxed cursor-pointer select-none">
+                I have read the <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-purple transition-colors">Privacy Policy</a> and consent to the processing of my personal data for the purpose of responding to my enquiry.
+              </label>
+            </div>
             <div data-rv="up" style={{ transitionDelay: '500ms' }}>
               <button type="submit" className="cta-fill py-4 text-xl mt-2 w-full justify-center" data-cursor>
                 <span className="fill"></span>

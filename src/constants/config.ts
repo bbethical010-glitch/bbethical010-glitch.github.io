@@ -10,6 +10,6 @@ export const CONFIG = {
   adsenseClientId: 'ca-pub-2093403233028868',
   githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',
   developerName:   'Pratham Pandey',
-  contactEmail:    'bbethical010@gmail.com',
+  contactEmail:    'memecapsule.app@gmail.com',
   siteUrl:         'https://memecapsule.wtf',
 }
