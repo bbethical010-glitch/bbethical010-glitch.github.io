@@ -1,6 +1,7 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
 import logoImg from '../assets/logo.png'
+import logoWebp from '../assets/logo.webp'
 import playStoreBadge from '../assets/google-play-badge.svg'
 
 export function Hero() {
@@ -44,13 +45,16 @@ export function Hero() {
               window.open(CONFIG.getPlayStoreUrl('hero_logo'), '_blank')
             }}
           >
-            <img 
-              src={logoImg} 
-              alt="Meme Capsule Official Logo" 
-              className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none" 
-              width="512"
-              height="512"
-            />
+            <picture>
+              <source srcSet={logoWebp} type="image/webp" />
+              <img 
+                src={logoImg} 
+                alt="Meme Capsule Official Logo" 
+                className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none" 
+                width="512"
+                height="512"
+              />
+            </picture>
             <div className="absolute -bottom-3 -right-3 bg-gold text-bg font-anton text-xs px-2.5 py-0.5 border-2 border-purple shadow-sm">
               OFFICIAL
             </div>
