@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1560" width="720" height="1560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;display=swap');
+      .title { font-family: 'Anton', sans-serif; font-size: 44px; fill: #e5e2e1; text-anchor: middle; }
+      .badge { font-family: 'Anton', sans-serif; font-size: 26px; fill: #131313; font-weight: bold; }
+      .btn-gold { font-family: 'Anton', sans-serif; font-size: 40px; fill: #131313; text-anchor: middle; }
+      .btn-dark { font-family: 'Anton', sans-serif; font-size: 40px; fill: #f4c300; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#131313"/>
+  <text x="70" y="80" font-family="'Oswald', sans-serif" font-size="28" fill="#e5e2e1" font-weight="600">9:41</text>
+  
+  <!-- Meme Card -->
+  <rect x="80" y="160" width="560" height="740" fill="#1c1b1b" stroke="#9b30ff" stroke-width="6"/>
+  
+  <!-- Image Frame Inside Card -->
+  <rect x="100" y="180" width="520" height="580" fill="#242424" stroke="#000" stroke-width="4"/>
+  <circle cx="360" cy="420" r="110" fill="#dd0061" opacity="0.3"/>
+  <polygon points="360,330 430,500 290,500" fill="#f4c300"/>
+  <text x="360" y="550" font-family="'Anton', sans-serif" font-size="36" fill="#fff" text-anchor:middle">FRESH DROP #402</text>
+  
+  <!-- Badge on top-right -->
+  <rect x="470" y="200" width="130" height="44" fill="#dd0061" stroke="#000" stroke-width="3"/>
+  <text x="535" y="232" class="badge" text-anchor="middle">UNHINGED</text>
+  
+  <!-- Card Title & Rarity -->
+  <text x="360" y="840" class="title">WHEN THE CODE BUILDS FIRST TRY</text>
+
+  <!-- Action Buttons -->
+  <rect x="80" y="960" width="265" height="120" fill="#f4c300" stroke="#000" stroke-width="5"/>
+  <text x="212" y="1035" class="btn-gold">SAVE IT</text>
+  
+  <rect x="375" y="960" width="265" height="120" fill="#9b30ff" stroke="#000" stroke-width="5"/>
+  <text x="507" y="1035" class="btn-gold" fill="#fff">SHARE</text>
+
+  <rect x="80" y="1120" width="560" height="120" fill="#1c1b1b" stroke="#f4c300" stroke-width="5"/>
+  <text x="360" y="1195" class="btn-dark">NEXT CAPSULE →</text>
+  
+  <rect x="260" y="1510" width="200" height="8" rx="4" fill="#988ca1" opacity="0.6"/>
+</svg>

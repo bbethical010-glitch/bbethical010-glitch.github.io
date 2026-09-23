@@ -2,12 +2,12 @@ import { useState, useRef, MouseEvent, useEffect } from 'react'
 import { X, ZoomIn, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const SCREENSHOTS = [
-  { id: 1, title: 'Home Screen', url: 'https://via.placeholder.com/720x1560/1c1b1b/9b30ff?text=HOME+SCREEN' },
-  { id: 2, title: 'Loading Screen', url: 'https://via.placeholder.com/720x1560/1c1b1b/f4c300?text=LOADING' },
-  { id: 3, title: 'Meme Loaded', url: 'https://via.placeholder.com/720x1560/1c1b1b/dd0061?text=MEME+LOADED' },
-  { id: 4, title: 'Meme Vault', url: 'https://via.placeholder.com/720x1560/1c1b1b/9b30ff?text=MEME+VAULT' },
-  { id: 5, title: 'Share Sheet', url: 'https://via.placeholder.com/720x1560/1c1b1b/f4c300?text=SHARE+SHEET' },
-  { id: 6, title: 'Settings', url: 'https://via.placeholder.com/720x1560/1c1b1b/dd0061?text=SETTINGS' }
+  { id: 1, title: 'Home Screen', url: '/screenshots/home-screen.svg' },
+  { id: 2, title: 'Loading Screen', url: '/screenshots/loading-screen.svg' },
+  { id: 3, title: 'Meme Loaded', url: '/screenshots/meme-loaded.svg' },
+  { id: 4, title: 'Meme Vault', url: '/screenshots/meme-vault.svg' },
+  { id: 5, title: 'Share Sheet', url: '/screenshots/share-sheet.svg' },
+  { id: 6, title: 'Settings', url: '/screenshots/settings.svg' }
 ]
 
 function PhoneMockup({ item, onClick, delay }: { item: any, onClick: (item: any) => void, delay: number }) {

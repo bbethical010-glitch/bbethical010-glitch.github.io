@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1560" width="720" height="1560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;display=swap');
+      .title { font-family: 'Anton', sans-serif; font-size: 64px; fill: #f4c300; text-anchor: middle; letter-spacing: 2px; }
+      .tag { font-family: 'Oswald', sans-serif; font-size: 24px; fill: #988ca1; text-anchor: middle; letter-spacing: 3px; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#131313"/>
+  <text x="70" y="80" font-family="'Oswald', sans-serif" font-size="28" fill="#e5e2e1" font-weight="600">9:41</text>
+  
+  <text x="360" y="180" class="title">OFFLINE VAULT</text>
+  <text x="360" y="225" class="tag">SAVED ON THIS DEVICE</text>
+  
+  <!-- 2x3 Grid of Saved Memes -->
+  <!-- Row 1 -->
+  <rect x="70" y="290" width="265" height="280" fill="#1c1b1b" stroke="#9b30ff" stroke-width="4"/>
+  <rect x="385" y="290" width="265" height="280" fill="#1c1b1b" stroke="#f4c300" stroke-width="4"/>
+  
+  <!-- Row 2 -->
+  <rect x="70" y="610" width="265" height="280" fill="#1c1b1b" stroke="#dd0061" stroke-width="4"/>
+  <rect x="385" y="610" width="265" height="280" fill="#1c1b1b" stroke="#9b30ff" stroke-width="4"/>
+
+  <!-- Row 3 -->
+  <rect x="70" y="930" width="265" height="280" fill="#1c1b1b" stroke="#f4c300" stroke-width="4"/>
+  <rect x="385" y="930" width="265" height="280" fill="#1c1b1b" stroke="#dd0061" stroke-width="4"/>
+  
+  <!-- Storage Counter -->
+  <rect x="160" y="1290" width="400" height="90" fill="#18181b" stroke="#9b30ff" stroke-width="3"/>
+  <text x="360" y="1348" font-family="'Anton', sans-serif" font-size="32" fill="#e5e2e1" text-anchor="middle">48 CAPSULES BOOKMARKED</text>
+  
+  <rect x="260" y="1510" width="200" height="8" rx="4" fill="#988ca1" opacity="0.6"/>
+</svg>

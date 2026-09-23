@@ -1,0 +1,29 @@
+# Meme Capsule
+
+> Meme Capsule is a free, algorithm-free random meme discovery application for Android that delivers one unhinged meme per tap directly from a curated Cloudflare vault.
+
+## Overview
+- **Name:** Meme Capsule
+- **Category:** Entertainment & Humor Application
+- **Platform:** Android (Google Play Store)
+- **Official Website:** https://memecapsule.wtf
+- **Google Play URL:** https://play.google.com/store/apps/details?id=com.meme.capsule
+- **Package Identifier:** com.meme.capsule
+- **Pricing:** 100% Free (no subscriptions required)
+- **Developer:** Pratham Pandey
+- **Contact:** memecapsule.app@gmail.com
+
+## Core Value Proposition
+Traditional social platforms (TikTok, Instagram Reels, Reddit, X) lock users into algorithmic feedback loops and engagement farming. Meme Capsule strips away the feeds, comments, profiles, and recommendation algorithms. Users simply tap one button to spawn a completely randomized, hand-curated meme from an ever-updating Cloudflare R2 storage vault.
+
+## Key Features
+- **One-Tap Meme Drop:** Tap the capsule to instantly load a random meme with zero algorithm.
+- **Offline Meme Vault:** Save favorite memes directly to your device gallery or personal local vault.
+- **Instant Social Share:** Native share sheet integration for WhatsApp, Instagram Stories, Telegram, and Discord.
+- **Safe & Curated:** Filtered to eliminate explicit NSFW content while preserving chaotic and unhinged humor.
+- **Lightweight Android Native:** Fast load times with negligible battery and data usage.
+
+## Full Context & API
+- [Full LLM Knowledge Base](https://memecapsule.wtf/llms-full.txt): In-depth product specification, FAQs, and architecture details.
+- [Privacy Policy](https://memecapsule.wtf/privacy): DPDP Act 2023 & global privacy compliance details.
+- [Sitemap](https://memecapsule.wtf/sitemap.xml): Complete URL index.

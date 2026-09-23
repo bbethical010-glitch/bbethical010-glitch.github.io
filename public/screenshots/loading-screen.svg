@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1560" width="720" height="1560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;display=swap');
+      .title { font-family: 'Anton', sans-serif; font-size: 64px; fill: #f4c300; text-anchor: middle; letter-spacing: 3px; }
+      .loading-text { font-family: 'Anton', sans-serif; font-size: 48px; fill: #e5e2e1; text-anchor: middle; }
+      .tag { font-family: 'Oswald', sans-serif; font-size: 24px; fill: #988ca1; text-anchor: middle; letter-spacing: 3px; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#131313"/>
+  <text x="70" y="80" font-family="'Oswald', sans-serif" font-size="28" fill="#e5e2e1" font-weight="600">9:41</text>
+  
+  <!-- Center Glitch / Loading Animation Box -->
+  <rect x="120" y="480" width="480" height="480" fill="#1c1b1b" stroke="#f4c300" stroke-width="6"/>
+  <circle cx="360" cy="720" r="120" fill="none" stroke="#9b30ff" stroke-width="12" stroke-dasharray="140 60"/>
+  <circle cx="360" cy="720" r="70" fill="none" stroke="#dd0061" stroke-width="8" stroke-dasharray="60 40"/>
+  
+  <text x="360" y="1060" class="title">FETCHING DROP...</text>
+  <text x="360" y="1130" class="tag">QUERYING CLOUDFLARE R2 VAULT</text>
+  
+  <!-- Progress Bar -->
+  <rect x="140" y="1200" width="440" height="16" fill="#242424" stroke="#000" stroke-width="3"/>
+  <rect x="140" y="1200" width="310" height="16" fill="#9b30ff"/>
+  
+  <rect x="260" y="1510" width="200" height="8" rx="4" fill="#988ca1" opacity="0.6"/>
+</svg>

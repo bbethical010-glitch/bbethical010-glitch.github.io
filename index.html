@@ -56,11 +56,52 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Schema.org: WebSite (Entity & Discovery) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://memecapsule.wtf/#website",
+    "url": "https://memecapsule.wtf/",
+    "name": "Meme Capsule",
+    "description": "One tap. One meme. Pure chaos. The randomest meme delivery app on Android with zero algorithm.",
+    "publisher": {
+      "@id": "https://memecapsule.wtf/#organization"
+    },
+    "inLanguage": "en-US"
+  }
+  </script>
+  <!-- Schema.org: Organization & Person (Knowledge Graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://memecapsule.wtf/#organization",
+    "name": "Meme Capsule",
+    "url": "https://memecapsule.wtf/",
+    "logo": "https://memecapsule.wtf/icon-512.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Pratham Pandey",
+      "jobTitle": "Developer & Creator"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "memecapsule.app@gmail.com",
+      "contactType": "customer support"
+    },
+    "sameAs": [
+      "https://play.google.com/store/apps/details?id=com.meme.capsule",
+      "https://github.com/bbethical010-glitch/bbethical010-glitch.github.io"
+    ]
+  }
+  </script>
   <!-- Schema.org: MobileApplication (Android App Indexing) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
+    "@id": "https://memecapsule.wtf/#app",
     "name": "Meme Capsule",
     "operatingSystem": "ANDROID",
     "applicationCategory": "EntertainmentApplication",
@@ -70,6 +111,11 @@
       "priceCurrency": "USD"
     },
     "installUrl": "https://play.google.com/store/apps/details?id=com.meme.capsule",
+    "image": "https://memecapsule.wtf/icon-512.png",
+    "screenshot": "https://memecapsule.wtf/og-image.png",
+    "publisher": {
+      "@id": "https://memecapsule.wtf/#organization"
+    },
     "author": {
       "@type": "Person",
       "name": "Pratham Pandey"
