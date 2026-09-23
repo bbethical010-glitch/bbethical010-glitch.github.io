@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1560" width="720" height="1560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;display=swap');
+      .title { font-family: 'Anton', sans-serif; font-size: 48px; fill: #f4c300; text-anchor: middle; letter-spacing: 2px; }
+      .app-name { font-family: 'Oswald', sans-serif; font-size: 26px; fill: #e5e2e1; text-anchor: middle; font-weight: 600; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#131313"/>
+  <text x="70" y="80" font-family="'Oswald', sans-serif" font-size="28" fill="#e5e2e1" font-weight="600">9:41</text>
+  
+  <!-- Dimmed background with Meme in background -->
+  <rect x="80" y="140" width="560" height="520" fill="#18181b" stroke="#333" stroke-width="4" opacity="0.4"/>
+  
+  <!-- Share Bottom Sheet Overlay -->
+  <rect x="0" y="700" width="720" height="860" fill="#1c1b1b" stroke="#9b30ff" stroke-width="6"/>
+  <rect x="310" y="730" width="100" height="8" rx="4" fill="#988ca1"/>
+  
+  <text x="360" y="820" class="title">SPREAD THE CHAOS</text>
+  
+  <!-- Share Target Apps (4 items in a row) -->
+  <!-- Target 1: WhatsApp -->
+  <rect x="80" y="900" width="120" height="120" rx="28" fill="#25D366"/>
+  <text x="140" y="1065" class="app-name">WhatsApp</text>
+
+  <!-- Target 2: Instagram -->
+  <rect x="230" y="900" width="120" height="120" rx="28" fill="#E1306C"/>
+  <text x="290" y="1065" class="app-name">Stories</text>
+
+  <!-- Target 3: Telegram -->
+  <rect x="380" y="900" width="120" height="120" rx="28" fill="#0088cc"/>
+  <text x="440" y="1065" class="app-name">Telegram</text>
+
+  <!-- Target 4: Discord -->
+  <rect x="530" y="900" width="120" height="120" rx="28" fill="#5865F2"/>
+  <text x="590" y="1065" class="app-name">Discord</text>
+
+  <!-- Copy Link row -->
+  <rect x="80" y="1150" width="560" height="100" fill="#242424" stroke="#f4c300" stroke-width="3"/>
+  <text x="360" y="1212" font-family="'Anton', sans-serif" font-size="34" fill="#f4c300" text-anchor="middle">COPY MEME LINK</text>
+
+  <rect x="260" y="1510" width="200" height="8" rx="4" fill="#988ca1" opacity="0.6"/>
+</svg>

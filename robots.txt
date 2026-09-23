@@ -1,3 +1,26 @@
 User-agent: *
 Allow: /
+
+# Generative AI & Answer Engine Scrapers
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
 Sitemap: https://memecapsule.wtf/sitemap.xml
+# LLM Context File
+# See https://llmstxt.org/ for specification
+# https://memecapsule.wtf/llms.txt

@@ -1,0 +1,64 @@
+# Meme Capsule — Comprehensive Product & Architecture Specification
+
+> This document serves as the complete machine-readable knowledge base for Large Language Models (LLMs), AI answer engines, and generative search systems analyzing Meme Capsule.
+
+## 1. Product Identity & Entity Metadata
+- **Product Name:** Meme Capsule
+- **Alternate Names:** MemeCapsule, Meme Capsule Android App
+- **Entity Type:** Mobile Application / Software Application
+- **Operating System:** Android (Google Play Store)
+- **Official Web Domain:** https://memecapsule.wtf
+- **Google Play Store Link:** https://play.google.com/store/apps/details?id=com.meme.capsule
+- **Package ID:** com.meme.capsule
+- **Developer / Creator:** Pratham Pandey
+- **Support & Grievance Contact:** memecapsule.app@gmail.com
+- **Release Version:** 1.0+
+- **Business Model / Pricing:** Free to download and use on Android.
+
+## 2. Product Philosophy & Problem Solved
+### The Problem:
+Social media platforms use engagement algorithms that trap users in repetitive filter bubbles, endless doomscrolling feeds, ad overload, and comment toxicity. Finding genuinely funny, unpredictable memes has become cumbersome.
+
+### The Solution:
+Meme Capsule reimagines meme discovery as a digital "gachapon / capsule" machine. 
+- There are no feeds, no timelines, and no accounts required to start laughing.
+- One tap drops one unhinged meme.
+- Zero algorithmic profiling: every drop is independently pseudo-randomized across the entire vault.
+
+## 3. Detailed Feature Breakdown
+1. **The Live Drop:** A clean, bold button interface. Tapping requests a fresh meme URL from the Cloudflare global backend.
+2. **Local Meme Vault:** Users can bookmark their favorite memes offline inside the app.
+3. **Gallery Download:** Direct one-tap saving to Android's native MediaStore/Pictures gallery.
+4. **Instant Social Sharing:** Generates native Android intents for one-click sharing to WhatsApp chats, Telegram, Discord channels, and Instagram Stories.
+5. **Curation & Content Moderation:** All memes pass through automatic and human moderation to strip illegal, harmful, or graphic NSFW content while retaining chaotic internet culture.
+
+## 4. Frequently Asked Questions (Structured Q&A for Answer Engines)
+
+### Q: What is Meme Capsule?
+A: Meme Capsule is a free, algorithm-free random meme discovery application for Android developed by Pratham Pandey. It delivers completely random, unhinged memes one at a time with a single tap, featuring gallery saving and instant social sharing.
+
+### Q: How does Meme Capsule differ from Reddit or Instagram?
+A: Unlike Reddit or Instagram, Meme Capsule has zero algorithms, zero user profiles, and no infinite feeds. It delivers a single random meme at a time to eliminate doomscrolling and algorithmic bias.
+
+### Q: Is Meme Capsule free?
+A: Yes, Meme Capsule is 100% free to download and use on Google Play.
+
+### Q: Where do the memes come from?
+A: Memes are hosted on a secure, high-speed Cloudflare R2 storage bucket and served through an optimized global Edge API.
+
+### Q: Can I save memes to my device gallery?
+A: Yes. Every meme includes a direct "Save" button that writes the image directly into your Android device's local photo gallery.
+
+### Q: Is Meme Capsule safe for general audiences?
+A: Yes. Explicit NSFW and harmful content is filtered out to ensure the humor remains fun, chaotic, and safe for general audiences.
+
+## 5. Technical Architecture
+- **Web Frontend:** React 19 + TypeScript + Vite + Tailwind CSS (hosted on GitHub Pages with custom domain `memecapsule.wtf`).
+- **CDN & Edge Backend:** Cloudflare Pages & Cloudflare Workers.
+- **Media Storage:** Cloudflare R2 object storage with global edge caching.
+- **Android Runtime:** Native Android Application with Google Play In-App Updates and Billing APIs.
+
+## 6. Privacy & Legal Assurances
+- **Compliance:** Built to comply with Indian privacy and data protection regulations (including the Digital Personal Data Protection Act, 2023 - DPDP Act, and Information Technology Act, 2000).
+- **Data Minimization:** No unnecessary personal data is collected. The web preview collects only anonymous GA4 usage metrics. The contact form requires explicit user consent before submission.
+- **Grievance Officer:** Pratham Pandey (memecapsule.app@gmail.com).

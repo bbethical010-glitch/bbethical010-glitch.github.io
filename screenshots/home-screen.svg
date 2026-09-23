@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1560" width="720" height="1560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;display=swap');
+      .title { font-family: 'Anton', sans-serif; font-size: 72px; fill: #9b30ff; text-anchor: middle; letter-spacing: 2px; }
+      .tag { font-family: 'Oswald', sans-serif; font-size: 26px; fill: #f4c300; text-anchor: middle; letter-spacing: 4px; font-weight: 700; }
+      .btn-text { font-family: 'Anton', sans-serif; font-size: 56px; fill: #131313; text-anchor: middle; letter-spacing: 2px; }
+      .subtext { font-family: 'Oswald', sans-serif; font-size: 24px; fill: #988ca1; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#131313"/>
+  <!-- Status bar -->
+  <text x="70" y="80" font-family="'Oswald', sans-serif" font-size="28" fill="#e5e2e1" font-weight="600">9:41</text>
+  <circle cx="620" cy="70" r="10" fill="#e5e2e1"/>
+  <rect x="640" y="60" width="30" height="18" rx="4" fill="#e5e2e1"/>
+  
+  <!-- Header -->
+  <text x="360" y="240" class="tag">ZERO ALGORITHM · PURE RANDOM</text>
+  <text x="360" y="330" class="title">MEME CAPSULE</text>
+  
+  <!-- Center Capsule Visual -->
+  <rect x="120" y="440" width="480" height="580" fill="#1c1b1b" stroke="#9b30ff" stroke-width="6"/>
+  <rect x="140" y="460" width="440" height="540" fill="#18181b" stroke="#f4c300" stroke-width="3" stroke-dasharray="10 10"/>
+  
+  <circle cx="360" cy="690" r="140" fill="#9b30ff" opacity="0.15"/>
+  <circle cx="360" cy="690" r="100" fill="#f4c300" opacity="0.2"/>
+  
+  <!-- Capsule Icon -->
+  <g transform="translate(360, 690) rotate(-45)">
+    <rect x="-45" y="-100" width="90" height="100" rx="45" fill="#9b30ff"/>
+    <rect x="-45" y="0" width="90" height="100" rx="45" fill="#f4c300"/>
+    <line x1="-45" y1="0" x2="45" y2="0" stroke="#131313" stroke-width="6"/>
+  </g>
+  
+  <text x="360" y="930" class="subtext">TAP TO SPAWN FRESH CHAOS</text>
+
+  <!-- CTA Drop Button -->
+  <rect x="120" y="1120" width="480" height="140" fill="#f4c300" stroke="#000" stroke-width="6"/>
+  <rect x="128" y="1128" width="480" height="140" fill="none" stroke="#dd0061" stroke-width="4"/>
+  <text x="360" y="1212" class="btn-text">DROP CAPSULE</text>
+  
+  <!-- Bottom nav indicator -->
+  <rect x="260" y="1510" width="200" height="8" rx="4" fill="#988ca1" opacity="0.6"/>
+</svg>
