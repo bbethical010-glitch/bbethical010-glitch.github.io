@@ -1,16 +1,22 @@
 import { useState, useRef, type MouseEvent, useEffect } from 'react'
 import { X, ZoomIn, ChevronRight, ChevronLeft } from 'lucide-react'
 
-const SCREENSHOTS = [
-  { id: 1, title: 'Home Screen', url: '/screenshots/home-screen.svg' },
-  { id: 2, title: 'Loading Screen', url: '/screenshots/loading-screen.svg' },
-  { id: 3, title: 'Meme Loaded', url: '/screenshots/meme-loaded.svg' },
-  { id: 4, title: 'Meme Vault', url: '/screenshots/meme-vault.svg' },
-  { id: 5, title: 'Share Sheet', url: '/screenshots/share-sheet.svg' },
-  { id: 6, title: 'Settings', url: '/screenshots/settings.svg' }
+interface ScreenshotItem {
+  id: number
+  title: string
+  url: string
+  webpUrl: string
+}
+
+const SCREENSHOTS: ScreenshotItem[] = [
+  { id: 1, title: 'Home Screen', url: '/screenshots/home-screen.jpg', webpUrl: '/screenshots/home-screen.webp' },
+  { id: 2, title: 'Loading Screen', url: '/screenshots/loading-screen.jpg', webpUrl: '/screenshots/loading-screen.webp' },
+  { id: 3, title: 'Meme Loaded', url: '/screenshots/meme-loaded.jpg', webpUrl: '/screenshots/meme-loaded.webp' },
+  { id: 4, title: 'Meme Vault', url: '/screenshots/meme-vault.jpg', webpUrl: '/screenshots/meme-vault.webp' },
+  { id: 5, title: 'Mood Boards', url: '/screenshots/moodboards.jpg', webpUrl: '/screenshots/moodboards.webp' },
 ]
 
-function PhoneMockup({ item, onClick, delay }: { item: any, onClick: (item: any) => void, delay: number }) {
+function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: (item: ScreenshotItem) => void, delay: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const [transform, setTransform] = useState('perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)')
   const [isHovered, setIsHovered] = useState(false)
@@ -71,14 +77,17 @@ function PhoneMockup({ item, onClick, delay }: { item: any, onClick: (item: any)
           
           {/* Phone Screen */}
           <div className="w-full h-full bg-[#1c1b1b] relative rounded-[1.75rem] overflow-hidden">
-            <img 
-              src={item.url} 
-              alt={item.title} 
-              className="w-full h-full object-cover select-none pointer-events-none"
-              loading="lazy"
-              width="720"
-              height="1560"
-            />
+            <picture>
+              <source srcSet={item.webpUrl} type="image/webp" />
+              <img 
+                src={item.url} 
+                alt={`${item.title} — Meme Capsule Android App Screenshot`} 
+                className="w-full h-full object-cover select-none pointer-events-none"
+                loading="lazy"
+                width="1080"
+                height="2310"
+              />
+            </picture>
             
             {/* Hover Action Overlay */}
             <div 
@@ -107,7 +116,7 @@ function PhoneMockup({ item, onClick, delay }: { item: any, onClick: (item: any)
 }
 
 export function Screenshots() {
-  const [selectedItem, setSelectedItem] = useState<any>(null)
+  const [selectedItem, setSelectedItem] = useState<ScreenshotItem | null>(null)
   const carouselRef = useRef<HTMLDivElement>(null)
 
   // Prevent scrolling on body when lightbox is open
@@ -203,6 +212,7 @@ export function Screenshots() {
           {/* Close Button */}
           <button 
             className="absolute top-6 right-6 sm:top-10 sm:right-10 text-gold hover:text-white bg-surface border-2 border-purple p-2 shadow-[4px_4px_0px_#dd0061] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none z-10"
+            aria-label="Close screenshot preview"
             onClick={(e) => {
               e.stopPropagation()
               setSelectedItem(null)
@@ -217,14 +227,17 @@ export function Screenshots() {
             className="relative h-full max-h-[90vh] aspect-[9/19.5] rounded-[2rem] border-[6px] border-purple overflow-hidden shadow-[0_0_80px_rgba(155,48,255,0.4)]"
             onClick={(e) => e.stopPropagation()} // Prevent close when clicking image
           >
-            <img 
-              src={selectedItem.url} 
-              alt={selectedItem.title} 
-              className="w-full h-full object-cover"
-              loading="lazy"
-              width="720"
-              height="1560"
-            />
+            <picture>
+              <source srcSet={selectedItem.webpUrl} type="image/webp" />
+              <img 
+                src={selectedItem.url} 
+                alt={`${selectedItem.title} — Meme Capsule Android App Screenshot`} 
+                className="w-full h-full object-cover"
+                loading="lazy"
+                width="1080"
+                height="2310"
+              />
+            </picture>
             {/* Title Bar at bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-[#131313]/90 backdrop-blur-md p-6 border-t-[3px] border-purple text-center">
               <span className="font-anton text-3xl text-gold uppercase tracking-widest">{selectedItem.title}</span>
