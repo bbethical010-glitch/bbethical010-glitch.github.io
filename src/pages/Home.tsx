@@ -4,6 +4,7 @@ import { MemePreview } from '../components/MemePreview'
 import { Features } from '../components/Features'
 import { Screenshots } from '../components/Screenshots'
 import { HowItWorks } from '../components/HowItWorks'
+import { HowItWorksDetail } from '../components/HowItWorksDetail'
 import { Changelog } from '../components/Changelog'
 import { FAQ } from '../components/FAQ'
 import { ContactForm } from '../components/ContactForm'
@@ -46,6 +47,7 @@ export default function Home() {
       <Features />
       <Screenshots />
       <HowItWorks />
+      <HowItWorksDetail />
       <Changelog />
       <FAQ />
       <ContactForm />

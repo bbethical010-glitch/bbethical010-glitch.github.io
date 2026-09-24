@@ -1,4 +1,4 @@
-import { useState, useRef, MouseEvent, useEffect } from 'react'
+import { useState, useRef, type MouseEvent, useEffect } from 'react'
 import { X, ZoomIn, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const SCREENSHOTS = [

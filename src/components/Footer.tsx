@@ -30,6 +30,7 @@ export function Footer() {
               <a href="#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
               <a href="#faq" onClick={(e) => { e.preventDefault(); handleScroll('faq') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</a>
               <a href="#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
+              <a href="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</a>
               <a href="/privacy.html" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</a>
             </div>
           </div>

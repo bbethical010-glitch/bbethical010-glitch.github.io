@@ -120,6 +120,13 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 <span>Contact</span><span className="alt">Contact</span>
               </a>
+              <a
+                href="/about"
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
+                data-cursor
+              >
+                <span>About</span><span className="alt">About</span>
+              </a>
 
               {/* Glitch Toggle (Desktop) */}
               <button
@@ -208,6 +215,13 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Contact
+              </a>
+              <a
+                href="/about"
+                onClick={() => setIsOpen(false)}
+                className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
+              >
+                About
               </a>
               <div className="pt-4 pb-2">
                 <a
