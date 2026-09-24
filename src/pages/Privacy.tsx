@@ -7,7 +7,7 @@ export default function Privacy() {
   return (
     <div className="min-h-screen bg-bg flex flex-col">
       <Navbar />
-      <main className="flex-1 max-w-3xl mx-auto px-4 py-32 w-full">
+      <main id="main-content" role="main" className="flex-1 max-w-3xl mx-auto px-4 py-32 w-full">
         <h1 className="font-anton text-5xl text-purple uppercase mb-8 border-b-4 border-purple pb-4">Privacy Policy</h1>
         <div className="font-oswald text-text text-base leading-relaxed space-y-8">
           <div className="space-y-2 text-muted text-sm uppercase tracking-widest">

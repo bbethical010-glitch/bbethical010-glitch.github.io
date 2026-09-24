@@ -66,8 +66,8 @@ export function Preloader() {
         
         <div className="w-full h-[1px] bg-[#2a2a2a] relative overflow-hidden">
           <div
-            className="absolute top-0 left-0 h-full bg-[#9b30ff] transition-all duration-75"
-            style={{ width: `${progress}%` }}
+            className="absolute inset-0 w-full h-full bg-[#9b30ff] transition-transform duration-75 origin-left"
+            style={{ transform: `scaleX(${progress / 100})`, transformOrigin: 'left' }}
           />
         </div>
       </div>

@@ -40,17 +40,19 @@ export default function Home() {
         isStuck={isStuck} 
       />
       
-      <div id="hero">
-        <Hero />
-      </div>
-      <MemePreview />
-      <Features />
-      <Screenshots />
-      <HowItWorks />
-      <HowItWorksDetail />
-      <Changelog />
-      <FAQ />
-      <ContactForm />
+      <main id="main-content" role="main">
+        <div id="hero">
+          <Hero />
+        </div>
+        <MemePreview />
+        <Features />
+        <Screenshots />
+        <HowItWorks />
+        <HowItWorksDetail />
+        <Changelog />
+        <FAQ />
+        <ContactForm />
+      </main>
       <Footer />
     </div>
   )

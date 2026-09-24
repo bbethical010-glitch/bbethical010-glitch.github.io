@@ -78,7 +78,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-bg flex flex-col">
       <Navbar />
-      <main className="flex-1 w-full">
+      <main id="main-content" role="main" className="flex-1 w-full">
 
         {/* ─── Section 1 — Page Header ─── */}
         <section className="pt-32 pb-12 px-4 bg-[#131313]">

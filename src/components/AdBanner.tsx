@@ -33,7 +33,7 @@ export function AdBanner({ slot = '6291908699', className = '' }: AdBannerProps)
 
   return (
     <div className={`w-full max-w-xl mx-auto my-6 text-center overflow-hidden ${className}`}>
-      <span className="font-oswald text-[10px] text-muted/60 uppercase tracking-widest block mb-1">
+      <span className="font-oswald text-[10px] text-[#a8a29e] uppercase tracking-widest block mb-1" style={{ color: '#a8a29e' }}>
         Advertisement
       </span>
       {/* meme1 ad slot */}

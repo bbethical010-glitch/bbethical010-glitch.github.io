@@ -22,13 +22,16 @@ export function ContactForm() {
         ) : (
           <form action={`https://formspree.io/f/${CONFIG.formspreeId}`} method="POST" className="flex flex-col gap-5">
             <div data-rv="up" style={{ transitionDelay: '100ms' }}>
-              <input type="text" name="name" placeholder="YOUR NAME" required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none transition-colors" data-cursor />
+              <label htmlFor="contact-name" className="sr-only">Your Name</label>
+              <input id="contact-name" type="text" name="name" aria-label="Your Name" aria-required="true" placeholder="YOUR NAME" required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none transition-colors" data-cursor />
             </div>
             <div data-rv="up" style={{ transitionDelay: '200ms' }}>
-              <input type="email" name="email" placeholder="YOUR EMAIL" required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none transition-colors" data-cursor />
+              <label htmlFor="contact-email" className="sr-only">Your Email</label>
+              <input id="contact-email" type="email" name="email" aria-label="Your Email" aria-required="true" placeholder="YOUR EMAIL" required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none transition-colors" data-cursor />
             </div>
             <div data-rv="up" style={{ transitionDelay: '300ms' }}>
-              <select name="subject" className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none appearance-none rounded-none cursor-pointer" data-cursor>
+              <label htmlFor="contact-subject" className="sr-only">Inquiry Subject</label>
+              <select id="contact-subject" name="subject" aria-label="Inquiry Subject" aria-required="true" className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none appearance-none rounded-none cursor-pointer" data-cursor>
                 <option value="General Question">General Question</option>
                 <option value="Bug Report">Bug Report</option>
                 <option value="Feature Request">Feature Request</option>
@@ -37,7 +40,8 @@ export function ContactForm() {
               </select>
             </div>
             <div data-rv="up" style={{ transitionDelay: '400ms' }}>
-              <textarea name="message" rows={6} placeholder="TELL US EVERYTHING..." required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none resize-none transition-colors" data-cursor></textarea>
+              <label htmlFor="contact-message" className="sr-only">Your Message</label>
+              <textarea id="contact-message" name="message" aria-label="Your Message" aria-required="true" rows={6} placeholder="TELL US EVERYTHING..." required className="bg-surfaceHigh border-2 border-purple text-text font-oswald p-4 w-full focus:border-gold focus:outline-none resize-none transition-colors" data-cursor></textarea>
             </div>
             <input type="hidden" name="_subject" value="New Meme Capsule Website Message" />
             <input type="hidden" name="_next" value={`${CONFIG.siteUrl}?submitted=true#contact`} />

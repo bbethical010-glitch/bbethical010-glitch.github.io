@@ -49,20 +49,38 @@
     gtag('config', 'G-8VMD4ZNQQK');
   </script>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2093403233028868" crossorigin="anonymous"></script>
+  <!-- Google AdSense (Deferred to Load / Idle to eliminate 698ms render-blocking delay) -->
+  <script>
+    window.addEventListener('load', function() {
+      var loadAds = function() {
+        var s = document.createElement('script');
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2093403233028868';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadAds, { timeout: 2000 });
+      } else {
+        setTimeout(loadAds, 500);
+      }
+    });
+  </script>
 
   <!-- Preconnect & DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://meme-capsule-eww.pages.dev">
+  <link rel="dns-prefetch" href="https://media.memecapsule.wtf">
   <link rel="dns-prefetch" href="https://pub-3e7961a132964ff581b779a5dad40771.r2.dev">
 
-  <!-- Core Web Vitals: Preload Critical Assets (LCP & Fonts) -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" as="style">
+  <!-- Core Web Vitals: Preload Critical Assets (LCP & WOFF2 Fonts) -->
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8CSKlv.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v53/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
   <link rel="preload" as="image" href="/og-image.png">
   <link rel="preload" as="image" href="/logo.webp" type="image/webp">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap"></noscript>
   <!-- Schema.org: WebSite (Entity & Discovery) -->
   <script type="application/ld+json">
   {
