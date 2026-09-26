@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO -->
+  <title>Meme Capsule — Random Meme App for Android</title>
+  <meta name="description" content="Download Meme Capsule — the randomest meme app on Android. One tap, one meme, zero algorithm. Get it free on Google Play." />
+  <meta name="keywords" content="meme app, random memes, android meme app, funny memes, meme capsule, google play memes" />
+  <meta name="author" content="Pratham Pandey" />
+  <link rel="canonical" href="https://memecapsule.wtf/" />
+  
+  <!-- Open Graph (Facebook, WhatsApp previews) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://memecapsule.wtf/" />
+  <meta property="og:title" content="Meme Capsule — Random Meme App for Android" />
+  <meta property="og:description" content="One tap. One meme. Pure chaos. Download free on Google Play." />
+  <meta property="og:image" content="https://memecapsule.wtf/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Search Engine Directives & Discover Optimization -->
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta property="og:site_name" content="Meme Capsule" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Meme Capsule — Random Meme App for Android" />
+  <meta name="twitter:description" content="One tap. One meme. Pure chaos." />
+  <meta name="twitter:image" content="https://memecapsule.wtf/og-image.png" />
+  
+  <!-- Google Play App link -->
+  <meta name="google-play-app" content="app-id=com.meme.capsule" />
+  
+  <!-- PWA & Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#9b30ff" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8VMD4ZNQQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8VMD4ZNQQK');
+  </script>
+
+  <!-- Google AdSense (Deferred to Load / Idle to eliminate 698ms render-blocking delay) -->
+  <script>
+    window.addEventListener('load', function() {
+      var loadAds = function() {
+        var s = document.createElement('script');
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2093403233028868';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadAds, { timeout: 2000 });
+      } else {
+        setTimeout(loadAds, 500);
+      }
+    });
+  </script>
+
+  <!-- Preconnect & DNS Prefetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://meme-capsule-eww.pages.dev">
+  <link rel="dns-prefetch" href="https://media.memecapsule.wtf">
+  <link rel="dns-prefetch" href="https://pub-3e7961a132964ff581b779a5dad40771.r2.dev">
+
+  <!-- Core Web Vitals: Preload Critical Assets (LCP & WOFF2 Fonts) -->
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8CSKlv.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v53/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
+  <link rel="preload" as="image" href="/og-image.png">
+  <link rel="preload" as="image" href="/logo.webp" type="image/webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap"></noscript>
+  <!-- Schema.org: WebSite (Entity & Discovery) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://memecapsule.wtf/#website",
+    "url": "https://memecapsule.wtf/",
+    "name": "Meme Capsule",
+    "description": "One tap. One meme. Pure chaos. The randomest meme delivery app on Android with zero algorithm.",
+    "publisher": {
+      "@id": "https://memecapsule.wtf/#organization"
+    },
+    "inLanguage": "en-US"
+  }
+  </script>
+  <!-- Schema.org: Organization & Person (Knowledge Graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://memecapsule.wtf/#organization",
+    "name": "Meme Capsule",
+    "url": "https://memecapsule.wtf/",
+    "logo": "https://memecapsule.wtf/icon-512.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Pratham Pandey",
+      "jobTitle": "Developer & Creator"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "memecapsule.app@gmail.com",
+      "contactType": "customer support"
+    },
+    "sameAs": [
+      "https://play.google.com/store/apps/details?id=com.meme.capsule",
+      "https://github.com/bbethical010-glitch/bbethical010-glitch.github.io",
+      "https://memecapsule.wtf/about"
+    ]
+  }
+  </script>
+  <!-- Schema.org: MobileApplication (Android App Indexing) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "@id": "https://memecapsule.wtf/#app",
+    "name": "Meme Capsule",
+    "operatingSystem": "ANDROID",
+    "applicationCategory": "EntertainmentApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "installUrl": "https://play.google.com/store/apps/details?id=com.meme.capsule",
+    "image": "https://memecapsule.wtf/icon-512.png",
+    "screenshot": [
+      "https://memecapsule.wtf/screenshots/home-screen.jpg",
+      "https://memecapsule.wtf/screenshots/loading-screen.jpg",
+      "https://memecapsule.wtf/screenshots/meme-loaded.jpg",
+      "https://memecapsule.wtf/screenshots/meme-vault.jpg",
+      "https://memecapsule.wtf/screenshots/moodboards.jpg"
+    ],
+    "publisher": {
+      "@id": "https://memecapsule.wtf/#organization"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Pratham Pandey"
+    },
+    "description": "Download Meme Capsule — the randomest meme app on Android. One tap, one meme, zero algorithm. Get it free on Google Play."
+  }
+  </script>
+  <!-- Schema.org: FAQPage (SERP Accordion Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Meme Capsule free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The app is completely free to download and use. There are occasional ads but they are infrequent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do the memes come from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our curated collection of thousands of memes in our capsule library, blended with fresh trending internet humor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I control what memes I see?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. That is the entire point. Pure randomness. No algorithm, no personalisation, no filter bubble."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I save a meme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tap the SAVE IT button below any meme and it goes straight to your phone gallery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there inappropriate content?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We filter out NSFW content from all sources. The app is designed to be safe for general audiences."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I report a problem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the contact form on this page or email us directly. We respond to every message."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data collected?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We collect only anonymous usage analytics. No personal data is stored. See our Privacy Policy for full details."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the app called Meme Capsule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each meme is like a capsule — you don't know what's inside until you open it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Android version does Meme Capsule require?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule requires Android 8.0 (API level 26) or higher. It is compatible with the vast majority of Android devices currently in use."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many memes are in the Meme Capsule collection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The curated collection currently contains over 5,000 hand-picked meme images stored in our cloud library. The collection is regularly updated with new content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Meme Capsule available in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Meme Capsule is available in India and all other countries where the Google Play Store operates. The app is free to download with no regional restrictions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Meme Capsule work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule requires an internet connection to fetch new memes from the collection. However, memes saved to your Meme Vault are stored locally on your device and can be viewed offline at any time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a Meme Capsule iOS or iPhone version?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule is currently available only for Android devices on the Google Play Store. An iOS version is not available at this time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I share a meme from Meme Capsule to WhatsApp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tap the SHARE THIS button below any meme to open the Android native share sheet. Select WhatsApp from the list of available apps and the meme will be shared instantly without leaving the Meme Capsule app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Meme Vault?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Meme Vault is your personal saved memes collection inside Meme Capsule. When you tap the VAULT button on any meme, it is saved to your vault and can be viewed, shared, or downloaded at any time. Your vault is stored locally on your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is there no algorithm in Meme Capsule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule was designed specifically to avoid the filter bubble problem that affects most social media platforms. By delivering completely random memes with no personalisation, the app ensures that every session is unpredictable and every user sees a different variety of content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often is the meme collection updated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The curated meme library is updated regularly as new content is added, alongside a continuous stream of fresh trending internet humor in real time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who built Meme Capsule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule was designed and developed by Pratham Pandey, an independent developer based in India. For press enquiries or collaborations, contact memecapsule.app@gmail.com."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- GitHub Pages SPA Hack Decode -->
+  <script>
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+  <script type="module" crossorigin src="/assets/index-CxqqEP2v.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-6e-kLQYB.css">
+</head>
+<body>
+  <div id="root"><link rel="preload" as="image" href="/src/assets/google-play-badge.svg"/><div class="min-h-screen bg-bg flex flex-col relative"><style>
+          .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            border: 1px solid #dcb8ff;
+            pointer-events: none;
+            z-index: 80;
+            transform: translate3d(-100px, -100px, 0) translate(-50%, -50%); /* Start hidden/offscreen */
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            mix-blend-mode: difference;
+          }
+          @media (hover: none) {
+            .custom-cursor {
+              display: none;
+            }
+          }
+        </style><div class="custom-cursor"></div><div style="position:fixed;inset:0;z-index:55;pointer-events:none;background:radial-gradient(125% 95% at 50% 42%, transparent 40%, rgba(19, 19, 19, 0.6) 100%)"></div><nav class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-[#131313]/95 backdrop-blur-md border-b-2 border-purple/60 translate-y-0 "><div class="max-w-7xl mx-auto px-4"><div class="flex justify-between items-center h-16 sm:h-20"><a class="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none" data-cursor="true" href="/" data-discover="true"><div class="w-8 h-8 sm:w-10 sm:h-10 bg-surface border-2 border-purple p-1 flex items-center justify-center group-hover:rotate-6 transition-transform shadow-[2px_2px_0px_#f4c300]"><picture><source srcSet="/src/assets/logo.webp" type="image/webp"/><img src="/src/assets/logo.png" alt="Meme Capsule Icon" class="w-full h-full object-contain" width="128" height="128"/></picture></div><span class="font-anton text-xl sm:text-2xl md:text-3xl text-purple uppercase tracking-wider">Meme Capsule</span><span class="font-anton text-[10px] sm:text-xs text-gold bg-surface px-1.5 py-0.5 border border-gold">v1.0</span></a><div class="hidden md:flex items-center space-x-6 lg:space-x-8"><a href="/" class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true"><span>Home</span><span class="alt">Home</span></a><a href="/#features" class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true"><span>Features</span><span class="alt">Features</span></a><a class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true" href="/how-it-works" data-discover="true"><span>How It Works</span><span class="alt">How It Works</span></a><a class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true" href="/faq" data-discover="true"><span>FAQ</span><span class="alt">FAQ</span></a><a href="/#contact" class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true"><span>Contact</span><span class="alt">Contact</span></a><a class="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors" data-cursor="true" href="/about" data-discover="true"><span>About</span><span class="alt">About</span></a><button class="flex items-center gap-2 font-oswald uppercase font-bold text-xs lg:text-sm px-3 py-1.5 border-2 transition-colors border-purple/50 text-purple hover:border-gold hover:text-gold hover:bg-surface" data-cursor="true" title="Toggle Cyberpunk Glitch Mode"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap" aria-hidden="true"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg><span>Acid OFF</span></button><a href="https://play.google.com/store/apps/details?id=com.meme.capsule&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dnavbar_desktop" target="_blank" rel="noopener noreferrer" class="neo-button-primary px-6 py-2 inline-block ml-2" data-cursor="true">Get App</a></div><div class="md:hidden flex items-center gap-3"><button class="p-1.5 sm:p-2 border-2 transition-colors border-purple/50 text-purple bg-surface" aria-label="Toggle Glitch Mode" data-cursor="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap" aria-hidden="true"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg></button><button class="text-gold p-1.5 sm:p-2 border border-purple/40 bg-surface focus:outline-none" aria-label="Toggle Menu" data-cursor="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div></div></nav><main id="main-content" role="main" class="flex-1 w-full"><section class="pt-32 pb-12 px-4 bg-[#131313]"><div class="max-w-4xl mx-auto text-center"><h1 class="font-anton text-5xl md:text-7xl uppercase text-purple" style="text-shadow:4px 4px 0px #f4c300, -1px -1px 0px #f4c300, 1px -1px 0px #f4c300, -1px 1px 0px #f4c300, 1px 1px 0px #f4c300">How Meme Capsule Works</h1><h2 class="font-oswald font-bold text-gold text-lg uppercase tracking-wider mt-4">One Tap. Pure Serendipity. Zero Algorithms.</h2><div class="border-b-2 border-gold mt-8"></div></div></section><section id="how-it-works" class="py-20 px-4 border-t border-purple/20 bg-[#131313]"><div class="max-w-7xl mx-auto"><div class="sec-marker" data-rv="fade"><b>04</b> — HOW IT WORKS<span class="rule"></span></div><h2 class="font-anton text-5xl text-text uppercase mb-16 text-center" data-rv="up">How It Works</h2><div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4"><div class="relative flex-1 w-full max-w-sm" data-rv="up" style="transition-delay:0ms" data-cursor="true"><div class="absolute top-0 right-0 font-anton text-8xl text-purple opacity-20 -z-10 leading-none select-none -translate-y-4 translate-x-4">01</div><div class="border-l-4 border-purple pl-6 py-2 bg-gradient-to-r from-surface to-transparent"><div class="font-anton text-2xl text-gold uppercase mb-2">01<!-- --> — <!-- -->OPEN THE APP</div><p class="font-oswald text-muted text-lg">Launch Meme Capsule on your Android device</p></div><div class="hidden md:block absolute top-1/2 -right-8 -translate-y-1/2 font-anton text-4xl text-gold z-10">→</div></div><div class="relative flex-1 w-full max-w-sm" data-rv="up" style="transition-delay:150ms" data-cursor="true"><div class="absolute top-0 right-0 font-anton text-8xl text-purple opacity-20 -z-10 leading-none select-none -translate-y-4 translate-x-4">02</div><div class="border-l-4 border-purple pl-6 py-2 bg-gradient-to-r from-surface to-transparent"><div class="font-anton text-2xl text-gold uppercase mb-2">02<!-- --> — <!-- -->HIT THE BUTTON</div><p class="font-oswald text-muted text-lg">Tap HIT ME and get a completely random meme from our collection</p></div><div class="hidden md:block absolute top-1/2 -right-8 -translate-y-1/2 font-anton text-4xl text-gold z-10">→</div></div><div class="relative flex-1 w-full max-w-sm" data-rv="up" style="transition-delay:300ms" data-cursor="true"><div class="absolute top-0 right-0 font-anton text-8xl text-purple opacity-20 -z-10 leading-none select-none -translate-y-4 translate-x-4">03</div><div class="border-l-4 border-purple pl-6 py-2 bg-gradient-to-r from-surface to-transparent"><div class="font-anton text-2xl text-gold uppercase mb-2">03<!-- --> — <!-- -->REACT AND SHARE</div><p class="font-oswald text-muted text-lg">Like it, save it, share it, or just hit the button again for another drop</p></div></div></div></div></section><section class="py-20 px-4 border-t-4 border-gold bg-[#131313]"><div class="max-w-7xl mx-auto"><div class="sec-marker" data-rv="fade"><b>04</b> — INSIDE THE CAPSULE<span class="rule"></span></div><h2 class="font-anton text-4xl md:text-5xl text-text uppercase mb-3 text-center" data-rv="up">HOW THE APP ACTUALLY WORKS</h2><p class="font-oswald text-muted text-base md:text-lg uppercase tracking-wider text-center mb-12" data-rv="up">BUILT FOR INSTANT LAUGHS — ZERO ALGORITHMS, ZERO DOOMSCROLLING.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-gold" data-rv="up" style="transition-delay:100ms"><h3 class="font-anton text-xl text-gold uppercase mb-3">THE MEME COLLECTION</h3><p class="font-oswald text-sm text-text leading-relaxed">Meme Capsule houses thousands of hand-picked memes curated from across internet culture. Every drop is reviewed for quality and humor before entering the capsule pool. When you tap HIT ME, our proprietary shuffle engine picks a completely unpredictable drop on the spot. No viewing history is tracked and no preferences are recorded — every tap is a fresh surprise.</p></div><div class="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-purple" data-rv="up" style="transition-delay:200ms"><h3 class="font-anton text-xl text-purple uppercase mb-3">ALWAYS FRESH DROPS</h3><p class="font-oswald text-sm text-text leading-relaxed">Alongside timeless classics, Meme Capsule continuously blends in fresh, trending internet humor so the pool never goes stale. Every incoming drop passes through multi-layer automated safety screening to keep out spoilers and inappropriate material, ensuring a clean, chaotic, and safe experience every time you tap.</p></div><div class="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-pink" data-rv="up" style="transition-delay:300ms"><h3 class="font-anton text-xl text-pink uppercase mb-3">YOUR PRIVACY</h3><p class="font-oswald text-sm text-text leading-relaxed">Meme Capsule never asks for an account, sign-up, name, email address, or phone number. We do not build a hidden profile of what makes you laugh. Any memes you save to your personal Meme Vault stay right on your device under your control, ready to view, share, or clear whenever you choose.</p></div></div><div class="bg-surfaceHigh border-l-4 border-gold p-6 mt-8 rounded-none" data-rv="up" style="transition-delay:400ms"><span class="font-oswald text-[11px] uppercase tracking-widest text-gold font-semibold block mb-2">THE PHILOSOPHY</span><p class="font-oswald text-base text-text leading-relaxed">Meme Capsule does not use a recommendation algorithm. It does not show you more of what you have liked before. It does not build a profile of your preferences. It does not try to maximise your time in the app. The entire product is designed around a single interaction: you tap once, you get a meme, you decide what to do with it. That is the complete feature set.</p></div></div></section><section class="py-16 px-4 bg-[#131313] border-t border-purple/20 text-center"><div class="max-w-md mx-auto"><h2 class="font-anton text-3xl text-text uppercase mb-2">Get the App</h2><p class="font-oswald text-muted text-base mb-8">Free on Android. No account required.</p><a href="https://play.google.com/store/apps/details?id=com.meme.capsule&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhow_it_works_page" target="_blank" rel="noopener noreferrer" class="inline-block transform hover:scale-[1.03] transition-transform duration-300" data-cursor="true"><img src="/src/assets/google-play-badge.svg" alt="Get it on Google Play" class="h-[64px] md:h-[72px] w-auto mx-auto" width="200" height="60"/></a></div></section><section class="py-8 px-4 bg-[#131313] border-t border-purple/20"><div class="max-w-4xl mx-auto"><a class="font-oswald font-semibold uppercase text-purple hover:text-gold transition-colors inline-flex items-center gap-2 tracking-wider" data-cursor="true" href="/" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>BACK TO HOME</a></div></section></main><footer class="bg-surface border-t border-purple/20 py-12 px-4 relative" style="background:linear-gradient(transparent, rgba(19,19,19,0.95) 40%, rgba(28,27,27,1))"><div class="max-w-7xl mx-auto relative z-10"><div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12"><div class="flex flex-col items-start" data-rv="up"><a class="font-anton text-3xl text-purple uppercase tracking-wider mb-2" data-cursor="true" href="/" data-discover="true">Meme Capsule</a><span class="font-oswald text-muted text-sm mb-6">One tap. One capsule drop. Pure chaos.</span><a href="https://play.google.com/store/apps/details?id=com.meme.capsule&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter" target="_blank" rel="noopener noreferrer" class="neo-button-primary px-6 py-2 text-sm" data-cursor="true">Get App</a></div><div class="flex flex-col" data-rv="up" style="transition-delay:100ms"><span class="font-anton text-xl text-text mb-4 uppercase">Links</span><div class="flex flex-col gap-2 font-oswald text-sm"><a href="/" class="text-muted hover:text-gold uppercase w-fit" data-cursor="true">Home</a><a href="/#features" class="text-muted hover:text-gold uppercase w-fit" data-cursor="true">Features</a><a class="text-muted hover:text-gold uppercase w-fit" data-cursor="true" href="/how-it-works" data-discover="true">How It Works</a><a class="text-muted hover:text-gold uppercase w-fit" data-cursor="true" href="/faq" data-discover="true">FAQ</a><a href="/#contact" class="text-muted hover:text-gold uppercase w-fit" data-cursor="true">Contact</a><a class="text-muted hover:text-gold uppercase w-fit" data-cursor="true" href="/about" data-discover="true">About</a><a class="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor="true" href="/privacy" data-discover="true">Privacy Policy</a></div></div><div class="flex flex-col" data-rv="up" style="transition-delay:200ms"><span class="font-anton text-xl text-text mb-4 uppercase">App Highlights</span><ul class="flex flex-col gap-2 font-oswald text-sm text-muted"><li>⚡ 100% Free on Android</li><li>🎲 Zero Algorithm · Pure Randomness</li><li>💾 Save Directly to Phone Gallery</li><li>🔒 Personal Meme Vault</li><li>🚀 Instant Social Sharing</li></ul></div></div><div class="border-t border-surfaceHigh pt-6 flex flex-col sm:flex-row justify-between items-center gap-4" data-rv="fade" style="transition-delay:300ms"><div class="font-oswald text-muted text-xs">© <!-- -->2026<!-- --> Meme Capsule</div><div class="font-oswald text-purple text-xs font-bold uppercase tracking-wide">Made with chaos</div></div></div></footer></div></div>
+</body>
+</html>
