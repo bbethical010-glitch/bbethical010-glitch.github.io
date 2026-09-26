@@ -5,7 +5,6 @@ export const CONFIG = {
   playStoreUrl:    'https://play.google.com/store/apps/details?id=com.meme.capsule',
   packageId:       'com.meme.capsule',
   apiBase:         'https://meme-capsule-eww.pages.dev',
-  formspreeId:     'xwlenwzr',
   gaId:            'G-8VMD4ZNQQK',
   adsenseClientId: 'ca-pub-2093403233028868',
   githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',

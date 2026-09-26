@@ -21,10 +21,10 @@ Complete these steps to finalise and deploy the website:
    - Copy the generated `repoId` and `categoryId`.
    - Update `src/constants/config.ts` with your GitHub username, `repoId`, and `categoryId`.
 
-4. **Setup Contact Form (Formspree)**
-   - Go to [formspree.io](https://formspree.io) and create a free account.
-   - Create a new form.
-   - Copy the form ID into `formspreeId` in `src/constants/config.ts`.
+4. **Setup Contact Form & Email Delivery (Resend)**
+   - Create an API key at [resend.com](https://resend.com) and verify your sending domain (or use `onboarding@resend.dev` for testing).
+   - In your Cloudflare Pages dashboard (under Settings → Environment variables), configure the encrypted secret `RESEND_API_KEY`.
+   - Contact form submissions are received by `functions/api/contact.ts` and delivered directly to `memecapsule.app@gmail.com`.
 
 5. **Setup Google Analytics**
    - Go to [analytics.google.com](https://analytics.google.com) and create a GA4 property for your website URL.
