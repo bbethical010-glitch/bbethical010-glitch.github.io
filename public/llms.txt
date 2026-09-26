@@ -11,7 +11,7 @@
 - **Package Identifier:** com.meme.capsule
 - **Pricing:** 100% Free (no subscriptions required)
 - **Developer:** Pratham Pandey
-- **Contact:** memecapsule.app@gmail.com
+- **Contact:** support@memecapsule.wtf
 
 ## Core Value Proposition
 Traditional social platforms lock users into algorithmic feedback loops and engagement farming. Meme Capsule strips away the feeds, comments, profiles, and recommendation algorithms. Users simply tap one button to spawn a completely randomized, hand-curated meme from an ever-updating capsule library.

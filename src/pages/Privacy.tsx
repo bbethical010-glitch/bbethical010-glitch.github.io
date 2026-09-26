@@ -32,7 +32,7 @@ export default function Privacy() {
             <p>Last Updated: 25 September 2026</p>
             <p>Website: https://memecapsule.wtf</p>
             <p>Website Operator: Meme Capsule</p>
-            <p>Privacy / Grievance Email: memecapsule.app@gmail.com</p>
+            <p>Privacy / Grievance Email: support@memecapsule.wtf</p>
             <p>Grievance Officer: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
           </div>
@@ -98,7 +98,7 @@ export default function Privacy() {
             <p>&quot;I have read the Privacy Policy and consent to the processing of my personal data for the purpose of responding to my enquiry.&quot;</p>
             <p>The checkbox will be unchecked by default and will require an affirmative action before the form can be submitted.</p>
             <p>The consent is limited to receiving, reviewing, understanding, and responding to your enquiry. It does not constitute consent to unrelated processing, advertising, behavioural profiling, marketing communications, or future uses unrelated to your enquiry.</p>
-            <p>Where applicable law provides a right to withdraw consent, you may contact Meme Capsule at <a href="mailto:memecapsule.app@gmail.com">memecapsule.app@gmail.com</a>.</p>
+            <p>Where applicable law provides a right to withdraw consent, you may contact Meme Capsule at <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a>.</p>
             <p>Withdrawal of consent does not affect the lawfulness of processing carried out before withdrawal.</p>
             <p>Meme Capsule will maintain an appropriate record of consent where required or reasonably necessary to demonstrate that consent was obtained.</p>
             <p>The contact-form consent mechanism does not replace any separate consent or verification requirement that may apply to children&apos;s personal data.</p>
@@ -187,7 +187,7 @@ export default function Privacy() {
             <h3 className="font-anton text-xl text-gold uppercase">Grievance Officer</h3>
             <p>Name: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
-            <p>Email: <a href="mailto:memecapsule.app@gmail.com">memecapsule.app@gmail.com</a></p>
+            <p>Email: <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a></p>
           </section>
 
           <section className="space-y-4">
@@ -221,7 +221,7 @@ export default function Privacy() {
             <p>For questions concerning this Privacy Policy, personal-data processing, consent, privacy rights, or privacy grievances:</p>
             <p>Meme Capsule</p>
             <p>Website: https://memecapsule.wtf</p>
-            <p>Privacy / Grievance Email: <a href="mailto:memecapsule.app@gmail.com">memecapsule.app@gmail.com</a></p>
+            <p>Privacy / Grievance Email: <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a></p>
             <p>Grievance Officer: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
             <p>This email may be used for:</p>

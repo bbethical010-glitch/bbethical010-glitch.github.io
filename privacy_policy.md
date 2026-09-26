@@ -5,7 +5,7 @@ Effective Date: 25 September 2026
 Last Updated: 25 September 2026
 Website: https://memecapsule.wtf
 Website Operator: Meme Capsule
-Privacy / Grievance Email: memecapsule.app@gmail.com
+Privacy / Grievance Email: support@memecapsule.wtf
 Grievance Officer: Pratham Pandey
 Designation: Grievance Officer
 1. INTRODUCTION
@@ -75,7 +75,7 @@ enquiry. It does not constitute consent to unrelated processing, advertising,
 behavioural profiling, marketing communications, or future uses unrelated to your
 enquiry.
 Where applicable law provides a right to withdraw consent, you may contact Meme
-Capsule at memecapsule.app@gmail.com.
+Capsule at support@memecapsule.wtf.
 Withdrawal of consent does not affect the lawfulness of processing carried out before
 withdrawal.
 Meme Capsule will maintain an appropriate record of consent where required or
@@ -192,7 +192,7 @@ appropriate, verify a request before taking action.
 Grievance Officer
 Name: Pratham Pandey
 Designation: Grievance Officer
-Email: memecapsule.app@gmail.com
+Email: support@memecapsule.wtf
 10. THIRD-PARTY WEBSITES
 The Website may contain links to third-party websites or services.
 Those third parties operate independently from Meme Capsule and may have their own
@@ -235,7 +235,7 @@ privacy rights, or privacy grievances:
 Meme Capsule
 Website: https://memecapsule.wtf
 Privacy / Grievance Email:
-memecapsule.app@gmail.com
+support@memecapsule.wtf
 Grievance Officer:
 Pratham Pandey
 Designation:

@@ -24,7 +24,7 @@ Complete these steps to finalise and deploy the website:
 4. **Setup Contact Form & Email Delivery (Resend)**
    - Create an API key at [resend.com](https://resend.com) and verify your sending domain (or use `onboarding@resend.dev` for testing).
    - In your Cloudflare Pages dashboard (under Settings → Environment variables), configure the encrypted secret `RESEND_API_KEY`.
-   - Contact form submissions are received by `functions/api/contact.ts` and delivered directly to `memecapsule.app@gmail.com`.
+   - Contact form submissions are received by `functions/api/contact.ts` and delivered directly to `support@memecapsule.wtf`.
 
 5. **Setup Google Analytics**
    - Go to [analytics.google.com](https://analytics.google.com) and create a GA4 property for your website URL.

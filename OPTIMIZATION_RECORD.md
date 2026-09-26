@@ -28,7 +28,7 @@ This document provides an exhaustive log of all technical, SEO, AEO, GEO, perfor
   - Anonymous analytics collection (GA4) with no personal identifiers
   - Google AdSense / AdMob ad policy transparency
   - Zero camera, contact, location, or biometric permission requirement
-  - Clear data retention & deletion contact points (`memecapsule.app@gmail.com`)
+  - Clear data retention & deletion contact points (`support@memecapsule.wtf`)
 
 ---
 
