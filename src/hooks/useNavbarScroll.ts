@@ -9,7 +9,7 @@ export function useNavbarScroll() {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const sections = ['hero', 'see-it-in-action', 'features', 'screenshots', 'how-it-works', 'changelog', 'faq', 'contact'];
+    const sections = ['hero', 'see-it-in-action', 'features', 'screenshots', 'how-it-works', 'changelog', 'contact'];
 
     const handleScroll = () => {
       if (!ticking) {

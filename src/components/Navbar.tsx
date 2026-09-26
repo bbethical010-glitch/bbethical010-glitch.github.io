@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Zap } from 'lucide-react'
 import logoImg from '../assets/logo.png'
 import logoWebp from '../assets/logo.webp'
@@ -12,6 +13,8 @@ interface NavbarProps {
 export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isGlitch, setIsGlitch] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
@@ -48,9 +51,17 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
 
   const handleScroll = (id: string) => {
     setIsOpen(false)
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (location.pathname === '/') {
+      if (id === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    } else {
+      navigate('/', { state: { scrollTo: id } })
     }
   }
 
@@ -64,12 +75,13 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Brand Logo & Title */}
-            <div
+            <Link
+              to="/"
               className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none"
               data-cursor
-              onClick={() => {
-                setIsOpen(false)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
+              onClick={(e) => {
+                e.preventDefault()
+                handleScroll('hero')
               }}
             >
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-surface border-2 border-purple p-1 flex items-center justify-center group-hover:rotate-6 transition-transform shadow-[2px_2px_0px_#f4c300]">
@@ -84,12 +96,12 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               <span className="font-anton text-[10px] sm:text-xs text-gold bg-surface px-1.5 py-0.5 border border-gold">
                 v1.0
               </span>
-            </div>
+            </Link>
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               <a
-                href="#hero"
+                href="/"
                 onClick={(e) => { e.preventDefault(); handleScroll('hero') }}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
@@ -97,36 +109,37 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
                 <span>Home</span><span className="alt">Home</span>
               </a>
               <a
-                href="#features"
+                href="/#features"
                 onClick={(e) => { e.preventDefault(); handleScroll('features') }}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>Features</span><span className="alt">Features</span>
               </a>
-              <a
-                href="#faq"
-                onClick={(e) => { e.preventDefault(); handleScroll('faq') }}
+              <Link
+                to="/faq"
+                onClick={() => setIsOpen(false)}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>FAQ</span><span className="alt">FAQ</span>
-              </a>
+              </Link>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={(e) => { e.preventDefault(); handleScroll('contact') }}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>Contact</span><span className="alt">Contact</span>
               </a>
-              <a
-                href="/about"
+              <Link
+                to="/about"
+                onClick={() => setIsOpen(false)}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
                 data-cursor
               >
                 <span>About</span><span className="alt">About</span>
-              </a>
+              </Link>
 
               {/* Glitch Toggle (Desktop) */}
               <button
@@ -189,40 +202,40 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
           <div className="md:hidden bg-[#131313] border-t-2 border-b-4 border-purple shadow-2xl animate-fadeIn">
             <div className="flex flex-col p-4 space-y-2">
               <a
-                href="#hero"
+                href="/"
                 onClick={(e) => { e.preventDefault(); handleScroll('hero') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Home
               </a>
               <a
-                href="#features"
+                href="/#features"
                 onClick={(e) => { e.preventDefault(); handleScroll('features') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Features
               </a>
-              <a
-                href="#faq"
-                onClick={(e) => { e.preventDefault(); handleScroll('faq') }}
+              <Link
+                to="/faq"
+                onClick={() => setIsOpen(false)}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 FAQ
-              </a>
+              </Link>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={(e) => { e.preventDefault(); handleScroll('contact') }}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 Contact
               </a>
-              <a
-                href="/about"
+              <Link
+                to="/about"
                 onClick={() => setIsOpen(false)}
                 className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
               >
                 About
-              </a>
+              </Link>
               <div className="pt-4 pb-2">
                 <a
                   href={CONFIG.getPlayStoreUrl('navbar_mobile')}

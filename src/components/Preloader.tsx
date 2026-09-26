@@ -2,12 +2,25 @@ import { useState, useEffect } from 'react';
 import logoImg from '../assets/logo.png';
 import logoWebp from '../assets/logo.webp';
 
+let hasShownInSession = false;
+
 export function Preloader() {
+  const [alreadyShown] = useState(() => {
+    if (hasShownInSession) return true;
+    if (typeof window !== 'undefined' && sessionStorage.getItem('mc_preloader_shown') === 'true') {
+      hasShownInSession = true;
+      return true;
+    }
+    return false;
+  });
+
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
-  const [unmount, setUnmount] = useState(false);
+  const [unmount, setUnmount] = useState(alreadyShown);
 
   useEffect(() => {
+    if (alreadyShown) return;
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         const inc = Math.floor(Math.random() * 5) + 1;
@@ -21,16 +34,21 @@ export function Preloader() {
     }, 20);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [alreadyShown]);
 
   useEffect(() => {
+    if (alreadyShown) return;
     if (progress === 100) {
+      hasShownInSession = true;
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('mc_preloader_shown', 'true');
+      }
       const doneTimer = setTimeout(() => {
         setDone(true);
       }, 200);
       return () => clearTimeout(doneTimer);
     }
-  }, [progress]);
+  }, [progress, alreadyShown]);
 
   useEffect(() => {
     if (done) {
@@ -41,7 +59,7 @@ export function Preloader() {
     }
   }, [done]);
 
-  if (unmount) return null;
+  if (unmount || alreadyShown) return null;
 
   return (
     <div

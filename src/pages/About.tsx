@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Download, Copy, Check } from 'lucide-react'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
+import { CustomCursor } from '../components/CustomCursor'
+import { GrainOverlay } from '../components/GrainOverlay'
+import { Vignette } from '../components/Vignette'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useNavbarScroll } from '../hooks/useNavbarScroll'
 import { CONFIG, trackInstallClick } from '../constants/config'
 import logoWebp from '../assets/logo.webp'
 import logoImg from '../assets/logo.png'
@@ -75,9 +80,19 @@ function CopyButton({ text }: { text: string }) {
 }
 
 export default function About() {
+  useScrollReveal()
+  const { isHidden, isStuck } = useNavbarScroll()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-bg flex flex-col">
-      <Navbar />
+    <div className="min-h-screen bg-bg flex flex-col relative">
+      <CustomCursor />
+      <GrainOverlay />
+      <Vignette />
+      <Navbar isHidden={isHidden} isStuck={isStuck} />
       <main id="main-content" role="main" className="flex-1 w-full">
 
         {/* ─── Section 1 — Page Header ─── */}

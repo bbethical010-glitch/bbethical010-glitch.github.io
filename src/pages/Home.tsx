@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { MemePreview } from '../components/MemePreview'
@@ -6,7 +8,6 @@ import { Screenshots } from '../components/Screenshots'
 import { HowItWorks } from '../components/HowItWorks'
 import { HowItWorksDetail } from '../components/HowItWorksDetail'
 import { Changelog } from '../components/Changelog'
-import { FAQ } from '../components/FAQ'
 import { ContactForm } from '../components/ContactForm'
 import { Footer } from '../components/Footer'
 
@@ -25,6 +26,27 @@ export default function Home() {
 
   // Initialize navbar and scroll rail state
   const { isHidden, isStuck, activeSection } = useNavbarScroll()
+  const location = useLocation()
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | null
+    const targetId = state?.scrollTo || (location.hash ? location.hash.replace('#', '') : '')
+
+    if (targetId) {
+      if (targetId === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        setTimeout(() => {
+          const element = document.getElementById(targetId)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 50)
+      }
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location])
 
   return (
     <div className="relative min-h-screen bg-bg">
@@ -50,7 +72,6 @@ export default function Home() {
         <HowItWorks />
         <HowItWorksDetail />
         <Changelog />
-        <FAQ />
         <ContactForm />
       </main>
       <Footer />

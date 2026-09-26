@@ -1,16 +1,40 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { CONFIG, trackInstallClick } from '../constants/config'
+
 export function Footer() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
   const handleScroll = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) element.scrollIntoView({ behavior: 'smooth' })
-    else window.scrollTo(0, 0)
+    if (location.pathname === '/') {
+      if (id === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const element = document.getElementById(id)
+        if (element) element.scrollIntoView({ behavior: 'smooth' })
+        else window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      navigate('/', { state: { scrollTo: id } })
+    }
   }
+
   return (
     <footer className="bg-surface border-t border-purple/20 py-12 px-4 relative" style={{ background: 'linear-gradient(transparent, rgba(19,19,19,0.95) 40%, rgba(28,27,27,1))' }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div className="flex flex-col items-start" data-rv="up">
-            <span className="font-anton text-3xl text-purple uppercase tracking-wider mb-2" data-cursor>Meme Capsule</span>
+            <Link
+              to="/"
+              onClick={(e) => {
+                e.preventDefault()
+                handleScroll('hero')
+              }}
+              className="font-anton text-3xl text-purple uppercase tracking-wider mb-2"
+              data-cursor
+            >
+              Meme Capsule
+            </Link>
             <span className="font-oswald text-muted text-sm mb-6">{CONFIG.tagline}</span>
             <a
               href={CONFIG.getPlayStoreUrl('footer')}
@@ -26,12 +50,12 @@ export function Footer() {
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '100ms' }}>
             <span className="font-anton text-xl text-text mb-4 uppercase">Links</span>
             <div className="flex flex-col gap-2 font-oswald text-sm">
-              <a href="#hero" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
-              <a href="#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
-              <a href="#faq" onClick={(e) => { e.preventDefault(); handleScroll('faq') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</a>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
-              <a href="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</a>
-              <a href="/privacy.html" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</a>
+              <a href="/" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
+              <a href="/#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
+              <Link to="/faq" className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</Link>
+              <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
+              <Link to="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</Link>
+              <Link to="/privacy" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</Link>
             </div>
           </div>
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '200ms' }}>

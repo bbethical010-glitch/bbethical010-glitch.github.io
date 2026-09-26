@@ -54,7 +54,7 @@ export default defineConfig({
     react(),
     vitePrerender({
       staticDir: path.join(process.cwd(), 'dist'),
-      routes: ['/', '/privacy', '/about'],
+      routes: ['/', '/privacy', '/about', '/faq'],
       renderer: new ReactSSRRenderer(),
     })
   ],

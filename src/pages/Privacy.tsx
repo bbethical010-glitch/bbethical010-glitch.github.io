@@ -1,12 +1,28 @@
+import { useEffect } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
+import { CustomCursor } from '../components/CustomCursor'
+import { GrainOverlay } from '../components/GrainOverlay'
+import { Vignette } from '../components/Vignette'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useNavbarScroll } from '../hooks/useNavbarScroll'
 
 const listClassName = 'list-disc pl-6 space-y-1'
 
 export default function Privacy() {
+  useScrollReveal()
+  const { isHidden, isStuck } = useNavbarScroll()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-bg flex flex-col">
-      <Navbar />
+    <div className="min-h-screen bg-bg flex flex-col relative">
+      <CustomCursor />
+      <GrainOverlay />
+      <Vignette />
+      <Navbar isHidden={isHidden} isStuck={isStuck} />
       <main id="main-content" role="main" className="flex-1 max-w-3xl mx-auto px-4 py-32 w-full">
         <h1 className="font-anton text-5xl text-purple uppercase mb-8 border-b-4 border-purple pb-4">Privacy Policy</h1>
         <div className="font-oswald text-text text-base leading-relaxed space-y-8">
