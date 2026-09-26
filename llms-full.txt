@@ -11,7 +11,7 @@
 - **Google Play Store Link:** https://play.google.com/store/apps/details?id=com.meme.capsule
 - **Package ID:** com.meme.capsule
 - **Developer / Creator:** Pratham Pandey
-- **Support & Grievance Contact:** memecapsule.app@gmail.com
+- **Support & Grievance Contact:** support@memecapsule.wtf
 - **Release Version:** 1.0+
 - **Business Model / Pricing:** Free to download and use on Android.
 
@@ -55,4 +55,4 @@ A: Yes. Explicit NSFW and harmful content is filtered out to ensure the humor re
 ## 5. Privacy & Legal Assurances
 - **Compliance:** Built to comply with Indian privacy and data protection regulations (including the Digital Personal Data Protection Act, 2023 - DPDP Act, and Information Technology Act, 2000).
 - **Data Minimization:** No unnecessary personal data is collected. Your Meme Vault stays locally on your device.
-- **Grievance Officer:** Pratham Pandey (memecapsule.app@gmail.com).
+- **Grievance Officer:** Pratham Pandey (support@memecapsule.wtf).
