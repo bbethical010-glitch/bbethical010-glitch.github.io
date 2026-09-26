@@ -1,4 +1,4 @@
-import { CORS_HEADERS } from '../_shared/d1r2'
+// functions/api/contact.ts
 
 export interface Env {
   RESEND_API_KEY: string
@@ -7,8 +7,9 @@ export interface Env {
 }
 
 const POST_CORS_HEADERS: Record<string, string> = {
-  ...CORS_HEADERS,
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 }
 
 export async function onRequestOptions(): Promise<Response> {
@@ -39,10 +40,9 @@ export async function onRequestPost(context: { env: Env; request: Request }): Pr
       subject?: string
       message?: string
       privacy_consent?: boolean
-      _hp?: string
+      _hp?: string // Spam honeypot
     }
 
-    // Bot detection via honeypot
     if (body._hp) {
       return new Response(JSON.stringify({ success: true }), { status: 200, headers })
     }
@@ -59,6 +59,7 @@ export async function onRequestPost(context: { env: Env; request: Request }): Pr
       )
     }
 
+    // Basic email format check
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return new Response(
         JSON.stringify({ error: 'Invalid email address.' }),
@@ -66,8 +67,26 @@ export async function onRequestPost(context: { env: Env; request: Request }): Pr
       )
     }
 
-    const recipient = env.CONTACT_RECIPIENT_EMAIL || 'memecapsule.app@gmail.com'
-    const fromAddress = env.CONTACT_FROM_EMAIL || 'Meme Capsule Support <onboarding@resend.dev>'
+    let recipient = (env.CONTACT_RECIPIENT_EMAIL || '').trim()
+    const recipientMatch = recipient.match(/<([^>]+)>/)
+    if (recipientMatch) {
+      recipient = recipientMatch[1].trim()
+    }
+    if (!recipient || !recipient.includes('@')) {
+      recipient = 'memecapsule.app@gmail.com'
+    }
+
+    let fromAddress = (env.CONTACT_FROM_EMAIL || '').trim()
+    const emailMatch = fromAddress.match(/<([^>]+)>/)
+    if (emailMatch) {
+      const emailOnly = emailMatch[1].trim()
+      const namePart = fromAddress.replace(/<[^>]+>/, '').trim()
+      fromAddress = namePart ? `${namePart} <${emailOnly}>` : `Meme Capsule <${emailOnly}>`
+    } else if (fromAddress.includes('@')) {
+      fromAddress = `Meme Capsule <${fromAddress}>`
+    } else {
+      fromAddress = 'Meme Capsule <onboarding@resend.dev>'
+    }
 
     const resendRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -94,11 +113,16 @@ export async function onRequestPost(context: { env: Env; request: Request }): Pr
       }),
     })
 
-    const resendData = (await resendRes.json()) as { id?: string; error?: any }
+    const resendData = (await resendRes.json()) as any
 
     if (!resendRes.ok) {
+      const errorMsg =
+        resendData?.message ||
+        resendData?.error?.message ||
+        (typeof resendData?.error === 'string' ? resendData.error : '') ||
+        'Failed to dispatch email via Resend'
       return new Response(
-        JSON.stringify({ error: resendData.error?.message || 'Failed to dispatch email via Resend' }),
+        JSON.stringify({ error: errorMsg, details: resendData }),
         { status: resendRes.status, headers }
       )
     }
