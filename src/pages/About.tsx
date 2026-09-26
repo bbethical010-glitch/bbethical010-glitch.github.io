@@ -24,7 +24,7 @@ const DESCRIPTIONS = [
   },
   {
     label: 'LONG (UNDER 80 WORDS)',
-    text: 'Meme Capsule is a free entertainment app for Android that randomly delivers curated memes from a library of thousands of hand-picked images, supplemented by a live Reddit meme feed. Users tap one button to receive a meme — there is no algorithm, no personalisation, and no endless scrolling. Memes can be saved to a personal vault, shared to any messaging app, or downloaded directly to the phone gallery.',
+    text: 'Meme Capsule is a free entertainment app for Android that randomly delivers curated memes from a library of thousands of hand-picked images, blended with fresh trending internet humor. Users tap one button to receive a meme — there is no algorithm, no personalisation, and no endless scrolling. Memes can be saved to a personal vault, shared to any messaging app, or downloaded directly to the phone gallery.',
   },
 ]
 
@@ -131,7 +131,7 @@ export default function About() {
               <p>
                 Users can save memes to a personal Meme Vault, share them directly to WhatsApp
                 and other messaging apps, and download them to their phone gallery. The app also
-                integrates a live feed from Reddit's top meme communities, with automatic NSFW
+                blends in a continuous stream of fresh internet culture, with automatic safety
                 and spoiler filtering applied. Meme Capsule is free of charge and supported by
                 infrequent advertisements.
               </p>

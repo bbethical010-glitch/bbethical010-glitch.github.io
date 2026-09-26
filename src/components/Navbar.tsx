@@ -117,6 +117,14 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
                 <span>Features</span><span className="alt">Features</span>
               </a>
               <Link
+                to="/how-it-works"
+                onClick={() => setIsOpen(false)}
+                className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
+                data-cursor
+              >
+                <span>How It Works</span><span className="alt">How It Works</span>
+              </Link>
+              <Link
                 to="/faq"
                 onClick={() => setIsOpen(false)}
                 className="nav-link-anim font-oswald text-text uppercase font-semibold hover:text-gold transition-colors"
@@ -215,6 +223,13 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 Features
               </a>
+              <Link
+                to="/how-it-works"
+                onClick={() => setIsOpen(false)}
+                className="font-oswald text-text text-left uppercase font-bold text-lg p-3 border-b border-purple/30 hover:bg-surface hover:text-gold transition-colors"
+              >
+                How It Works
+              </Link>
               <Link
                 to="/faq"
                 onClick={() => setIsOpen(false)}

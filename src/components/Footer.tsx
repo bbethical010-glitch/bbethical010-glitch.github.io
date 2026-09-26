@@ -52,6 +52,7 @@ export function Footer() {
             <div className="flex flex-col gap-2 font-oswald text-sm">
               <a href="/" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
               <a href="/#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
+              <Link to="/how-it-works" className="text-muted hover:text-gold uppercase w-fit" data-cursor>How It Works</Link>
               <Link to="/faq" className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</Link>
               <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
               <Link to="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</Link>

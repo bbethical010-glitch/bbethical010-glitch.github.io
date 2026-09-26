@@ -6,7 +6,6 @@ import { MemePreview } from '../components/MemePreview'
 import { Features } from '../components/Features'
 import { Screenshots } from '../components/Screenshots'
 import { HowItWorks } from '../components/HowItWorks'
-import { HowItWorksDetail } from '../components/HowItWorksDetail'
 import { Changelog } from '../components/Changelog'
 import { ContactForm } from '../components/ContactForm'
 import { Footer } from '../components/Footer'
@@ -70,7 +69,6 @@ export default function Home() {
         <Features />
         <Screenshots />
         <HowItWorks />
-        <HowItWorksDetail />
         <Changelog />
         <ContactForm />
       </main>

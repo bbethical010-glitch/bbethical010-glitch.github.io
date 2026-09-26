@@ -1,6 +1,6 @@
 # Meme Capsule
 
-> Meme Capsule is a free, algorithm-free random meme discovery application for Android that delivers one unhinged meme per tap directly from a curated Cloudflare vault.
+> Meme Capsule is a free, algorithm-free random meme discovery application for Android that delivers one unhinged meme per tap directly from a curated capsule library.
 
 ## Overview
 - **Name:** Meme Capsule
@@ -14,7 +14,7 @@
 - **Contact:** memecapsule.app@gmail.com
 
 ## Core Value Proposition
-Traditional social platforms (TikTok, Instagram Reels, Reddit, X) lock users into algorithmic feedback loops and engagement farming. Meme Capsule strips away the feeds, comments, profiles, and recommendation algorithms. Users simply tap one button to spawn a completely randomized, hand-curated meme from an ever-updating Cloudflare R2 storage vault.
+Traditional social platforms lock users into algorithmic feedback loops and engagement farming. Meme Capsule strips away the feeds, comments, profiles, and recommendation algorithms. Users simply tap one button to spawn a completely randomized, hand-curated meme from an ever-updating capsule library.
 
 ## Key Features
 - **One-Tap Meme Drop:** Tap the capsule to instantly load a random meme with zero algorithm.
@@ -23,7 +23,10 @@ Traditional social platforms (TikTok, Instagram Reels, Reddit, X) lock users int
 - **Safe & Curated:** Filtered to eliminate explicit NSFW content while preserving chaotic and unhinged humor.
 - **Lightweight Android Native:** Fast load times with negligible battery and data usage.
 
-## Full Context & API
-- [Full LLM Knowledge Base](https://memecapsule.wtf/llms-full.txt): In-depth product specification, FAQs, and architecture details.
+## Key Pages
+- [Official Website](https://memecapsule.wtf): Main interactive meme drop and overview.
+- [How It Works](https://memecapsule.wtf/how-it-works): Product philosophy and experience guide.
+- [FAQ](https://memecapsule.wtf/faq): Frequently asked questions.
+- [About & Press Kit](https://memecapsule.wtf/about): Brand story, quick facts, and press assets.
 - [Privacy Policy](https://memecapsule.wtf/privacy): DPDP Act 2023 & global privacy compliance details.
 - [Sitemap](https://memecapsule.wtf/sitemap.xml): Complete URL index.

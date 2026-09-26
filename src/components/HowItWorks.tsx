@@ -1,4 +1,7 @@
+import { Link, useLocation } from 'react-router-dom'
+
 export function HowItWorks() {
+  const location = useLocation()
   const steps = [
     { num: '01', title: 'OPEN THE APP', desc: 'Launch Meme Capsule on your Android device' },
     { num: '02', title: 'HIT THE BUTTON', desc: 'Tap HIT ME and get a completely random meme from our collection' },
@@ -29,6 +32,19 @@ export function HowItWorks() {
             </div>
           ))}
         </div>
+
+        {location.pathname === '/' && (
+          <div className="mt-14 text-center" data-rv="up" style={{ transitionDelay: '450ms' }}>
+            <Link
+              to="/how-it-works"
+              className="cta-fill inline-flex items-center justify-center px-8 py-3 text-sm font-oswald font-bold uppercase tracking-widest"
+              data-cursor
+            >
+              <span className="fill"></span>
+              <span className="relative z-10">LEARN MORE ABOUT HOW IT WORKS →</span>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

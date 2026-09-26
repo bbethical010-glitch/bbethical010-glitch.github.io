@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Internal documentation & local staging (do not expose in public repo)
+.knowledge/
+app_data.md
+APP KNOWLEDGE EXTRACTION & DOCUMENT.MD
+info.md
+AGENTS.MD
+fetch-knowledge.sh
+update-knowledge.sh
+uploads/

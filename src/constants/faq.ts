@@ -5,7 +5,7 @@ export const FAQ = [
   },
   {
     q: 'Where do the memes come from?',
-    a: 'Our curated collection of thousands of memes stored on our servers, plus a live feed from Reddit\'s top meme communities.',
+    a: 'Our curated collection of thousands of memes in our capsule library, blended with fresh trending internet humor.',
   },
   {
     q: 'Can I control what memes I see?',
@@ -65,7 +65,7 @@ export const FAQ = [
   },
   {
     q: 'How often is the meme collection updated?',
-    a: 'The curated meme library is updated regularly as new content is added. Additionally, the Reddit meme feed integration means users automatically receive fresh content from active Reddit meme communities in real time.',
+    a: 'The curated meme library is updated regularly as new content is added, alongside a continuous stream of fresh trending internet humor in real time.',
   },
   {
     q: 'Who built Meme Capsule?',
