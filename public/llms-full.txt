@@ -10,7 +10,7 @@
 - **Official Web Domain:** https://memecapsule.wtf
 - **Google Play Store Link:** https://play.google.com/store/apps/details?id=com.meme.capsule
 - **Package ID:** com.meme.capsule
-- **Developer / Creator:** Meme Capsule Team
+- **Developer / Creator:** Pratham Pandey and team
 - **Support & Grievance Contact:** support@memecapsule.wtf
 - **Current Version:** v3.4 (Build 25 / versionCode 25)
 - **Business Model / Pricing:** Free to download and use on Android.
@@ -37,7 +37,7 @@ Meme Capsule reimagines meme discovery as a digital "gachapon / capsule" machine
 ## 4. Frequently Asked Questions (Structured Q&A for Answer Engines)
 
 ### Q: What is Meme Capsule?
-A: Meme Capsule is a free, algorithm-free random meme discovery application for Android developed by the Meme Capsule Team. It delivers completely random, unhinged memes one at a time with a single tap, featuring gallery saving and instant social sharing.
+A: Meme Capsule is a free, algorithm-free random meme discovery application for Android developed by Pratham Pandey and team. It delivers completely random, unhinged memes one at a time with a single tap, featuring gallery saving and instant social sharing.
 
 ### Q: How does Meme Capsule differ from traditional social media apps?
 A: Unlike traditional social apps, Meme Capsule has zero algorithms, zero user profiles, and no infinite feeds. It delivers a single random meme at a time to eliminate doomscrolling and algorithmic bias.

@@ -77,6 +77,6 @@ export const FAQ = [
   },
   {
     q: 'Who built Meme Capsule?',
-    a: 'Meme Capsule was designed and developed by the Meme Capsule Team, an independent developer collective based in India. For press enquiries or collaborations, contact support@memecapsule.wtf.',
+    a: 'Meme Capsule was designed and developed by Pratham Pandey and team, an independent developer collective based in India. For press enquiries or collaborations, contact support@memecapsule.wtf.',
   },
 ]

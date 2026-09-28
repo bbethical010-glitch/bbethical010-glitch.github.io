@@ -28,12 +28,11 @@ const DESCRIPTIONS = [
   },
 ]
 
-const QUICK_FACTS = [
+const QUICK_FACTS: { label: string; value: string; href?: string }[] = [
   { label: 'PLATFORM', value: 'Android' },
-  { label: 'DEVELOPER', value: 'Meme Capsule Team' },
+  { label: 'DEVELOPER', value: 'Pratham Pandey and team', href: '/team' },
   { label: 'VERSION', value: 'v3.4 (Build 25)' },
   { label: 'LAUNCHED', value: '2026' },
-  { label: 'PACKAGE ID', value: 'com.meme.capsule' },
   { label: 'PRICE', value: 'Free' },
   { label: 'CATEGORY', value: 'Entertainment' },
 ]
@@ -123,11 +122,14 @@ export default function About() {
             <div className="font-oswald text-text text-base leading-relaxed space-y-6">
               <p>
                 Meme Capsule is a free Android application available on the Google Play Store,
-                developed by the Meme Capsule Team and launched in 2026. It delivers random memes to
-                users with a single button press. The app has no social feed, no algorithm, and
-                no content personalisation of any kind. Every meme in the collection is curated
-                from internet culture and filtered to ensure it is appropriate for general
-                audiences.
+                developed by{' '}
+                <Link to="/team" className="text-gold underline hover:text-purple transition-colors" data-cursor>
+                  Pratham Pandey and team
+                </Link>{' '}
+                and launched in 2026. It delivers random memes to users with a single button press.
+                The app has no social feed, no algorithm, and no content personalisation of any kind.
+                Every meme in the collection is curated from internet culture and filtered to ensure
+                it is appropriate for general audiences.
               </p>
               <p>
                 Users can save memes to a personal Meme Vault or themed Mood Boards, react and
@@ -139,8 +141,8 @@ export default function About() {
                 is free of charge and supported by infrequent advertisements.
               </p>
               <p>
-                The app is available exclusively for Android devices via the Google Play Store
-                under package ID com.meme.capsule. The official website is memecapsule.wtf.
+                The app is available exclusively for Android devices via the Google Play Store. The
+                official website is memecapsule.wtf.
               </p>
             </div>
           </div>
@@ -159,9 +161,19 @@ export default function About() {
                   <span className="font-oswald text-[10px] font-semibold uppercase tracking-[0.2em] text-muted block mb-2">
                     {fact.label}
                   </span>
-                  <span className="font-anton text-[22px] text-text block leading-tight">
-                    {fact.value}
-                  </span>
+                  {fact.href ? (
+                    <Link
+                      to={fact.href}
+                      className="font-anton text-[22px] text-text block leading-tight hover:text-gold transition-colors underline decoration-gold/60 underline-offset-4"
+                      data-cursor
+                    >
+                      {fact.value}
+                    </Link>
+                  ) : (
+                    <span className="font-anton text-[22px] text-text block leading-tight">
+                      {fact.value}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>

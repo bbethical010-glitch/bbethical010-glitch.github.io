@@ -8,7 +8,7 @@ export const CONFIG = {
   gaId:            'G-8VMD4ZNQQK',
   adsenseClientId: 'ca-pub-2093403233028868',
   githubUrl:       'https://github.com/bbethical010-glitch/bbethical010-glitch.github.io',
-  developerName:   'Meme Capsule Team',
+  developerName:   'Pratham Pandey and team',
   contactEmail:    'support@memecapsule.wtf',
   siteUrl:         'https://memecapsule.wtf',
   getPlayStoreUrl: (medium = 'direct') =>

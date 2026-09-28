@@ -56,6 +56,7 @@ export function Footer() {
               <Link to="/faq" className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</Link>
               <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
               <Link to="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</Link>
+              <Link to="/team" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Team</Link>
               <Link to="/privacy" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</Link>
             </div>
           </div>

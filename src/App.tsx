@@ -4,6 +4,7 @@ import Privacy from './pages/Privacy'
 import About from './pages/About'
 import FAQPage from './pages/FAQPage'
 import HowItWorksPage from './pages/HowItWorksPage'
+import TeamPage from './pages/TeamPage'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/how-it-works" element={<HowItWorksPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/about" element={<About />} />
+      <Route path="/team" element={<TeamPage />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
