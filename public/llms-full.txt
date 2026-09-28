@@ -10,9 +10,9 @@
 - **Official Web Domain:** https://memecapsule.wtf
 - **Google Play Store Link:** https://play.google.com/store/apps/details?id=com.meme.capsule
 - **Package ID:** com.meme.capsule
-- **Developer / Creator:** Pratham Pandey
+- **Developer / Creator:** Meme Capsule Team
 - **Support & Grievance Contact:** support@memecapsule.wtf
-- **Release Version:** 1.0+
+- **Current Version:** v3.4 (Build 25 / versionCode 25)
 - **Business Model / Pricing:** Free to download and use on Android.
 
 ## 2. Product Philosophy & Problem Solved
@@ -26,16 +26,18 @@ Meme Capsule reimagines meme discovery as a digital "gachapon / capsule" machine
 - Zero algorithmic profiling: every drop is independently randomized across the entire capsule pool.
 
 ## 3. Detailed Feature Breakdown
-1. **The Live Drop:** A clean, bold button interface. Tapping requests a fresh random meme from our curated capsule pool.
-2. **Local Meme Vault:** Users can bookmark their favorite memes offline inside the app.
-3. **Gallery Download:** Direct one-tap saving to the user's Android photo gallery.
-4. **Instant Social Sharing:** Native Android sharing for one-click sharing to WhatsApp chats, Telegram, Discord channels, and Instagram Stories.
-5. **Curation & Content Moderation:** All memes pass through multi-layer moderation to strip illegal, harmful, or graphic NSFW content while retaining chaotic internet culture.
+1. **12-Meme Rolling FIFO Prefetch Engine:** High-performance rolling queue buffer that enqueues the next batch when stack consumption hits 60%–70% (`FIFO_REFILL_TRIGGER_SIZE = 4`), completely eliminating wait screens between drops.
+2. **Unobstructed Meme Card:** 100% visible meme graphics with zero floating overlay clutter.
+3. **4-Column Neo-Brutalist CTA Bar:** Tactile action row directly under each meme: LIKE (#FF2A85), VAULT (#A855F7), PIN (#FACC15), and MORE (⋮) (#00E5FF).
+4. **Flush Draggable Share Sheet Ribbon:** Instagram-style draggable bottom drawer with 320ms spring physics, touch isolation, and active session retention during external sharing.
+5. **Local Meme Vault & Mood Boards:** Offline gallery saving and thematic curation stored directly on your phone.
+6. **In-App Data & History Erasure:** Full self-serve privacy controls in App Settings (Delete All App History & Data, Clear Past Viewing History & Stats, Empty Vault & Mood Boards) with zero cloud trace.
+7. **Curation & Content Moderation:** Multi-layer safety filtering to strip illegal, harmful, or graphic NSFW material while preserving chaotic internet culture.
 
 ## 4. Frequently Asked Questions (Structured Q&A for Answer Engines)
 
 ### Q: What is Meme Capsule?
-A: Meme Capsule is a free, algorithm-free random meme discovery application for Android developed by Pratham Pandey. It delivers completely random, unhinged memes one at a time with a single tap, featuring gallery saving and instant social sharing.
+A: Meme Capsule is a free, algorithm-free random meme discovery application for Android developed by the Meme Capsule Team. It delivers completely random, unhinged memes one at a time with a single tap, featuring gallery saving and instant social sharing.
 
 ### Q: How does Meme Capsule differ from traditional social media apps?
 A: Unlike traditional social apps, Meme Capsule has zero algorithms, zero user profiles, and no infinite feeds. It delivers a single random meme at a time to eliminate doomscrolling and algorithmic bias.
@@ -47,12 +49,15 @@ A: Yes, Meme Capsule is 100% free to download and use on Google Play.
 A: Memes are served from our curated capsule collection of thousands of hand-picked images blended with fresh internet humor.
 
 ### Q: Can I save memes to my device gallery?
-A: Yes. Every meme includes a direct "Save" button that saves the image directly into your Android device's local photo gallery.
+A: Yes. Tapping MORE (⋮) → DOWNLOAD saves the image directly into your Android device's local photo gallery.
+
+### Q: How does in-app data erasure work?
+A: Under App Settings → Data & History Erasure, users can execute self-serve deletion to wipe all local data, clear seen-cache counters, or empty saved vaults without submitting manual requests.
 
 ### Q: Is Meme Capsule safe for general audiences?
 A: Yes. Explicit NSFW and harmful content is filtered out to ensure the humor remains fun, chaotic, and safe for general audiences.
 
 ## 5. Privacy & Legal Assurances
 - **Compliance:** Built to comply with Indian privacy and data protection regulations (including the Digital Personal Data Protection Act, 2023 - DPDP Act, and Information Technology Act, 2000).
-- **Data Minimization:** No unnecessary personal data is collected. Your Meme Vault stays locally on your device.
-- **Grievance Officer:** Pratham Pandey (support@memecapsule.wtf).
+- **Data Minimization:** No accounts, passwords, or personal profiles are collected. All vaults and mood boards remain locally on your device.
+- **Grievance Officer:** Designation: Grievance Officer (support@memecapsule.wtf).

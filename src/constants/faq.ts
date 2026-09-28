@@ -13,7 +13,7 @@ export const FAQ = [
   },
   {
     q: 'How do I save a meme?',
-    a: 'Tap the SAVE IT button below any meme and it goes straight to your phone gallery.',
+    a: 'Tap the VAULT button to save any meme to your personal offline vault, or tap MORE (⋮) → DOWNLOAD to save it directly to your phone gallery.',
   },
   {
     q: 'Is there inappropriate content?',
@@ -21,11 +21,11 @@ export const FAQ = [
   },
   {
     q: 'How do I report a problem?',
-    a: 'Use the contact form on this page or email us directly. We respond to every message.',
+    a: 'Use the contact form on this page or email us directly at support@memecapsule.wtf. We respond to every message.',
   },
   {
     q: 'Is my data collected?',
-    a: 'We collect only anonymous usage analytics. No personal data is stored. See our Privacy Policy for full details.',
+    a: 'We collect only anonymous usage analytics. No personal data or user accounts are stored. See our Privacy Policy for full details.',
   },
   {
     q: 'Why is the app called Meme Capsule?',
@@ -52,8 +52,8 @@ export const FAQ = [
     a: 'Meme Capsule is currently available only for Android devices on the Google Play Store. An iOS version is not available at this time.',
   },
   {
-    q: 'How do I share a meme from Meme Capsule to WhatsApp?',
-    a: 'Tap the SHARE THIS button below any meme to open the Android native share sheet. Select WhatsApp from the list of available apps and the meme will be shared instantly without leaving the Meme Capsule app.',
+    q: 'How do I share a meme from Meme Capsule to WhatsApp or Instagram?',
+    a: 'Tap MORE (⋮) → SHARE or drag open the flush Instagram-style Share Sheet Ribbon. Select WhatsApp, Instagram, Telegram, or Discord. Meme Capsule preserves your active meme and queue during external sharing.',
   },
   {
     q: 'What is the Meme Vault?',
@@ -68,7 +68,15 @@ export const FAQ = [
     a: 'The curated meme library is updated regularly as new content is added, alongside a continuous stream of fresh trending internet humor in real time.',
   },
   {
+    q: 'How does in-app data and history erasure work?',
+    a: 'Inside the Android app (v2.8+), tap the top-left Settings gear to open Data & History Erasure. You can Delete All App History & Data (full 2-step local wipe), Clear Past Viewing History & Stats, or Empty Vault & Mood Boards with zero cloud tracking.',
+  },
+  {
+    q: 'What is the 12-Meme Rolling FIFO Prefetch Engine?',
+    a: 'Meme Capsule v3.1+ runs a 12-meme rolling buffer. Once you view 60%–70% of the loaded stack, the app silently refills the next batch in the background with streaming decode, eliminating loading pauses between stacks.',
+  },
+  {
     q: 'Who built Meme Capsule?',
-    a: 'Meme Capsule was designed and developed by Pratham Pandey, an independent developer based in India. For press enquiries or collaborations, contact support@memecapsule.wtf.',
+    a: 'Meme Capsule was designed and developed by the Meme Capsule Team, an independent developer collective based in India. For press enquiries or collaborations, contact support@memecapsule.wtf.',
   },
 ]

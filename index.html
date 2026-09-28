@@ -8,7 +8,7 @@
   <title>Meme Capsule — Random Meme App for Android</title>
   <meta name="description" content="Download Meme Capsule — the randomest meme app on Android. One tap, one meme, zero algorithm. Get it free on Google Play." />
   <meta name="keywords" content="meme app, random memes, android meme app, funny memes, meme capsule, google play memes" />
-  <meta name="author" content="Pratham Pandey" />
+  <meta name="author" content="Meme Capsule" />
   <link rel="canonical" href="https://memecapsule.wtf/" />
   
   <!-- Open Graph (Facebook, WhatsApp previews) -->
@@ -106,9 +106,8 @@
     "url": "https://memecapsule.wtf/",
     "logo": "https://memecapsule.wtf/icon-512.png",
     "founder": {
-      "@type": "Person",
-      "name": "Pratham Pandey",
-      "jobTitle": "Developer & Creator"
+      "@type": "Organization",
+      "name": "Meme Capsule Team"
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -131,6 +130,7 @@
     "name": "Meme Capsule",
     "operatingSystem": "ANDROID",
     "applicationCategory": "EntertainmentApplication",
+    "softwareVersion": "3.4",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -149,8 +149,8 @@
       "@id": "https://memecapsule.wtf/#organization"
     },
     "author": {
-      "@type": "Person",
-      "name": "Pratham Pandey"
+      "@type": "Organization",
+      "name": "Meme Capsule Team"
     },
     "description": "Download Meme Capsule — the randomest meme app on Android. One tap, one meme, zero algorithm. Get it free on Google Play."
   }
@@ -190,7 +190,7 @@
         "name": "How do I save a meme?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tap the SAVE IT button below any meme and it goes straight to your phone gallery."
+          "text": "Tap the VAULT button to save any meme to your personal offline vault, or tap MORE (⋮) → DOWNLOAD to save it directly to your phone gallery."
         }
       },
       {
@@ -267,10 +267,10 @@
       },
       {
         "@type": "Question",
-        "name": "How do I share a meme from Meme Capsule to WhatsApp?",
+        "name": "How do I share a meme from Meme Capsule to WhatsApp or Instagram?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tap the SHARE THIS button below any meme to open the Android native share sheet. Select WhatsApp from the list of available apps and the meme will be shared instantly without leaving the Meme Capsule app."
+          "text": "Tap MORE (⋮) → SHARE or drag open the flush Instagram-style Share Sheet Ribbon. Select WhatsApp, Instagram, Telegram, or Discord. Meme Capsule preserves your active meme and queue during external sharing."
         }
       },
       {
@@ -299,10 +299,26 @@
       },
       {
         "@type": "Question",
+        "name": "How does in-app data and history erasure work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inside the Android app (v2.8+), tap the top-left Settings gear to open Data & History Erasure. You can Delete All App History & Data (full 2-step local wipe), Clear Past Viewing History & Stats, or Empty Vault & Mood Boards with zero cloud tracking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 12-Meme Rolling FIFO Prefetch Engine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meme Capsule v3.1+ runs a 12-meme rolling buffer. Once you view 60%–70% of the loaded stack, the app silently refills the next batch in the background with streaming decode, eliminating loading pauses between stacks."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Who built Meme Capsule?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Meme Capsule was designed and developed by Pratham Pandey, an independent developer based in India. For press enquiries or collaborations, contact support@memecapsule.wtf."
+          "text": "Meme Capsule was designed and developed by the Meme Capsule Team, an independent developer collective based in India. For press enquiries or collaborations, contact support@memecapsule.wtf."
         }
       }
     ]

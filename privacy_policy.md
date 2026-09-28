@@ -1,12 +1,11 @@
 MEME CAPSULE
 WEBSITE PRIVACY POLICY
-Version: 1.0
+Version: 3.4
 Effective Date: 25 September 2026
-Last Updated: 25 September 2026
+Last Updated: 28 September 2026
 Website: https://memecapsule.wtf
 Website Operator: Meme Capsule
 Privacy / Grievance Email: support@memecapsule.wtf
-Grievance Officer: Pratham Pandey
 Designation: Grievance Officer
 1. INTRODUCTION
 Welcome to Meme Capsule.
@@ -190,10 +189,27 @@ Meme Capsule will process valid requests in accordance with applicable Indian la
 We may request reasonable information necessary to understand and, where
 appropriate, verify a request before taking action.
 Grievance Officer
-Name: Pratham Pandey
 Designation: Grievance Officer
 Email: support@memecapsule.wtf
-10. THIRD-PARTY WEBSITES
+10. DELETION AND PRIVACY REQUESTS (IN-APP SELF-SERVE ERASURE)
+Meme Capsule respects user privacy and self-determination over personal data.
+The Meme Capsule Android application (com.meme.capsule) includes built-in, granular
+self-serve data erasure controls directly within the app under Settings → Data & History Erasure.
+Users can execute self-serve data deletion at any time without submitting a manual request:
+• Delete All App History & Data: A 2-step confirmation full local storage wipe that deletes
+  all saved memes, viewed counters, streaks, and custom mood boards, restoring the app to
+  its fresh installation state.
+• Clear Past Viewing History & Stats: Resets all viewed drop counters, streak tracking, and
+  the rolling seen-meme cache while preserving your Meme Vault and custom Mood Boards.
+• Empty Vault & Mood Boards: Clears all locally saved favorite memes and custom mood
+  boards in one action.
+• Unblock Reported Memes: Restores locally hidden or reported meme IDs to the drop pool.
+Because Meme Capsule does not require user accounts, logins, passwords, phone numbers,
+or cloud user profiles, executing these controls permanently expunges data directly on your
+device with zero residual cloud trace.
+For any privacy-related enquiries, manual assistance, or data deletion verification, users may
+contact us at support@memecapsule.wtf.
+11. THIRD-PARTY WEBSITES
 The Website may contain links to third-party websites or services.
 Those third parties operate independently from Meme Capsule and may have their own
 privacy policies, terms, cookies, and data-processing practices.
@@ -201,7 +217,7 @@ This Privacy Policy does not govern information that you provide directly to tho
 parties.
 We encourage you to review the privacy information applicable to third-party websites
 before providing them with personal data.
-11. INDIAN LEGAL FRAMEWORK
+12. INDIAN LEGAL FRAMEWORK
 This Privacy Policy is intended to describe the Website's processing of personal data
 under applicable Indian law.
 The relevant legal framework includes the Information Technology Act, 2000,
@@ -216,7 +232,7 @@ provisions become applicable or as the Website's processing activities materiall
 change.
 Nothing in this Privacy Policy is intended to exclude or restrict any right or obligation that
 cannot lawfully be excluded or restricted under Indian law.
-12. CHANGES TO OUR PRIVACY POLICY
+13. CHANGES TO OUR PRIVACY POLICY
 The Website and its privacy practices may change over time.
 Meme Capsule may make routine updates to this Privacy Policy to reflect changes in the
 Website, corrections, administrative changes, or changes in applicable law.
@@ -229,15 +245,13 @@ A change to this Privacy Policy alone will not be treated as consent to a materi
 different purpose where applicable law requires separate consent.
 The latest version will be published on the Website with the revised "Last Updated"
 date.
-13. CONTACT INFORMATION
+14. CONTACT INFORMATION
 For questions concerning this Privacy Policy, personal-data processing, consent,
 privacy rights, or privacy grievances:
 Meme Capsule
 Website: https://memecapsule.wtf
 Privacy / Grievance Email:
 support@memecapsule.wtf
-Grievance Officer:
-Pratham Pandey
 Designation:
 Grievance Officer
 This email may be used for:

@@ -21,55 +21,54 @@ export function HowItWorksDetail() {
 
         {/* Three Content Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Block 1 — The Curated Collection */}
+          {/* Block 1 — 12-Meme Rolling FIFO Engine */}
           <div
             className="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-gold"
             data-rv="up"
             style={{ transitionDelay: '100ms' }}
           >
             <h3 className="font-anton text-xl text-gold uppercase mb-3">
-              THE MEME COLLECTION
+              12-MEME ROLLING FIFO ENGINE
             </h3>
             <p className="font-oswald text-sm text-text leading-relaxed">
-              Meme Capsule houses thousands of hand-picked memes curated from across internet
-              culture. Every drop is reviewed for quality and humor before entering the capsule
-              pool. When you tap HIT ME, our proprietary shuffle engine picks a completely
-              unpredictable drop on the spot. No viewing history is tracked and no preferences
-              are recorded — every tap is a fresh surprise.
+              Meme Capsule runs a high-performance 12-meme rolling FIFO prefetch engine.
+              As you browse, reaching a 60%–70% stack consumption trigger silently enqueues
+              the next batch in the background. Images are decoded in streaming fashion,
+              eliminating loading screens and full-stack pauses so your next laugh is always ready.
             </p>
           </div>
 
-          {/* Block 2 — Fresh Culture Stream */}
+          {/* Block 2 — Unobstructed UI & 4-Column Bar */}
           <div
             className="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-purple"
             data-rv="up"
             style={{ transitionDelay: '200ms' }}
           >
             <h3 className="font-anton text-xl text-purple uppercase mb-3">
-              ALWAYS FRESH DROPS
+              4-COLUMN CTA &amp; FLUSH SHARE RIBBON
             </h3>
             <p className="font-oswald text-sm text-text leading-relaxed">
-              Alongside timeless classics, Meme Capsule continuously blends in fresh, trending
-              internet humor so the pool never goes stale. Every incoming drop passes through
-              multi-layer automated safety screening to keep out spoilers and inappropriate
-              material, ensuring a clean, chaotic, and safe experience every time you tap.
+              The Meme Card is completely unobstructed with zero floating button clutter.
+              Below it sits a tactile 4-column Neo-Brutalist bar: LIKE (#FF2A85), VAULT (#A855F7),
+              PIN (#FACC15), and MORE ⋮ (#00E5FF). Sharing to WhatsApp or Instagram triggers an
+              Instagram-style flush draggable Share Sheet Ribbon with active session retention.
             </p>
           </div>
 
-          {/* Block 3 — Your Privacy */}
+          {/* Block 3 — In-App Data Erasure */}
           <div
             className="border-2 border-surfaceHigh bg-surface p-6 rounded-none border-l-[3px] border-l-pink"
             data-rv="up"
             style={{ transitionDelay: '300ms' }}
           >
             <h3 className="font-anton text-xl text-pink uppercase mb-3">
-              YOUR PRIVACY
+              ZERO ACCOUNTS &amp; HISTORY ERASURE
             </h3>
             <p className="font-oswald text-sm text-text leading-relaxed">
-              Meme Capsule never asks for an account, sign-up, name, email address, or phone
-              number. We do not build a hidden profile of what makes you laugh. Any memes you
-              save to your personal Meme Vault stay right on your device under your control,
-              ready to view, share, or clear whenever you choose.
+              No account, email, or login is ever required. With built-in App Settings,
+              users have granular self-serve data controls: Delete All App History &amp; Data,
+              Clear Past Viewing History &amp; Stats, and Empty Vault &amp; Mood Boards.
+              Everything stays on your device under your total control.
             </p>
           </div>
         </div>
@@ -86,7 +85,7 @@ export function HowItWorksDetail() {
           <p className="font-oswald text-base text-text leading-relaxed">
             Meme Capsule does not use a recommendation algorithm. It does not show you more of
             what you have liked before. It does not build a profile of your preferences. It
-            does not try to maximise your time in the app. The entire product is designed
+            does not try to maximise your screen time. The entire product is designed
             around a single interaction: you tap once, you get a meme, you decide what to do
             with it. That is the complete feature set.
           </p>

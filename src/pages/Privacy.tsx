@@ -27,13 +27,12 @@ export default function Privacy() {
         <h1 className="font-anton text-5xl text-purple uppercase mb-8 border-b-4 border-purple pb-4">Privacy Policy</h1>
         <div className="font-oswald text-text text-base leading-relaxed space-y-8">
           <div className="space-y-2 text-muted text-sm uppercase tracking-widest">
-            <p>Version: 1.0</p>
+            <p>Version: 3.4</p>
             <p>Effective Date: 25 September 2026</p>
-            <p>Last Updated: 25 September 2026</p>
+            <p>Last Updated: 28 September 2026</p>
             <p>Website: https://memecapsule.wtf</p>
             <p>Website Operator: Meme Capsule</p>
             <p>Privacy / Grievance Email: support@memecapsule.wtf</p>
-            <p>Grievance Officer: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
           </div>
 
@@ -185,13 +184,26 @@ export default function Privacy() {
             <p>Meme Capsule will process valid requests in accordance with applicable Indian law.</p>
             <p>We may request reasonable information necessary to understand and, where appropriate, verify a request before taking action.</p>
             <h3 className="font-anton text-xl text-gold uppercase">Grievance Officer</h3>
-            <p>Name: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
             <p>Email: <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a></p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-anton text-2xl text-gold uppercase mb-4">10. Third-Party Websites</h2>
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">10. Deletion and Privacy Requests (In-App Self-Serve Erasure)</h2>
+            <p>Meme Capsule respects user privacy and self-determination over data. The Meme Capsule Android application (<span className="text-gold font-mono">com.meme.capsule</span>) includes built-in, granular self-serve data erasure controls directly within the app under <strong>Settings → Data &amp; History Erasure</strong>.</p>
+            <p>Users can execute self-serve data deletion at any time without submitting an external request:</p>
+            <ul className={listClassName}>
+              <li><strong>Delete All App History &amp; Data:</strong> A 2-step confirmation full local storage wipe that deletes all saved memes, viewed counters, streaks, and custom mood boards, restoring the app to its fresh installation state.</li>
+              <li><strong>Clear Past Viewing History &amp; Stats:</strong> Resets all viewed drop counters, streak tracking, and the rolling seen-meme cache while preserving your Meme Vault and custom Mood Boards.</li>
+              <li><strong>Empty Vault &amp; Mood Boards:</strong> Clears all locally saved favorite memes and custom mood boards in one action.</li>
+              <li><strong>Unblock Reported Memes:</strong> Restores locally hidden or reported meme IDs to the drop pool.</li>
+            </ul>
+            <p>Because Meme Capsule does not require user accounts, logins, passwords, phone numbers, or cloud user profiles, executing these controls permanently expunges data directly on your device with zero residual cloud trace.</p>
+            <p>For any privacy-related enquiries, manual assistance, or data deletion verification, users may contact us at <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a>.</p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">11. Third-Party Websites</h2>
             <p>The Website may contain links to third-party websites or services.</p>
             <p>Those third parties operate independently from Meme Capsule and may have their own privacy policies, terms, cookies, and data-processing practices.</p>
             <p>This Privacy Policy does not govern information that you provide directly to those third parties.</p>
@@ -199,7 +211,7 @@ export default function Privacy() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-anton text-2xl text-gold uppercase mb-4">11. Indian Legal Framework</h2>
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">12. Indian Legal Framework</h2>
             <p>This Privacy Policy is intended to describe the Website&apos;s processing of personal data under applicable Indian law.</p>
             <p>The relevant legal framework includes the Information Technology Act, 2000, applicable rules and regulations made under it where relevant, and the Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025, to the extent applicable and in force.</p>
             <p>The DPDP Act and DPDP Rules have a phased commencement structure. Accordingly, provisions that are not yet in force are not represented by this Privacy Policy as though they were already operative.</p>
@@ -208,7 +220,7 @@ export default function Privacy() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-anton text-2xl text-gold uppercase mb-4">12. Changes to Our Privacy Policy</h2>
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">13. Changes to Our Privacy Policy</h2>
             <p>The Website and its privacy practices may change over time.</p>
             <p>Meme Capsule may make routine updates to this Privacy Policy to reflect changes in the Website, corrections, administrative changes, or changes in applicable law.</p>
             <p>If Meme Capsule introduces a new purpose for processing personal data, materially changes an existing processing purpose, introduces a new category of personal data, or otherwise makes a change for which fresh notice or consent is required under applicable law, Meme Capsule will provide the required notice and obtain fresh consent where required.</p>
@@ -217,12 +229,11 @@ export default function Privacy() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-anton text-2xl text-gold uppercase mb-4">13. Contact Information</h2>
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">14. Contact Information</h2>
             <p>For questions concerning this Privacy Policy, personal-data processing, consent, privacy rights, or privacy grievances:</p>
             <p>Meme Capsule</p>
             <p>Website: https://memecapsule.wtf</p>
             <p>Privacy / Grievance Email: <a href="mailto:support@memecapsule.wtf">support@memecapsule.wtf</a></p>
-            <p>Grievance Officer: Pratham Pandey</p>
             <p>Designation: Grievance Officer</p>
             <p>This email may be used for:</p>
             <ul className={listClassName}>

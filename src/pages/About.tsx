@@ -30,7 +30,8 @@ const DESCRIPTIONS = [
 
 const QUICK_FACTS = [
   { label: 'PLATFORM', value: 'Android' },
-  { label: 'DEVELOPER', value: 'Pratham Pandey' },
+  { label: 'DEVELOPER', value: 'Meme Capsule Team' },
+  { label: 'VERSION', value: 'v3.4 (Build 25)' },
   { label: 'LAUNCHED', value: '2026' },
   { label: 'PACKAGE ID', value: 'com.meme.capsule' },
   { label: 'PRICE', value: 'Free' },
@@ -122,18 +123,20 @@ export default function About() {
             <div className="font-oswald text-text text-base leading-relaxed space-y-6">
               <p>
                 Meme Capsule is a free Android application available on the Google Play Store,
-                developed by Pratham Pandey and launched in 2026. It delivers random memes to
+                developed by the Meme Capsule Team and launched in 2026. It delivers random memes to
                 users with a single button press. The app has no social feed, no algorithm, and
                 no content personalisation of any kind. Every meme in the collection is curated
                 from internet culture and filtered to ensure it is appropriate for general
                 audiences.
               </p>
               <p>
-                Users can save memes to a personal Meme Vault, share them directly to WhatsApp
-                and other messaging apps, and download them to their phone gallery. The app also
-                blends in a continuous stream of fresh internet culture, with automatic safety
-                and spoiler filtering applied. Meme Capsule is free of charge and supported by
-                infrequent advertisements.
+                Users can save memes to a personal Meme Vault or themed Mood Boards, react and
+                share directly to WhatsApp, Instagram, Telegram, and Discord via a flush
+                draggable Share Sheet Ribbon, and download favorites straight to their phone gallery.
+                Powered by a 12-meme rolling FIFO prefetch engine, every drop arrives with zero
+                loading pauses between stacks. The app also blends in a continuous stream of fresh
+                internet culture, with automatic safety and spoiler filtering applied. Meme Capsule
+                is free of charge and supported by infrequent advertisements.
               </p>
               <p>
                 The app is available exclusively for Android devices via the Google Play Store
