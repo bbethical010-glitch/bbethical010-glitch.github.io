@@ -9,7 +9,6 @@ import { Vignette } from '../components/Vignette'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useNavbarScroll } from '../hooks/useNavbarScroll'
 import { CONFIG, trackInstallClick } from '../constants/config'
-import playStoreBadge from '../assets/google-play-badge.svg'
 
 export default function TeamPage() {
   useScrollReveal()
@@ -130,7 +129,7 @@ export default function TeamPage() {
               data-cursor
             >
               <img
-                src={playStoreBadge}
+                src="/google-play-badge.svg"
                 alt="Get it on Google Play"
                 className="h-[64px] md:h-[72px] w-auto mx-auto"
                 width="200"

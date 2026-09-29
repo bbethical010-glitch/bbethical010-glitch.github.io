@@ -9,9 +9,6 @@ import { Vignette } from '../components/Vignette'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useNavbarScroll } from '../hooks/useNavbarScroll'
 import { CONFIG, trackInstallClick } from '../constants/config'
-import logoWebp from '../assets/logo.webp'
-import logoImg from '../assets/logo.png'
-import playStoreBadge from '../assets/google-play-badge.svg'
 
 const DESCRIPTIONS = [
   {
@@ -220,9 +217,9 @@ export default function About() {
                 <div className="flex items-center justify-center mb-4">
                   <div className="w-24 h-24 bg-[#131313] border-2 border-purple p-2">
                     <picture>
-                      <source srcSet={logoWebp} type="image/webp" />
+                      <source srcSet="/logo.webp" type="image/webp" />
                       <img
-                        src={logoImg}
+                        src="/logo.webp"
                         alt="Meme Capsule App Logo"
                         className="w-full h-full object-contain"
                         width="512"
@@ -314,7 +311,7 @@ export default function About() {
               data-cursor
             >
               <img
-                src={playStoreBadge}
+                src="/google-play-badge.svg"
                 alt="Get it on Google Play"
                 className="h-[64px] md:h-[72px] w-auto mx-auto"
                 width="200"

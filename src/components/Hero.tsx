@@ -1,8 +1,5 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
-import logoImg from '../assets/logo.png'
-import logoWebp from '../assets/logo.webp'
-import playStoreBadge from '../assets/google-play-badge.svg'
 
 export function Hero() {
   const handleScroll = (id: string) => {
@@ -46,9 +43,9 @@ export function Hero() {
             }}
           >
             <picture>
-              <source srcSet={logoWebp} type="image/webp" />
+              <source srcSet="/logo.webp" type="image/webp" />
               <img 
-                src={logoImg} 
+                src="/logo.webp" 
                 alt="Meme Capsule Official Logo" 
                 className="w-full h-full object-contain filter drop-shadow-md select-none pointer-events-none" 
                 width="512"
@@ -96,7 +93,7 @@ export function Hero() {
             className="transform hover:scale-[1.03] transition-transform duration-300"
             data-cursor
           >
-            <img src={playStoreBadge} alt="Get it on Google Play" className="h-[64px] md:h-[72px] w-auto" width="200" height="60" />
+            <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-[64px] md:h-[72px] w-auto" width="200" height="60" />
           </a>
           <button onClick={() => handleScroll('see-it-in-action')} className="neo-button-secondary px-8 py-4 text-lg" data-cursor>
             See it in Action
