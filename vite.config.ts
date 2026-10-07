@@ -65,7 +65,7 @@ class ReactSSRRenderer {
       let html = template.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
       const seo = ROUTE_SEO[route]
       if (seo) {
-        const canonicalUrl = `https://memecapsule.wtf${route === '/' ? '' : route}`
+        const canonicalUrl = `https://memecapsule.wtf${route === '/' ? '/' : route}`
         html = html
           .replace(/<title>.*?<\/title>/, `<title>${seo.title}</title>`)
           .replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${seo.description}" />`)
