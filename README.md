@@ -1,5 +1,7 @@
 # Meme Capsule Website
 
+**STOP. Before modifying any code, read and follow [AGENT_RULES.md](AGENT_RULES.md).**
+
 This is the fully static, production-ready website for the Meme Capsule Android app. It uses Vite, React 18, TypeScript, and Tailwind CSS.
 
 ## Post-Generation Setup Instructions
