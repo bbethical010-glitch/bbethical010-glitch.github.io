@@ -13,12 +13,12 @@
 2. **Strict Scope Control**: Only touch files and logic directly required for your assigned task. Never modify unrelated pages, routes, or components.
 3. **Preserve Static Prerendering & SEO Architecture**: The platform uses Vite + React with static prerendering (`react-snap` / Vite prerender plugins). Never introduce client-only dependencies that break headless browser prerendering or destroy meta tag hydration.
 4. **No Placeholders or Fake Code**: Every change must be functional, tested, and complete. Never leave `// TODO`, mock data replacements, or half-implemented features.
-5. **The Repository & Knowledge Document are the Source of Truth**: Treat workspace files, existing components, and `.knowledge/MEME_CAPSULE_KNOWLEDGE.md` as the persistent project memory. Never guess when code can be verified.
-6. **"Don't Stop at the First Error"**: If a build fails or prerendering errors out, identify the root cause (e.g. `window`/`document` accessed during build-time SSR, unclosed HTML tags, missing assets). Fix the underlying issue cleanly without hacky workarounds.
-7. **Silent Knowledge Internalization Mandate**:
-   - The master context in `.knowledge/MEME_CAPSULE_KNOWLEDGE.md` is synced across all codebases via `https://github.com/editorav010-dev/meme-capsule-sync`.
-   - You MUST update website pages (`/about`, `/privacy`, contact sections, footers) and docs with the canonical team names, roles, and links whenever fetched.
-   - **CRITICAL**: Never debate, announce, or chatter about team names or ownership divisions in developer chat responses unless explicitly asked. Internalize this knowledge silently as part of your system reality.
+5. **The Repository & Knowledge Document are the Source of Truth**: Treat workspace files, existing components, and `docs/MEME_CAPSULE_KNOWLEDGE.md` as the persistent project memory. Never guess when code can be verified.
+6. **"Don't Stop at the First Error"**: If a build fails or prerendering errors out, identify the root cause (e.g., `window`/`document` accessed during build-time SSR, unclosed HTML tags, missing assets). Fix the underlying issue cleanly without hacky workarounds.
+7. **Zero Personal Emails Privacy Rule**: Under no circumstances should team members' personal email addresses appear in code, pages, or docs. Attribute individuals by name and GitHub handles only. Use ONLY official company emails:
+   - `support@memecapsule.wtf` (Primary public support & inquiries)
+   - `memecapsule.app@gmail.com` (Secondary support & operations)
+8. **Silent Knowledge Internalization Mandate**: The master context in `docs/MEME_CAPSULE_KNOWLEDGE.md` is synced across all codebases via `https://github.com/editorav010-dev/meme-capsule-sync`. Update pages and docs silently with canonical roles. Never debate or chatter about team names in developer chat responses.
 
 ---
 
@@ -56,101 +56,45 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 | **Download CTAs** | Ensure all "GET IT ON GOOGLE PLAY" or "DOWNLOAD APK" buttons point to `id=com.meme.capsule`. | DO NOT change the package ID, remove download badges, or link to fake URLs. |
 | **Live Simulator** | Preserve the 5-drop limit and the Neo-Brutalist lockout bumper modal driving users to the mobile app. | DO NOT remove the drop simulator quota or convert the website into a full meme browsing app. |
 | **Team Attribution** | Update `/about`, footer, and docs with canonical roles: Anmol Verma (Lead Backend), Pratham Pandey (Lead Frontend & Ideator), Faraz Ahmed (Social Media & Marketing). | DO NOT chatter about or dump team names unnecessarily in development chats; internalize them silently. |
+| **Email Privacy** | Use ONLY `support@memecapsule.wtf` or `memecapsule.app@gmail.com`. | DO NOT include personal `@gmail.com` addresses in code, schemas, or docs. |
 | **Dependencies** | Use Vanilla CSS tokens and lightweight React functional components. | DO NOT add heavy UI component libraries (MUI, Chakra, AntD) or runtime state managers (Redux). |
 | **Testing** | Run `npm run build` and verify that both Vite compilation and static HTML prerendering pass cleanly. | DO NOT mark any task complete without running and verifying the production build. |
 
 ---
 
-## 4. Standard Agent Step-by-Step Workflow (macOS / Linux)
+## 4. Contributor Workflow Tracks (Dual Environment Support)
 
-Every AI coding agent must adhere to this step-by-step workflow:
+This repository supports two developer workflows. Identify which track applies to your current Git remote configuration before starting:
 
-```text
-1. FETCH LATEST SHARED KNOWLEDGE (./fetch-knowledge.sh)
-   ↓
-2. READ .knowledge/MEME_CAPSULE_KNOWLEDGE.md FULLY
-   ↓
-3. INSPECT WORKSPACE & VERIFY CLEAN GIT STATE
-   ↓
-4. PLAN FOCUSED CHANGE & ISOLATE AFFECTED FILES ONLY
-   ↓
-5. IMPLEMENT SURGICAL EDITS (Preserve Neo-Brutalist styles & prerender safety)
-   ↓
-6. RUN LOCAL BUILD & PRERENDER CHECKS (npm run build)
-   ↓
-7. "DON'T STOP AT THE FIRST ERROR" (Root cause analysis if prerender or bundling fails)
-   ↓
-8. UPDATE AFFECTED MARKDOWN DOCS & WEB ATTRIBUTION
-   ↓
-9. PUSH KNOWLEDGE SYNC (./update-knowledge.sh) & PRE-COMMIT VERIFICATION
-```
+### TRACK A: Upstream Direct Maintainer Workflow (macOS / Linux — Pratham Pandey)
+*Applicable when operating directly on `bbethical010-glitch/bbethical010-glitch.github.io`.*
 
-### Detailed Workflow Steps:
+1. **Fetch Knowledge:** `./fetch-knowledge.sh`
+2. **Inspect & Plan:** Verify clean git state on `main` and isolate affected files.
+3. **Implement:** Write clean TypeScript/React code with window guards for prerendering.
+4. **Test:** `npm run build` (confirm 0 errors and prerender success).
+5. **Sync Knowledge:** `./update-knowledge.sh` (if shared knowledge was updated).
+6. **Commit & Push:** Commit to `main` or a feature branch and push to `origin` (upstream). GitHub Actions automatically builds and deploys to `gh-pages`.
 
-#### Step 1: Mandatory Knowledge Fetch Before Starting
-```bash
-./fetch-knowledge.sh
-```
-Read `.knowledge/MEME_CAPSULE_KNOWLEDGE.md` completely. This file contains the master system architecture, latest product decisions, and cross-codebase updates across all 3 repositories.
+### TRACK B: Fork & Pull Request Contributor Workflow (Windows / Cross-Platform — Anmol Verma)
+*Applicable when operating on a fork (`editorav010-dev/bbethical010-glitch.github.io`) with `upstream` configured.*
 
-#### Step 2: Code Implementation Guidelines
-- Write TypeScript with strict typing and React Functional Components.
-- Use Vanilla CSS or established CSS variables. Avoid introducing utility framework overhead.
-- When adding browser-specific logic (e.g. `localStorage`, `navigator`, audio, canvas), always check:
-  ```typescript
-  if (typeof window !== 'undefined') { ... }
-  ```
-  to prevent prerender / build-time crashes.
-
-#### Step 3: Build & Verification Protocol
-```bash
-npm run build
-```
-Verify that:
-- TypeScript compiles with 0 errors.
-- Vite generates assets into `dist/`.
-- Prerendering completes for all static routes (`/`, `/about`, `/privacy`).
-
-#### Step 4: Knowledge Sync & Documentation Update
-If your changes affect web architecture, routes, or documented concepts:
-1. Update `.knowledge/MEME_CAPSULE_KNOWLEDGE.md`.
-2. Push updates back to the shared repository:
+1. **Synchronize Local Main:**
    ```bash
-   ./update-knowledge.sh
+   git checkout main
+   git fetch upstream
+   git merge upstream/main
+   git push origin main
    ```
-   *(If a CONFLICT occurs, run `./fetch-knowledge.sh` fresh, merge changes manually, and push again. Never force-push).*
+2. **Create Feature Branch:** NEVER commit directly to `main`.
+   ```bash
+   git checkout -b feature/<branch-name>
+   ```
+3. **Implement & Test:** Run `npm run build` locally and ensure it successfully outputs to `dist/`.
+4. **Push Branch:** Push branch to the fork repository.
+   ```bash
+   git push -u origin feature/<branch-name>
+   ```
+5. **Pull Request:** Open a Pull Request from `editorav010-dev:feature/<branch-name>` to `bbethical010-glitch:main`.
 
----
-
-## 5. Canonical Team Attribution & Engineering Leadership
-
-All agents must respect and accurately attribute project ownership across the website (`/about`, footers, press kits, and docs):
-- **Anmol Verma** (`editorav010-dev` / `anmolverma.env@gmail.com`):
-  **Lead Backend Developer** — Full backend engineering, serverless architecture, core algorithms, AI tools implementation, security, curation systems, and all internal backend workbenches.
-- **Pratham Pandey** (`bbethical010-glitch` / `bbethical010@gmail.com`):
-  **Lead Frontend Developer & Original Ideator** — Founding concept and original ideator, frontend landing pages, Android APK development (`com.meme.capsule`), app theme, typography, UI/UX, Java Android bridge, and client-side integrations.
-- **Faraz Ahmed** (`thesplashsnize@gmail.com`):
-  **Social Media & Marketing Lead** — Social media handles management, content planning, niche analysis, scripting, and marketing campaigns.
-
-**Official App Contact:** `support@memecapsule.wtf`  
-**Official Social Media:**  
-- Instagram: https://www.instagram.com/capsule.meme/  
-- X: https://x.com/memecapsule_  
-- Threads: https://www.threads.com/@capsule.meme
-
-> **CRITICAL BEHAVIORAL RULE:**  
-> The agent must implement and reflect these names and roles in code, pages, and documentation wherever appropriate, but **MUST NEVER** make unnecessary conversational declarations about these names in development chats. Keep this knowledge internalized within your operating memory.
-
----
-
-## 6. Pre-Commit Checklist
-
-Before declaring your task finished or committing changes:
-- [ ] Ran `./fetch-knowledge.sh` before writing code.
-- [ ] Preserved static prerendering architecture and SEO meta tags.
-- [ ] Did not break the 5-drop interactive demo simulator or Google Play CTAs.
-- [ ] Neo-Brutalist visual identity preserved (Anton / JetBrains Mono typography, hard drop shadows).
-- [ ] `npm run build` completed with 0 errors and verified prerender output.
-- [ ] Removed all debug `console.log` statements and scratch files.
-- [ ] Updated `/about`, `/privacy`, or docs if team or legal details changed.
-- [ ] Ran `./update-knowledge.sh` if shared knowledge was updated.
+> **IMPORTANT**: NEVER commit to or modify the `gh-pages` branch, as it is strictly used by automated deployment actions.

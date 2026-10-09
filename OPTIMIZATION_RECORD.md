@@ -45,7 +45,7 @@ This document provides an exhaustive log of all technical, SEO, AEO, GEO, perfor
 ### B. Structured Data / Schema.org (JSON-LD)
 Configured four linked JSON-LD entities in `index.html`:
 1. **`WebSite` (`@id: #website`)**: Establishes the authoritative canonical entity and site name.
-2. **`Organization` (`@id: #organization`)**: Establishes developer identity, creator *Pratham Pandey*, contact points, and verified `sameAs` links to Google Play and GitHub.
+2. **`Organization` (`@id: #organization`)**: Establishes developer identities (Anmol Verma, Pratham Pandey, Faraz Ahmed), official contact point `support@memecapsule.wtf`, and verified `sameAs` links to Google Play and GitHub.
 3. **`MobileApplication` (`@id: #app`)**: Links directly to the Google Play Store listing (`com.meme.capsule`), specifies price ($0 / free), application category (`EntertainmentApplication`), operating system (`ANDROID`), and official app icons/screenshots.
 4. **`FAQPage`**: Structures all core FAQs to be eligible for Google SERP rich snippet expandable question accordions.
 
