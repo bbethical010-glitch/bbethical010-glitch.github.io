@@ -4,16 +4,75 @@ import { X, ZoomIn, ChevronRight, ChevronLeft } from 'lucide-react'
 interface ScreenshotItem {
   id: number
   title: string
+  subtitle: string
   url: string
   webpUrl: string
 }
 
 const SCREENSHOTS: ScreenshotItem[] = [
-  { id: 1, title: 'Home Screen', url: '/screenshots/home-screen.jpg', webpUrl: '/screenshots/home-screen.webp' },
-  { id: 2, title: 'Loading Screen', url: '/screenshots/loading-screen.jpg', webpUrl: '/screenshots/loading-screen.webp' },
-  { id: 3, title: 'Meme Loaded', url: '/screenshots/meme-loaded.jpg', webpUrl: '/screenshots/meme-loaded.webp' },
-  { id: 4, title: 'Meme Vault', url: '/screenshots/meme-vault.jpg', webpUrl: '/screenshots/meme-vault.webp' },
-  { id: 5, title: 'Mood Boards', url: '/screenshots/moodboards.jpg', webpUrl: '/screenshots/moodboards.webp' },
+  { 
+    id: 1, 
+    title: 'Home Screen', 
+    subtitle: 'Take The Risk • One Tap Drop', 
+    url: '/screenshots/page_02_home.jpg', 
+    webpUrl: '/screenshots/page_02_home.webp' 
+  },
+  { 
+    id: 2, 
+    title: 'Loading Screen', 
+    subtitle: 'Stand By • Decrypting Comedy Core', 
+    url: '/screenshots/page_03_standby.jpg', 
+    webpUrl: '/screenshots/page_03_standby.webp' 
+  },
+  { 
+    id: 3, 
+    title: 'Meme Loaded', 
+    subtitle: 'Default Drop View', 
+    url: '/screenshots/page_04_default.jpg', 
+    webpUrl: '/screenshots/page_04_default.webp' 
+  },
+  { 
+    id: 4, 
+    title: 'Meme Liked', 
+    subtitle: 'Instant Reaction Toast', 
+    url: '/screenshots/page_05_liked.jpg', 
+    webpUrl: '/screenshots/page_05_liked.webp' 
+  },
+  { 
+    id: 5, 
+    title: 'Secured In Vault', 
+    subtitle: 'Permanent Archive (1/20)', 
+    url: '/screenshots/page_06_vault_saved.jpg', 
+    webpUrl: '/screenshots/page_06_vault_saved.webp' 
+  },
+  { 
+    id: 6, 
+    title: 'More Options Menu', 
+    subtitle: 'Share, Download & Report Sheet', 
+    url: '/screenshots/page_07_more_menu.jpg', 
+    webpUrl: '/screenshots/page_07_more_menu.webp' 
+  },
+  { 
+    id: 7, 
+    title: 'Share Meme', 
+    subtitle: 'Multi-App Quick Share Sheet', 
+    url: '/screenshots/page_08_share.jpg', 
+    webpUrl: '/screenshots/page_08_share.webp' 
+  },
+  { 
+    id: 8, 
+    title: 'Meme Vault', 
+    subtitle: 'Search & Lifetime Stats', 
+    url: '/screenshots/page_09_vault_tab.jpg', 
+    webpUrl: '/screenshots/page_09_vault_tab.webp' 
+  },
+  { 
+    id: 9, 
+    title: 'Mood Boards', 
+    subtitle: 'Personal Archive & Pinboards', 
+    url: '/screenshots/page_10_moodboards.jpg', 
+    webpUrl: '/screenshots/page_10_moodboards.webp' 
+  },
 ]
 
 function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: (item: ScreenshotItem) => void, delay: number }) {
@@ -109,7 +168,12 @@ function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: 
       
       {/* Title Below Phone */}
       <div className="mt-8 text-center transition-transform duration-300 group-hover:translate-y-2">
-        <span className="font-anton font-bold text-xl text-text uppercase tracking-widest group-hover:text-gold transition-colors">{item.title}</span>
+        <span className="font-anton font-bold text-xl text-text uppercase tracking-widest group-hover:text-gold transition-colors block">
+          {item.title}
+        </span>
+        <span className="font-mono text-xs text-muted uppercase mt-1 tracking-wider block">
+          {item.subtitle}
+        </span>
       </div>
     </div>
   )
@@ -143,14 +207,50 @@ export function Screenshots() {
     }
   }
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') setSelectedItem(null)
+  const currentIndex = selectedItem ? SCREENSHOTS.findIndex(s => s.id === selectedItem.id) : -1
+
+  const showPrev = (e?: MouseEvent) => {
+    e?.stopPropagation()
+    if (currentIndex > 0) {
+      setSelectedItem(SCREENSHOTS[currentIndex - 1])
+    } else {
+      setSelectedItem(SCREENSHOTS[SCREENSHOTS.length - 1])
+    }
+  }
+
+  const showNext = (e?: MouseEvent) => {
+    e?.stopPropagation()
+    if (currentIndex < SCREENSHOTS.length - 1) {
+      setSelectedItem(SCREENSHOTS[currentIndex + 1])
+    } else {
+      setSelectedItem(SCREENSHOTS[0])
+    }
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedItem(null)
+      if (e.key === 'ArrowLeft') {
+        if (currentIndex > 0) {
+          setSelectedItem(SCREENSHOTS[currentIndex - 1])
+        } else {
+          setSelectedItem(SCREENSHOTS[SCREENSHOTS.length - 1])
+        }
+      }
+      if (e.key === 'ArrowRight') {
+        if (currentIndex < SCREENSHOTS.length - 1) {
+          setSelectedItem(SCREENSHOTS[currentIndex + 1])
+        } else {
+          setSelectedItem(SCREENSHOTS[0])
+        }
+      }
+    }
+
+    if (selectedItem) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [selectedItem, currentIndex])
 
   return (
     <>
@@ -162,6 +262,9 @@ export function Screenshots() {
             <span className="rule max-w-[100px]"></span>
           </div>
           <h2 className="font-anton text-5xl md:text-6xl text-text uppercase mt-4" data-rv="up">Explore the App</h2>
+          <p className="font-mono text-xs md:text-sm text-muted uppercase tracking-widest mt-3" data-rv="fade">
+            9 High-Resolution App Views • Interactive 3D Perspective
+          </p>
         </div>
         
         {/* Carousel Container */}
@@ -211,7 +314,7 @@ export function Screenshots() {
         >
           {/* Close Button */}
           <button 
-            className="absolute top-6 right-6 sm:top-10 sm:right-10 text-gold hover:text-white bg-surface border-2 border-purple p-2 shadow-[4px_4px_0px_#dd0061] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none z-10"
+            className="absolute top-6 right-6 sm:top-10 sm:right-10 text-gold hover:text-white bg-surface border-2 border-purple p-2 shadow-[4px_4px_0px_#dd0061] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none z-20"
             aria-label="Close screenshot preview"
             onClick={(e) => {
               e.stopPropagation()
@@ -220,6 +323,25 @@ export function Screenshots() {
             data-cursor
           >
             <X size={32} strokeWidth={3} />
+          </button>
+
+          {/* Navigation Arrows in Lightbox */}
+          <button
+            className="hidden sm:flex absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 text-gold hover:text-white bg-surface border-2 border-purple p-3 shadow-[4px_4px_0px_#dd0061] transition-transform hover:scale-110 z-20"
+            aria-label="Previous screenshot"
+            onClick={showPrev}
+            data-cursor
+          >
+            <ChevronLeft size={32} />
+          </button>
+
+          <button
+            className="hidden sm:flex absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 text-gold hover:text-white bg-surface border-2 border-purple p-3 shadow-[4px_4px_0px_#dd0061] transition-transform hover:scale-110 z-20"
+            aria-label="Next screenshot"
+            onClick={showNext}
+            data-cursor
+          >
+            <ChevronRight size={32} />
           </button>
 
           {/* Large Image Container */}
@@ -240,7 +362,8 @@ export function Screenshots() {
             </picture>
             {/* Title Bar at bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-[#131313]/90 backdrop-blur-md p-6 border-t-[3px] border-purple text-center">
-              <span className="font-anton text-3xl text-gold uppercase tracking-widest">{selectedItem.title}</span>
+              <span className="font-anton text-2xl sm:text-3xl text-gold uppercase tracking-widest block">{selectedItem.title}</span>
+              <span className="font-mono text-xs sm:text-sm text-text/80 uppercase mt-1 tracking-wider block">{selectedItem.subtitle}</span>
             </div>
           </div>
         </div>
