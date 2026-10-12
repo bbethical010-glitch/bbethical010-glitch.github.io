@@ -1,4 +1,4 @@
-# MEME CAPSULE — MASTER KNOWLEDGE DOCUMENT & CANONICAL SYSTEM SPECIFICATION
+﻿# MEME CAPSULE — MASTER KNOWLEDGE DOCUMENT & CANONICAL SYSTEM SPECIFICATION
 ### The Definitive System Reference for Developers, AI Coding Agents, Curators, Product Teams & Marketers
 
 > **Document Type:** Canonical Master Architecture, Technical & Product Specification  
@@ -9,9 +9,9 @@
 > **Official Web Platform:** [https://memecapsule.wtf](https://memecapsule.wtf) (Vite / React Multi-Page Static Prerendered)  
 > **Serverless Edge Backend:** [https://meme-capsule-eww.pages.dev](https://meme-capsule-eww.pages.dev) (Cloudflare Pages, D1 SQLite, R2 CDN)  
 > **Project Team & Engineering Leadership:**  
-> - **Anmol Verma** (`editorav010-dev`): Lead Backend Developer — Full backend engineering, serverless architecture, core algorithms, AI tools implementation, security, curation systems, and all internal backend workbenches.  
-> - **Pratham Pandey** (`bbethical010-glitch`): Lead Frontend Developer & Original Ideator — Founding concept, frontend landing pages, Android APK development, app theme, typography, UI/UX, Java Android bridge, and client-side integrations.  
-> - **Faraz Ahmed**: Social Media & Marketing Lead — Social media management, content planning, niche analysis, scripting, and marketing campaigns.  
+> - **Anmol Verma** (`editorav010-dev` / `anmolverma.env@gmail.com`): Lead Backend Developer — Full backend engineering, serverless architecture, core algorithms, AI tools implementation, security, curation systems, and all internal backend workbenches.  
+> - **Pratham Pandey** (`bbethical010-glitch` / `bbethical010@gmail.com`): Lead Frontend Developer & Original Ideator — Founding concept, frontend landing pages, Android APK development, app theme, typography, UI/UX, Java Android bridge, and client-side integrations.  
+> - **Faraz Ahmed** (`thesplashsnize@gmail.com`): Social Media & Marketing Lead — Social media management, content planning, niche analysis, scripting, and marketing campaigns.  
 > **Official App Email (User Support & Marketing):** `support@memecapsule.wtf`  
 > **Official Social Media:**  
 > Instagram: https://www.instagram.com/capsule.meme/ | X: https://x.com/memecapsule_ | Threads: https://www.threads.com/@capsule.meme  
@@ -179,7 +179,7 @@ Any meme that is unfinalized, in judging, or excluded is mathematically impossib
 
 Meme Capsule is a three-person collaborative project with a clear division of architectural, consumer-facing, and marketing responsibilities:
 
-- **Anmol Verma** (Lead Backend Developer — GitHub: [`editorav010-dev`](https://github.com/editorav010-dev)):
+- **Anmol Verma** (Lead Backend Developer — GitHub: [`editorav010-dev`](https://github.com/editorav010-dev), Email: `anmolverma.env@gmail.com`):
   - Full backend engineering & Cloudflare Pages Functions serverless architecture
   - Backend architecture and systems implementation
   - Core algorithms: randomization, deduplication, 3-tier curation status partitioning, and edge ranking
@@ -189,7 +189,7 @@ Meme Capsule is a three-person collaborative project with a clear division of ar
   - Admin, SuperAdmin, and all internal backend workbenches (/admin, /curate, /categorise, /reports, /ai-judge)
   - The underlying technical and mathematical logic behind the Meme Capsule delivery engine
 
-- **Pratham Pandey** (Lead Frontend Developer & Original Ideator — GitHub: [`bbethical010-glitch`](https://github.com/bbethical010-glitch)):
+- **Pratham Pandey** (Lead Frontend Developer & Original Ideator — GitHub: [`bbethical010-glitch`](https://github.com/bbethical010-glitch), Email: `bbethical010@gmail.com`):
   - **Original concept, initial vision, and founding idea behind Meme Capsule**
   - Frontend landing pages and promotional web platform (memecapsule.wtf)
   - Public Android mobile application development (`com.meme.capsule` via Capacitor 8, React 19, Tailwind CSS v4)
@@ -198,7 +198,7 @@ Meme Capsule is a three-person collaborative project with a clear division of ar
   - Java Android bridge (`MainActivity.java`) and Android MediaStore integrations
   - Consumer-facing frontend engineering, animations, and client build setup
 
-- **Faraz Ahmed** (Social Media & Marketing Lead):
+- **Faraz Ahmed** (Social Media & Marketing Lead — Email: `thesplashsnize@gmail.com`):
   - Management of all official Meme Capsule social media handles
   - Content planning, niche analysis, and editorial quality control of all social content
   - Scripting, brand voice, and campaign copywriting
@@ -333,15 +333,54 @@ Registered on the Android WebView as `window.MemeCapsuleAndroid`:
 - **Mood Boards ("Pinned Energy"):** Color-coded thematic binders (`primary`, `secondary`, `tertiary`) created via `CreateBoardModal.tsx`.
 - **Pinboard Synchronization:** When a meme is pinned to a board, the system synchronizes both `meme_pinboard` and `meme_favorites` records to guarantee that pinned meme thumbnails always render reliably even if the meme was not previously saved to the main vault.
 
-### 3.8 Mobile Monetization (AdMob + Google Play In-App Purchases)
+### 3.8 Mobile Monetization (AdMob + Google Play In-App Purchases & Neo-Brutalist Store)
 - **Google AdMob:**
-  - Non-intrusive full-screen interstitial ad displayed every 4th meme viewed via `@capacitor-community/admob`.
-  - Rewarded ads allow users to unlock optional bonus drops.
-- **Google Play In-App Purchase (Pro Tier):**
-  - Product ID: `remove_ads_forever` managed via `@capgo/native-purchases`.
-  - Upgrading unlocks Zero Ads, Unlimited Vault capacity, and permanent Triple Drop Mode.
+  - Non-intrusive full-screen interstitial ad displayed every 4th meme viewed via `@capacitor-community/admob`. Suppressed permanently if `hasAdsRemoved()`.
+  - Rewarded ads allow users to unlock optional bonus drops or temporary +1 session Mood Board slots. Rewarded ads remain fully optional even for users who purchased No Ads.
+- **Neo-Brutalist In-App Capsule Store (`src/components/store/`):**
+  - Full-screen game-style overlay opened via `openStore({ focus?: ProductId })`.
+  - **Clash of Clans Horizontal Game Store Architecture:**
+    - Top sticky category jump bar: `[★ FEATURED]`, `[BUNDLES]`, `[PASSES]`, `[THEMES]`, `[PACKS]`, `[ACCOUNT]` with live active indicator tracking scroll position. Tapping any pill smoothly scrolls horizontally to that category.
+    - Lateral swipe physics with `snap-x snap-mandatory` and `snap-start`: cards are arranged horizontally with fixed game-proportions (`w-[275px]` to `w-[305px]`), allowing adjacent cards to peek from the right edge on mobile viewports (~360px-412px) to entice lateral browsing.
+    - Category shelves: Featured Hero (Capsule Max), Value Bundles (4), Permanent Passes (3), Colour Themes (4 with 8s preview), Drop Mode Packs (4), Play Store Account & QA (1).
+  - **QA Testing Mode & Free Feature Verification:**
+    - Reference pricing fallback (`FALLBACK_PRODUCTS` in `billing.ts`): ensures prices are always formatted and displayed (`₹149`, `₹79`, etc.) on sideloaded APKs or test environments without requiring live Play Console activation.
+    - Simulated test unlock (`testPurchase(productId)`): allows immediate testing of all paid unlocks and bundle celebrations without Google Play Billing errors.
+    - Free tier reset (`resetTestPurchases()`): one-tap button wipes all entitlements so testers can verify 100% of the free experience (Mood Boards 3-cap, default theme, classic FX, ads).
+    - Rewarded ad fallback in `App.tsx`: ensures testing the free Mood Board +1 session slot works reliably even if native AdMob test video fill is unavailable.
+  - Catalog (`src/monetization/catalog.ts`): Single source of truth containing 11 single unlocks and 5 bundles:
+    - **Single Unlocks:** `remove_ads_forever` (NO ADS), `unlimited_mood_boards` (BOARD BOSS), `fx_arcade_pack` (ARCADE FX), 4 colour themes (`theme_cyberpunk_cyan`, `theme_acid_green`, `theme_midnight_gold`, `theme_blood_orange`), and 4 drop mode packs (`pack_dark_humour`, `pack_wholesome`, `pack_desi`, `pack_gaming` - marked `available: false` / COMING SOON pending backend category endpoint).
+    - **Bundles:** `bundle_starter` (Starter Pack), `bundle_style` (Drip Pack), `bundle_meme_lovers` (Meme Head Pack), `meme_capsule_pro` (Capsule Pro), `bundle_ultimate` (Capsule Max).
+    - **Rarity Tiers:** Common (`#988ca1`), Rare (`#9b30ff`), Epic (`#dd0061`), Legendary (`#f4c300`).
+  - **Billing Engine (`@capgo/native-purchases` v8.8.1):**
+    - Displays live formatted prices from Google Play (`priceString`) with catalog reference fallback (`FALLBACK_PRODUCTS`) on test builds.
+    - Live savings badge computed dynamically: `1 - (bundlePrice / sum(componentPrices))`. Hidden if any component price is missing.
+    - Automatic purchase acknowledgement for all one-time non-consumable products to prevent Google Play 3-day refunds.
+    - Silent cancellation handling (zero intrusive error toasts on cancel).
+    - Pending payment tracking (UPI/cash delays show `PAYMENT PENDING` and reconcile on app resume / foreground).
+    - `restorePurchases()` re-queries Google Play INAPP purchases directly with `PURCHASES RESTORED` or `NOTHING TO RESTORE` toasts.
+  - **Entitlements System (`src/monetization/entitlements.ts`):**
+    - Single source of truth: `useEntitlements()` hook backed by `EntitlementsContext` and cached in `localStorage`.
+    - Union-based grants model: owning a bundle automatically expands to grant all component product IDs and entitlement keys.
+    - Direct grant/revoke/reset helpers: `grantProductDirectly`, `revokeProductDirectly`, `resetAllEntitlements` for seamless QA toggling.
+    - Offline resilience: persists last verified ownership snapshot; only revokes if an online Play query confirms refund/revocation.
+    - Auto-reverts equipped cosmetics (themes, FX) to classic defaults if access is revoked.
+  - **Interactive Features:**
+    - 8-second temporary theme preview with countdown banner and auto-revert.
+    - Neo-Brutalist celebratory slam animation (`PurchaseCelebration.tsx`) on purchase confirmation.
+    - Honest bundle partial ownership warnings: "YOU ALREADY OWN N OF M ITEMS".
+    - 4 selectable Arcade FX styles: Classic, Retro Slam, Neon Glitch, Cassette Pop.
+    - Drop Mode selector with niche filters next to HIT ME button.
 
-### 3.9 Mobile Safety, Reporting & Local Blocklist
+### 3.9 Mobile Safety, Age Verification (DOB) & Content Reporting
+- **First-Launch Date of Birth (DOB) Verification Modal (`DateOfBirthModal.tsx`):**
+  - Integrated into the app flow and presented immediately **after the Onboarding Guide** on first download/install before entering the main card deck.
+  - Mandatory full-screen modal (`z-[2000]`) non-bypassable: cannot be closed, skipped, or dismissed via backdrop click, Escape key, or Android hardware back navigation.
+  - Auto-advancing Neo-Brutalist DD / MM / YYYY numerical inputs with numeric keypad, coupled with an optional native Android DatePicker calendar dialog.
+  - Strict 18+ age validation: users under 18 years of age are blocked from entering.
+  - Single-entry locked: once submitted, the DOB is saved to `localStorage('meme_capsule_user_dob')` alongside `meme_capsule_dob_confirmed_at` and can never be re-input or edited.
+  - Displayed as a verified, locked badge in App Settings under "PRIVACY, LEGAL & ABOUT".
+  - Canonical initial onboarding sequence: `Privacy Policy Consent -> Onboarding Guide -> Date of Birth Modal (18+) -> Main Home Deck`.
 - **Reporting Modal (`ReportModal.tsx`):** Users can report inappropriate content (`NSFW`, `Hate Speech`, `Harassment`, `Copyright`).
 - **Immediate Local Suppression:** Submitting a report triggers `POST /api/report` to Cloudflare Pages and immediately adds the meme ID to `localStorage('reported_memes')`. The client filtering loop (`fetchValidMeme()`) permanently drops reported memes from subsequent card drops.
 
@@ -480,16 +519,27 @@ To prevent mixing rejected memes with uncurated backlog items, Migration 012 int
 - Media assets (WebP, JPEG, PNG, GIF, MP4) reside in Cloudflare R2 bucket `memes`.
 - Serves content publicly with **zero egress bandwidth charges**, edge caching, and high availability.
 
-### 5.4 Multi-Judge Consensus & Layer 0 Keyboard Curation (`/curate`, `/categorise`)
-Designed for rapid, high-volume human evaluation. Curators use Layer 0 keyboard shortcuts:
-- `K`: **Keep** (Approved for public delivery).
-- `E`: **Exclude** (Archived; hidden from public drops).
-- `D`: **Duplicate** (Flag as duplicate with target ID).
-- `L`: **Review Later** (Deferred to secondary review queue).
-- `1-9, 0, -, =`: Toggle topic taxonomy.
-- `Q, W, E, A, S, F`: Select humor tone.
-- `Z, C, V, B, N, M, J, P, O`: Select humor mechanisms.
-- `Cmd/Ctrl + Z`: Instant undo last curation decision.
+### 5.4 Multi-Judge Consensus, AI-Judgement Review & Layer 0 Keyboard Curation (`/curate`, `/categorise`)
+Designed for rapid, high-volume evaluation. Curators (Judges 1, 2, 3) review memes pre-evaluated by offline AI models (AI Judges 4 & 5):
+
+**AI-Judgement Review Workflow for Human Judges (Judges 1, 2, 3):**
+- **State A (AI Consensus):** When AI Judge 4 and AI Judge 5 agree (both Keep or both Exclude), the human judge can press `Space` or `Enter` to fast-approve the consensus in a single stroke. If taxonomy details differ, pressing `4` adopts Judge 4, pressing `5` adopts Judge 5, or `Space/Enter` adopts Judge 4 by default.
+- **State B (AI Disagreement):** When AI Judge 4 and AI Judge 5 reach conflicting conclusions, both decisions are displayed side-by-side with hotkeys: `4` (Adopt Judge 4), `5` (Adopt Judge 5), or `O` (Manual Override).
+- **Single AI Ready:** When only one AI has completed evaluation, human judges can press `Space` or `Enter` to instantly adopt the available evaluation without roadblock.
+- **Authoritative Single-Judge Finality (`POST /api/curate/approve`):** Any single human judge adoption or manual approval is authoritative and immediately final: it writes to `meme_curation`, writes to `meme_curation_final`, and synchronizes `memes` (`is_active`, `status`, `curation_status`, `tags`, `category`) in an atomic transaction. Memes do not require SuperAdmin arbitration.
+- **Force Remove (`Shift+Delete` / `POST /api/curate/force-remove`):** For non-meme / invalid media in the corpus, pressing `Shift+Delete` or clicking `FORCE REMOVE` permanently vanishes the file from R2 media storage and purges all records across D1 tables (`memes`, `meme_curation`, `meme_curation_final`, `ai_curation_predictions`, etc.). This destructive action is non-undoable.
+- **Layer 0 Keyboard Curation (Override Mode `[O]`):**
+  - `K`: **Keep** (Approved for public delivery).
+  - `X`: **Exclude** (Archived; hidden from public drops).
+  - `D`: **Duplicate** (Flag as duplicate with target ID).
+  - `R`: **Review Later** (Deferred to secondary review queue).
+  - `1-9, 0, -, =`: Toggle topic taxonomy (Max 3).
+  - `Q, W, E, A, S, F`: Select humor tone (1 dominant).
+  - `Z, C, V, B, N, M, J, P, O`: Select humor mechanisms (Max 2).
+  - `Space / Enter`: Save & Advance.
+  - `Esc`: Return from manual override to AI review view.
+  - `Cmd/Ctrl + Z` or `U`: Instant undo last curation decision.
+
 
 ### 5.5 SuperAdmin Arbitration & Authoritative Active Synchronization
 When judges diverge in their votes, the meme surfaces in the **SuperAdmin Command Center**:
@@ -688,11 +738,11 @@ PACKAGE ID: com.meme.capsule
 CURRENT ANDROID VERSION: v2.7 (versionCode 18)
 OFFICIAL WEBSITES: https://memecapsule.wtf (Web Platform) | https://meme-capsule-eww.pages.dev (Edge Backend)
 DEVELOPERS & LEADERSHIP:
-- Anmol Verma (GitHub: editorav010-dev)
+- Anmol Verma (anmolverma.env@gmail.com / GitHub: editorav010-dev)
   Lead Backend Developer: Full backend engineering, serverless architecture, core algorithms, AI tools, security, curation, and all admin systems.
-- Pratham Pandey (GitHub: bbethical010-glitch)
+- Pratham Pandey (bbethical010@gmail.com / GitHub: bbethical010-glitch)
   Lead Frontend Developer & Original Ideator: Founding concept, APK, web platform (memecapsule.wtf), app theme, typography, UI/UX, Java Android bridge, MediaStore integrations, client build setup.
-- Faraz Ahmed
+- Faraz Ahmed (thesplashsnize@gmail.com)
   Social Media & Marketing Lead: Social handles, content planning, niche analysis, scripting, quality control, and marketing campaigns.
 Official App Email (User Support & Marketing): support@memecapsule.wtf
 Social Media:
@@ -701,13 +751,14 @@ Social Media:
   Threads: https://www.threads.com/@capsule.meme
 
 ECOSYSTEM STRUCTURE:
-1. PUBLIC MOBILE APP (com.meme.capsule - v3.4 / versionCode 25):
+1. PUBLIC MOBILE APP (com.meme.capsule - v3.6 / versionCode 27):
    - Tech: React 19, TypeScript, Vite 6, Tailwind CSS v4, Capacitor 8 Android container.
    - Core UX: 4-card 3D perspective spring deck (@react-spring/web, @use-gesture/react), 12-meme rolling FIFO prefetch buffer (STACK_BATCH_SIZE = 10, PIPELINE_TARGET_SIZE = 12) with 60%-70% stack consumption prefetch trigger (STACK_PREFETCH_CONSUMPTION_RATIO = 0.6 / FIFO_REFILL_TRIGGER_SIZE = 4) and streaming per-meme enqueueing (enqueueMemeToFifo + advanceInlineWithoutLoadingScreen so viewing flow never breaks with a full-screen loading screen), zero floating action buttons over the Meme Box, and horizontal 4-column CTA row (nav#ctaRow, max-w-[356px] w-full mt-3.5) directly below the Meme Box: LIKE (#FF2A85) -> VAULT (#A855F7) -> PIN (#FACC15) -> MORE (⋮) (#00E5FF) with translate(3px, 3px) active press, ink-spread ripple (@keyframes inkSpread), 6-tick radial shockwave bursts (@keyframes burstSparks), and pop icon animations (@keyframes neoBurst). Tapping MORE opens #moreMenu (w-48 bg-white border-4 border-black) containing SHARE (#A855F7), DOWNLOAD (#FACC15), and REPORT (#FF2A85).
+   - Google Play Rating Feature (RatingModal.tsx - v3.6): Interval-based rating prompt (first triggers at >= 8 memes viewed, then every 15 memes). Features a Neo-Brutalist 5-star interactive rating deck with dynamic reaction labels ("GOD-TIER DANKNESS!", "CERTIFIED BANGERS!", etc.). Redirects to Google Play Store via native bridge `openPlayStoreListing()` (`market://details?id=com.meme.capsule` with fallback to `https://play.google.com/store/apps/details?id=com.meme.capsule`) and sets `meme_capsule_rating_completed = 'true'` so it permanently never pops up again once feedback is registered. Provides a 24-hour deferral option (`REMIND ME IN 24 HOURS`) setting `meme_capsule_rating_deferred_until`. Also includes a manual trigger button in App Settings under "MEMBERSHIP & APP GUIDE".
    - Smart Session Lifecycle (Background App-Switch Retention vs Cold-Start Homepage Reset - v3.2): Uses `sessionStorage` (`meme_capsule_active_session_v1`), a short-lived 2-minute external share handoff token (`meme_capsule_share_handoff_v1`), and native Android process/task state detection (`window.MemeCapsuleAndroid.shouldRestoreRunningSession()` + `meme-capsule-reset-to-home` in `MainActivity.java`). Switching between running apps or sharing to external apps preserves the exact loaded meme and 12-meme FIFO queue, whereas removing/closing the app from running background applications in Android Recents and reopening it starts fresh on the Homepage (`screen = 'waiting'`, `activeTab = 'home'`).
    - Top-Left Header & Settings Dismissal: Removed the leaf/seed badge (🌱 1) from the top-left header and replaced it with a redesigned Neo-Brutalist Settings icon button (#1c1c1e / #A855F7, 2px solid #000, 2.5px 2.5px 0px #000). Replaced the redundant large gear square on the top right of APP SETTINGS with a Neo-Brutalist [X] Close Button, and enabled top-left header re-tap toggle, backdrop tap-to-dismiss, and Android hardware back dismissal.
    - Viral Sharing: Persistent Share Sheet Ribbon sits 100% flush (0px breathing space) on the top border of the 3-tab bottom navigation dock (bottom: calc(60px + max(env(safe-area-inset-bottom, 0px), 16px))). Expands smoothly over 320ms cubic-bezier(0.16, 1, 0.3, 1) from behind the dock, supports Instagram-style 0-latency 1:1 finger drag-to-dismiss (26% height / 0.5px/ms velocity threshold), and removes both the 5 technical/debug labels and the visible dark promotional text preview box from the frontend while preserving 100% of the promotional message + Play Store link payload on clipboard and share intents.
-   - Native Java: MainActivity.java injects "window.MemeCapsuleAndroid" for Scoped MediaStore gallery saving (Pictures/Meme Capsule) and targeted intent sharing (shareImageToApp).
+   - Native Java: MainActivity.java injects "window.MemeCapsuleAndroid" for Scoped MediaStore gallery saving (Pictures/Meme Capsule), Play Store listing intent (openPlayStoreListing), and targeted intent sharing (shareImageToApp).
    - Collections, Settings & Monetization: Meme Vault (free limit 20, Pro unlimited), Mood Boards, dedicated Settings & History page (Privacy Policy v1.1, 4 granular history/data erasure controls, feed/buffer/shake toggles), AdMob interstitials (every 4th drop), In-App Purchase (₹99 remove_ads_forever).
 
 2. PUBLIC WEB PLATFORM (memecapsule.wtf):
