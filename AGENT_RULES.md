@@ -58,43 +58,86 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 | **Team Attribution** | Update `/about`, footer, and docs with canonical roles: Anmol Verma (Lead Backend), Pratham Pandey (Lead Frontend & Ideator), Faraz Ahmed (Social Media & Marketing). | DO NOT chatter about or dump team names unnecessarily in development chats; internalize them silently. |
 | **Email Privacy** | Use ONLY `support@memecapsule.wtf` or `memecapsule.app@gmail.com`. | DO NOT include personal `@gmail.com` addresses in code, schemas, or docs. |
 | **Dependencies** | Use Vanilla CSS tokens and lightweight React functional components. | DO NOT add heavy UI component libraries (MUI, Chakra, AntD) or runtime state managers (Redux). |
+| **Visual & UI Audits** | Maintain and update the visual baseline in `ui-ux-design-audit/` and `docs/UI_UX_DESIGN_AUDIT.md` whenever visual elements, styling tokens, or layouts change (re-run `node ui-ux-design-audit/capture.mjs`). | DO NOT allow visual documentation or screenshots to drift after altering webpage appearance, themes, or components. |
 | **Testing** | Run `npm run build` and verify that both Vite compilation and static HTML prerendering pass cleanly. | DO NOT mark any task complete without running and verifying the production build. |
 
 ---
 
-## 4. Contributor Workflow Tracks (Dual Environment Support)
+## 4. Mandatory Cross-Codebase Knowledge Sync Workflow
+
+The canonical single source of truth across all 3 Meme Capsule repositories is `MEME_CAPSULE_KNOWLEDGE.md`, synchronized via `editorav010-dev/meme-capsule-sync`. All sync scripts are maintained inside `.knowledge/`.
+
+### 1. BEFORE STARTING ANY TASK (MANDATORY STEP 0):
+Before writing any code or changing any configuration, detect your operating system and fetch the latest master knowledge:
+- **Windows**: `powershell -ExecutionPolicy Bypass -File .knowledge/fetch-knowledge.ps1`
+- **macOS / Linux**: `bash .knowledge/fetch-knowledge.sh`
+Read `MEME_CAPSULE_KNOWLEDGE.md` to understand recent architectural updates, schema migrations, and decisions made by teammates across other codebases.
+
+### 2. AFTER COMPLETING ANY TASK (MANDATORY FINAL STEP):
+After making ANY changes (features, bug fixes, UI/UX changes, Android APK updates, billing, or config):
+1. Update `MEME_CAPSULE_KNOWLEDGE.md` with your new changes, version updates, or notes.
+2. Push the updated knowledge file back to the shared repository:
+   - **Windows**: `powershell -ExecutionPolicy Bypass -File .knowledge/update-knowledge.ps1`
+   - **macOS / Linux**: `bash .knowledge/update-knowledge.sh`
+3. **If a CONFLICT (HTTP 409) occurs:** Run the fetch script fresh, manually merge your changes into the latest file, and run the update script again. Never force-push or bypass the fetch.
+
+---
+
+## 5. Contributor Workflow Tracks (Dual Environment Support)
 
 This repository supports two developer workflows. Identify which track applies to your current Git remote configuration before starting:
 
 ### TRACK A: Upstream Direct Maintainer Workflow (macOS / Linux — Pratham Pandey)
 *Applicable when operating directly on `bbethical010-glitch/bbethical010-glitch.github.io`.*
 
-1. **Fetch Knowledge:** `./fetch-knowledge.sh`
+1. **Fetch Knowledge:** `bash .knowledge/fetch-knowledge.sh`
 2. **Inspect & Plan:** Verify clean git state on `main` and isolate affected files.
 3. **Implement:** Write clean TypeScript/React code with window guards for prerendering.
 4. **Test:** `npm run build` (confirm 0 errors and prerender success).
-5. **Sync Knowledge:** `./update-knowledge.sh` (if shared knowledge was updated).
+5. **Sync Knowledge:** `bash .knowledge/update-knowledge.sh` (if shared knowledge was updated).
 6. **Commit & Push:** Commit to `main` or a feature branch and push to `origin` (upstream). GitHub Actions automatically builds and deploys to `gh-pages`.
 
 ### TRACK B: Fork & Pull Request Contributor Workflow (Windows / Cross-Platform — Anmol Verma)
 *Applicable when operating on a fork (`editorav010-dev/bbethical010-glitch.github.io`) with `upstream` configured.*
 
-1. **Synchronize Local Main:**
+1. **Fetch Knowledge:** `powershell -ExecutionPolicy Bypass -File .knowledge/fetch-knowledge.ps1`
+2. **Synchronize Local Main:**
    ```bash
    git checkout main
    git fetch upstream
    git merge upstream/main
    git push origin main
    ```
-2. **Create Feature Branch:** NEVER commit directly to `main`.
+3. **Create Feature Branch:** NEVER commit directly to `main`.
    ```bash
    git checkout -b feature/<branch-name>
    ```
-3. **Implement & Test:** Run `npm run build` locally and ensure it successfully outputs to `dist/`.
-4. **Push Branch:** Push branch to the fork repository.
+4. **Implement & Test:** Run `npm run build` locally and ensure it successfully outputs to `dist/`.
+5. **Sync Knowledge:** `powershell -ExecutionPolicy Bypass -File .knowledge/update-knowledge.ps1` (if shared knowledge was updated).
+6. **Push Branch:** Push branch to the fork repository.
    ```bash
    git push -u origin feature/<branch-name>
    ```
-5. **Pull Request:** Open a Pull Request from `editorav010-dev:feature/<branch-name>` to `bbethical010-glitch:main`.
+7. **Pull Request:** Open a Pull Request from `editorav010-dev:feature/<branch-name>` to `bbethical010-glitch:main`.
 
 > **IMPORTANT**: NEVER commit to or modify the `gh-pages` branch, as it is strictly used by automated deployment actions.
+
+---
+
+## 6. Visual Baseline, UI/UX Audit & Design Token Maintenance Protocol
+
+The repository maintains an official, authoritative visual and design-token baseline located in:
+- **`ui-ux-design-audit/`** (Archive containing `UI_UX_DESIGN_AUDIT.md`, `screenshots/`, and `capture.mjs`)
+- **`docs/UI_UX_DESIGN_AUDIT.md`** and **`docs/assets/ui-audit/`**
+
+### Mandatory Rules for Any Visual, UI, or Theme Modifications:
+Whenever an AI agent modifies, creates, refactors, or fixes any visual aspect of the webpage (including HTML layout, Tailwind CSS styling tokens, color definitions, typography, micro-animations, component structures, or Acid Glitch themes):
+
+1. **Keep Visual Documentation Synchronized:** You **MUST** update the design token tables in [`docs/UI_UX_DESIGN_AUDIT.md`](docs/UI_UX_DESIGN_AUDIT.md) and [`ui-ux-design-audit/UI_UX_DESIGN_AUDIT.md`](ui-ux-design-audit/UI_UX_DESIGN_AUDIT.md) to reflect the exact current state of the source code.
+2. **Re-generate Rendered Screenshots:** Run the automated Playwright capture script from the workspace root:
+   ```bash
+   node ui-ux-design-audit/capture.mjs
+   ```
+   This captures all 13 production desktop (`1440x900`) and mobile (`390x844`) renders and updates both `ui-ux-design-audit/screenshots/` and `docs/assets/ui-audit/`.
+3. **Verify Screenshot Integrity:** Confirm all screenshots are non-zero bytes and no markdown image links are broken.
+4. **Zero Silent Visual Drift:** Never finish a visual task without ensuring the visual audit baseline matches the live, deployed reality.

@@ -1,0 +1,429 @@
+/* ==========================================================================
+   WHAT'S NEW — SCROLL-SYNCED VERTICAL TIMELINE STYLES
+   Ported directly from verified preview with Neo-Brutalist design tokens.
+   ========================================================================== */
+
+#changelog {
+  --bg: #131313;
+  --surface: #1c1b1b;
+  --surface-high: #2a2a2a;
+  --purple: #9b30ff;
+  --purple-light: #dcb8ff;
+  --gold: #f4c300;
+  --gold-light: #ffe399;
+  --pink: #dd0061;
+  --pink-light: #ffb1c0;
+  --text: #e5e2e1;
+  --muted: #988ca1;
+
+  --ease-kage: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out-kage: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --tl-progress: 0;
+  --tl-track-height: 1000px;
+
+  position: relative;
+  background-color: var(--bg);
+}
+
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── The Timeline Arena ─── */
+.timeline-arena {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 0 60px;
+}
+
+/* Central Spine Track */
+.timeline-spine-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: var(--surface-high);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Active Scroll-Fill Bar on Spine */
+.timeline-spine-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--purple) 0%, var(--gold) 100%);
+  transform-origin: top center;
+  transform: scaleY(var(--tl-progress, 0));
+  will-change: transform;
+  border-radius: 2px;
+}
+
+/* Dynamic Tracking Scrubber Node */
+.timeline-scrubber-node {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  transform: translate(-50%, calc(var(--tl-progress, 0) * var(--tl-track-height, 1000px))) translate(0, -50%);
+  will-change: transform;
+  z-index: 25;
+  pointer-events: none;
+  transition: box-shadow 0.2s var(--ease-kage);
+}
+
+.timeline-scrubber-node::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #000;
+}
+
+/* ─── Timeline Items Layout ─── */
+.timeline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  position: relative;
+  z-index: 15;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+}
+
+/* Desktop Alternating Left / Right */
+.timeline-item.side-right {
+  justify-content: flex-end;
+}
+
+.timeline-item.side-left {
+  justify-content: flex-start;
+}
+
+.timeline-card-wrapper {
+  width: calc(50% - 48px);
+  position: relative;
+}
+
+/* Anchor Node on Spine for each item */
+.timeline-anchor-node {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--surface-high);
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  transition: background-color 0.4s var(--ease-out-kage),
+              border-color 0.4s var(--ease-out-kage),
+              transform 0.4s var(--ease-out-kage);
+}
+
+.timeline-anchor-node.is-passed {
+  background: var(--gold);
+  border-color: #000;
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 2px 2px 0px #000;
+}
+
+/* Connector arm between spine and card */
+.timeline-connector {
+  position: absolute;
+  top: 36px;
+  height: 2px;
+  background: var(--surface-high);
+  z-index: 12;
+  transition: background-color 0.4s var(--ease-out-kage);
+}
+
+.side-right .timeline-connector {
+  left: 50%;
+  width: 48px;
+  transform-origin: left;
+}
+
+.side-left .timeline-connector {
+  right: 50%;
+  width: 48px;
+  transform-origin: right;
+}
+
+.timeline-item.is-active .timeline-connector {
+  background: var(--gold);
+}
+
+/* ─── Neo-Card Presentation ─── */
+.timeline-arena .neo-card {
+  background-color: var(--surface);
+  border: 2px solid var(--purple);
+  box-shadow: 5px 5px 0px var(--gold);
+  padding: 28px 28px 24px;
+  position: relative;
+  transition: transform 0.4s var(--ease-out-kage), box-shadow 0.4s var(--ease-out-kage), border-color 0.3s;
+}
+
+.timeline-arena .neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--gold);
+}
+
+/* Card Header */
+.timeline-arena .card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--purple);
+  padding-bottom: 16px;
+}
+
+.timeline-arena .card-version {
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timeline-arena .card-version.color-purple { color: var(--purple); }
+.timeline-arena .card-version.color-pink { color: var(--pink); }
+.timeline-arena .card-version.color-gold { color: var(--gold); }
+
+.timeline-arena .card-date {
+  font-family: 'Oswald', sans-serif;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Colored Tag Pill Badges */
+.timeline-arena .card-badge {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 0;
+  display: inline-block;
+  line-height: 1;
+  margin-left: auto;
+}
+
+.timeline-arena .badge-purple {
+  background: var(--purple);
+  color: var(--bg);
+  border: 1px solid var(--purple);
+}
+
+.timeline-arena .badge-pink {
+  background: var(--pink);
+  color: var(--bg);
+  border: 1px solid var(--pink);
+}
+
+.timeline-arena .badge-gold {
+  background: var(--gold);
+  color: var(--bg);
+  border: 1px solid var(--gold);
+}
+
+/* Changes Bullet List */
+.timeline-arena .card-changes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-arena .change-item {
+  font-family: 'Oswald', sans-serif;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.timeline-arena .change-bullet {
+  color: var(--gold);
+  font-size: 10px;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* ─── Celebration Geometric Burst ─── */
+.burst-container {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.burst-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid #000;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: burst-fade 0.45s var(--ease-out-kage) forwards;
+}
+
+@keyframes burst-fade {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.3);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) rotate(var(--rot, 0deg)) scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Static ring fallback for prefers-reduced-motion */
+.celebration-static-ring {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(244, 195, 0, 0.6);
+  pointer-events: none;
+  z-index: 21;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .timeline-arena {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Spine shifts to the left edge */
+  .timeline-spine-track {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-scrubber-node {
+    left: 20px;
+    transform: translate(-50%, calc(var(--tl-progress, 0) * var(--tl-track-height, 1000px))) translate(0, -50%);
+  }
+
+  .timeline-anchor-node {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-anchor-node.is-passed {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .timeline-connector {
+    left: 20px !important;
+    right: auto !important;
+    width: 32px !important;
+  }
+
+  /* All cards stacked full-width to the right of the spine */
+  .timeline-item {
+    justify-content: flex-end !important;
+  }
+
+  .timeline-card-wrapper {
+    width: calc(100% - 52px) !important;
+    margin-left: auto;
+  }
+
+  .timeline-arena .neo-card {
+    padding: 20px 18px 18px;
+  }
+
+  .timeline-arena .card-header {
+    gap: 8px;
+  }
+
+  .timeline-arena .card-version {
+    font-size: 26px;
+  }
+
+  .timeline-arena .card-badge {
+    margin-left: 0;
+  }
+
+  .burst-container,
+  .celebration-static-ring {
+    left: 20px;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION OVERRIDES (Strict accessibility requirement)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-spine-fill {
+    transform: scaleY(1) !important;
+  }
+
+  .timeline-scrubber-node {
+    display: none !important;
+  }
+
+  .burst-particle {
+    display: none !important;
+  }
+
+  .timeline-arena .neo-card {
+    transition: none !important;
+  }
+
+  .timeline-anchor-node {
+    transition: none !important;
+  }
+}

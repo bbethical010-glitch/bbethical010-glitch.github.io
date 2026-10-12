@@ -41,6 +41,16 @@ Complete these steps to finalise and deploy the website:
    - Commit your changes and push to `main`.
    - The GitHub Actions workflow (`.github/workflows/deploy.yml`) will automatically build and deploy the site.
 
+## Documentation & Visual Audits
+
+- **[AGENT_RULES.md](AGENT_RULES.md)** — Permanent operating rules and workflow tracks for AI coding agents.
+- **[docs/UI_UX_DESIGN_AUDIT.md](docs/UI_UX_DESIGN_AUDIT.md)** — Comprehensive visual audit and design token verification report.
+- **[ui-ux-design-audit/](ui-ux-design-audit/)** — Dedicated visual audit archive containing:
+  - `UI_UX_DESIGN_AUDIT.md` (Full visual audit specification)
+  - `screenshots/` (All 13 live production desktop & mobile screenshots)
+  - `capture.mjs` (Automated script to regenerate screenshots upon visual changes: `node ui-ux-design-audit/capture.mjs`)
+- **[docs/MEME_CAPSULE_KNOWLEDGE.md](docs/MEME_CAPSULE_KNOWLEDGE.md)** — Master cross-repository knowledge specification.
+
 ## Development
 
 ```bash
