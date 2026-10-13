@@ -27,9 +27,9 @@ export default function Privacy() {
         <h1 className="font-anton text-5xl text-purple uppercase mb-8 border-b-4 border-purple pb-4">Privacy Policy</h1>
         <div className="font-oswald text-text text-base leading-relaxed space-y-8">
           <div className="space-y-2 text-muted text-sm uppercase tracking-widest">
-            <p>Version: 3.4</p>
+            <p>Version: 3.5</p>
             <p>Effective Date: 25 September 2026</p>
-            <p>Last Updated: 28 September 2026</p>
+            <p>Last Updated: 13 October 2026</p>
             <p>Website: https://memecapsule.wtf</p>
             <p>Website Operator: Meme Capsule</p>
             <p>Privacy / Grievance Email: support@memecapsule.wtf</p>
@@ -105,33 +105,40 @@ export default function Privacy() {
 
           <section className="space-y-4">
             <h2 className="font-anton text-2xl text-gold uppercase mb-4">5. Cookies and Similar Technologies</h2>
-            <p>The Website uses cookies and similar technologies, including cookies associated with Google Analytics.</p>
+            <p>The Website uses cookies and similar technologies, including cookies associated with Google Analytics and third-party advertising networks such as Google AdSense.</p>
             <p>Cookies may be used for:</p>
             <ul className={listClassName}>
               <li>essential Website functionality;</li>
-              <li>security and technical operation; and</li>
-              <li>analytics and understanding Website usage.</li>
+              <li>security and technical operation;</li>
+              <li>analytics and understanding Website usage; and</li>
+              <li>delivering, measuring, and reporting third-party advertisements.</li>
             </ul>
-            <p>Google Analytics cookies are used for analytics purposes and are not used by Meme Capsule for advertising or remarketing.</p>
+            <p>Google Analytics cookies are used for analytics purposes and are not used by Meme Capsule for proprietary behavioral remarketing.</p>
             <p>Where a consent mechanism is required for non-essential cookies under applicable law, Meme Capsule will obtain the required consent before activating those cookies and will provide an appropriate means of declining or withdrawing such consent.</p>
             <p>The Website&apos;s actual cookie configuration may change as its technical implementation changes. This Privacy Policy will be updated where a material change affects the purposes or manner of cookie-based processing.</p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-anton text-2xl text-gold uppercase mb-4">6. Google Analytics and Third-Party Processing</h2>
+            <h2 className="font-anton text-2xl text-gold uppercase mb-4">6. Third-Party Services, Analytics &amp; Advertising</h2>
+            <h3 className="font-anton text-xl text-gold uppercase">6.1 Google Analytics (GA4)</h3>
             <p>Meme Capsule uses Google Analytics 4 (GA4) provided by Google to understand how visitors use the Website.</p>
-            <p>Google Analytics is configured for website analytics and is not used by Meme Capsule for advertising or remarketing.</p>
-            <h3 className="font-anton text-xl text-gold uppercase">Analytics Information</h3>
             <p>The Website collects technical and usage information that does not directly identify you by name or contact details through GA4, including browser type, operating system, approximate non-identifying location, referring URL, and page interactions.</p>
             <p>GA4 uses IP information at collection for purposes such as determining approximate geographic information and routing data, but Google states that IP addresses are discarded before the data is logged or stored by Google Analytics. Meme Capsule does not implement a separate custom IP-address collection or tracking system through the Website&apos;s GA4 implementation.</p>
-            <h3 className="font-anton text-xl text-gold uppercase">Analytics Retention</h3>
             <p>The Website&apos;s GA4 user-level and event-level analytics data is configured to the standard 2-month retention period.</p>
-            <p>Analytics data is subject to the retention configuration maintained in the relevant Google Analytics property.</p>
-            <h3 className="font-anton text-xl text-gold uppercase">Processing Outside India</h3>
-            <p>Google Analytics is operated by Google and may process Website analytics information using infrastructure located outside India.</p>
-            <p>Accordingly, information collected through Google Analytics may be processed outside India in accordance with Google&apos;s applicable data-processing practices and applicable law.</p>
-            <p>Meme Capsule does not independently determine the geographic location of Google&apos;s infrastructure used to process the analytics information.</p>
-            <p>If the Website&apos;s Google Analytics configuration materially changes in a way that affects the purposes or manner of processing described in this Privacy Policy, this Privacy Policy may be updated accordingly.</p>
+
+            <h3 className="font-anton text-xl text-gold uppercase pt-2">6.2 Third-Party Advertising &amp; Google AdSense Disclosures</h3>
+            <p>The Website displays third-party advertisements served by Google AdSense.</p>
+            <p>In accordance with Google AdSense program policies, we provide the following required disclosures:</p>
+            <ul className={listClassName}>
+              <li>Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to this Website or other websites on the Internet.</li>
+              <li>Google&apos;s use of advertising cookies enables it and its partners to serve ads to users based on their visits to this Website and/or other sites on the Internet.</li>
+              <li>Users may opt out of personalised advertising by visiting Google&apos;s <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-gold underline">Ads Settings</a>.</li>
+              <li>Alternatively, users may opt out of a third-party vendor&apos;s use of cookies for personalised advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-gold underline">www.aboutads.info</a>.</li>
+            </ul>
+
+            <h3 className="font-anton text-xl text-gold uppercase pt-2">6.3 Processing Outside India</h3>
+            <p>Google Analytics and Google AdSense are operated by Google and may process information using infrastructure located outside India in accordance with Google&apos;s applicable data-processing practices and applicable law.</p>
+            <p>Meme Capsule does not independently determine the geographic location of Google&apos;s infrastructure used to process the analytics or advertising information.</p>
           </section>
 
           <section className="space-y-4">

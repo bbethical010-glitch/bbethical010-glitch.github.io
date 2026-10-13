@@ -62,7 +62,8 @@ with open("'"$LOCAL_PATH"'", "w", encoding="utf-8") as f:
     f.write(content)
 with open("'"$META_PATH"'", "w", encoding="utf-8") as f:
     json.dump({"sha": data["sha"]}, f, indent=2)
-print(f"MEME_CAPSULE_KNOWLEDGE.md fetched successfully! (sha: {data[\"sha\"][:7]}) -> synced to '"$LOCAL_PATH"'")
+sha_short = data.get("sha", "")[:7]
+print(f"MEME_CAPSULE_KNOWLEDGE.md fetched successfully! (sha: {sha_short}) -> synced to '"$LOCAL_PATH"'")
 ' <<< "$RESP"
 elif command -v node >/dev/null 2>&1; then
   node -e '

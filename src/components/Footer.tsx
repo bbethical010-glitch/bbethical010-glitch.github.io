@@ -53,11 +53,14 @@ export function Footer() {
               <a href="/" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
               <a href="/#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
               <Link to="/how-it-works" className="text-muted hover:text-gold uppercase w-fit" data-cursor>How It Works</Link>
+              <Link to="/editorial" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Editorial &amp; Culture</Link>
+              <Link to="/guidelines" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Content Guidelines</Link>
               <Link to="/faq" className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</Link>
               <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>
               <Link to="/about" className="text-muted hover:text-gold uppercase w-fit" data-cursor>About</Link>
               <Link to="/team" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Team</Link>
-              <Link to="/privacy" className="text-muted hover:text-gold uppercase w-fit mt-2 font-bold" data-cursor>Privacy Policy</Link>
+              <Link to="/terms" className="text-muted hover:text-gold uppercase w-fit mt-1" data-cursor>Terms of Service</Link>
+              <Link to="/privacy" className="text-muted hover:text-gold uppercase w-fit font-bold" data-cursor>Privacy Policy</Link>
             </div>
           </div>
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '200ms' }}>

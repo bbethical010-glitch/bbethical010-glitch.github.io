@@ -29,9 +29,12 @@ Traditional social platforms lock users into algorithmic feedback loops and enga
 
 ## Key Pages
 - [Official Website](https://memecapsule.wtf): Main interactive meme drop and overview.
+- [Editorial & Culture Hub](https://memecapsule.wtf/editorial): Long-form essays on meme history, serendipity, and human curation ethics.
+- [Content Guidelines](https://memecapsule.wtf/guidelines): Editorial standards, anti-toxicity rules, humor taxonomy, and DMCA policy.
 - [How It Works](https://memecapsule.wtf/how-it-works): Product philosophy and experience guide.
 - [FAQ](https://memecapsule.wtf/faq): Frequently asked questions.
 - [About & Press Kit](https://memecapsule.wtf/about): Brand story, quick facts, and press assets.
-- [Meet the Team](https://memecapsule.wtf/team): Team directory and developer credits (in progress).
-- [Privacy Policy](https://memecapsule.wtf/privacy): In-app data erasure, DPDP Act 2023 & global privacy compliance details.
+- [Meet the Team](https://memecapsule.wtf/team): Team directory and developer credits.
+- [Terms of Service](https://memecapsule.wtf/terms): Terms of service, user conduct, intellectual property, and disclaimers.
+- [Privacy Policy](https://memecapsule.wtf/privacy): In-app data erasure, Google AdSense disclosures, and global privacy compliance details.
 - [Sitemap](https://memecapsule.wtf/sitemap.xml): Complete URL index.

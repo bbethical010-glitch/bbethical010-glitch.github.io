@@ -32,6 +32,18 @@ const ROUTE_SEO: Record<string, { title: string; description: string }> = {
     title: 'Privacy Policy — Meme Capsule',
     description: 'Privacy Policy for Meme Capsule. Transparent details on data handling, in-app data erasure, and zero cloud tracking.',
   },
+  '/terms': {
+    title: 'Terms of Service — Meme Capsule',
+    description: 'Terms of Service for Meme Capsule web platform. User guidelines, fair use of digital folklore, and DMCA copyright policies.',
+  },
+  '/editorial': {
+    title: 'Meme Culture & Editorial Hub — Meme Capsule',
+    description: 'In-depth essays, cultural history of internet memes, serendipity in digital design, and human curation ethics.',
+  },
+  '/guidelines': {
+    title: 'Content Guidelines & Curation Standards — Meme Capsule',
+    description: 'Public curation standards, anti-toxicity policies, humor taxonomy, and safety protocols for Meme Capsule.',
+  },
 }
 
 class ReactSSRRenderer {
@@ -100,7 +112,7 @@ export default defineConfig({
     react(),
     vitePrerender({
       staticDir: path.join(process.cwd(), 'dist'),
-      routes: ['/', '/privacy', '/about', '/faq', '/how-it-works', '/team'],
+      routes: ['/', '/privacy', '/terms', '/about', '/editorial', '/guidelines', '/faq', '/how-it-works', '/team'],
       renderer: new ReactSSRRenderer(),
     })
   ],
