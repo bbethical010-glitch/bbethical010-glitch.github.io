@@ -30,8 +30,8 @@
 
   <!-- Setting Item 3 -->
   <rect x="70" y="650" width="580" height="150" fill="#1c1b1b" stroke="#dd0061" stroke-width="3"/>
-  <text x="110" y="715" class="label">Acid Glitch Visuals</text>
-  <text x="110" y="755" class="desc">CRT scanlines and high-contrast color skew</text>
+  <text x="110" y="715" class="label">OLED Pure Dark</text>
+  <text x="110" y="755" class="desc">Pure void black high-contrast appearance</text>
   <!-- Toggle OFF -->
   <rect x="520" y="700" width="90" height="50" rx="25" fill="#333"/>
   <circle cx="545" cy="725" r="20" fill="#988ca1"/>
