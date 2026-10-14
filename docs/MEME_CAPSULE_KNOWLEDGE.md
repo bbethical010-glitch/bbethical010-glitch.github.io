@@ -449,11 +449,18 @@ Located in `src/components/MemePreview.tsx`:
   - Body: Encourages installing the Android app for unlimited daily drops with rolling prefetch.
   - CTA Button: Direct Google Play install button with UTM campaign attribution (`getPlayStoreUrl('web_preview_bumper')`).
 
-### 4.3 3D Interactive Device Mockups with Authentic WebP Screenshots & Lightbox
-Located in `src/components/Screenshots.tsx`:
-- **5 Authentic Android App Screenshots:** High-density WebP + JPEG captures of the actual Android app (Home, Loading, Loaded, Vault, Mood Boards).
-- **3D Mouse-Tilt Physics:** Dynamic mouse-tilt calculations (`rotateX`, `rotateY`, `scale3d`) with heavy Neo-Brutalist drop shadows (`25px 25px 0px -10px #f4c300`).
-- **Fullscreen Lightbox Zoom:** Clicking any mockup opens a fullscreen lightbox zoom modal with keyboard arrow navigation, escape-key dismiss, and backdrop blur.
+### 4.3 Interactive Device Mockups, Flagship Hero Phone & Zero-Lag Architecture
+- **Flagship Hero Phone Mockup (`src/components/HeroPhoneMockup.tsx`):**
+  - Serves as the central visual anchor of the landing page hero section, adhering to high-end design specifications:
+    - **Hardware Chassis:** High-fidelity obsidian Android chassis with 52px corner radius, Dynamic Island notch with camera lens aperture, hardware button cutouts, and diagonal specular glass sheen.
+    - **Atmospheric Violet Bleed Glow:** Soft radial gradient (`rgba(155, 48, 255, 0.45)`) with an ambient pulse animation (`animate-glow-pulse`) bleeding into the background canvas.
+    - **Floating Elevation Shadow:** Layered spread elevation shadow (`0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 9px 46px 0px rgba(155, 48, 255, 0.32)`) with subtle floating keyframe physics (`animate-mockup-float`).
+    - **Authentic App Screen Carousel:** Auto-cycling showcase cycling through authentic WebP captures (Home Drop, Meme Loaded, Liked Reaction, Offline Vault, Mood Boards) with pause-on-hover, direct switcher chips (`01` through `05`), and play/pause controls.
+    - **Zero-Lag RAF Parallax Tilt:** Compositor-driven `requestAnimationFrame` lerp loop manipulating `mockupRef.current.style.transform` directly, generating buttery smooth 60fps/120fps 3D mouse parallax with zero React re-renders on mousemove.
+- **Screenshot Carousel & Lightbox (`src/components/Screenshots.tsx`):**
+  - **9 Authentic Android App Screenshots:** High-density WebP + JPEG captures of the actual Android app.
+  - **Zero-Lag Direct DOM Tilt:** Optimized `PhoneMockup` to update transform via DOM ref directly rather than triggering component state updates on every mousemove, ensuring zero lag, zero frame drops, and rapid responsiveness across all devices.
+  - **Fullscreen Lightbox Zoom:** Clicking any mockup opens a fullscreen lightbox zoom modal with keyboard arrow navigation, escape-key dismiss, and backdrop blur.
 
 ### 4.4 Kage-Inspired Atmospheric Web UI
 - **Preloader (`Preloader.tsx`):** Animated entrance splash screen displaying the official brand emblem and `.pre-bar` progress bar.

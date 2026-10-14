@@ -77,7 +77,6 @@ const SCREENSHOTS: ScreenshotItem[] = [
 
 function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: (item: ScreenshotItem) => void, delay: number }) {
   const ref = useRef<HTMLDivElement>(null)
-  const [transform, setTransform] = useState('perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)')
   const [isHovered, setIsHovered] = useState(false)
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -92,12 +91,14 @@ function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: 
     const rotateX = ((y - centerY) / centerY) * -12
     const rotateY = ((x - centerX) / centerX) * 12
     
-    setTransform(`perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`)
+    ref.current.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.05, 1.05, 1.05)`
   }
 
   const handleMouseLeave = () => {
     setIsHovered(false)
-    setTransform('perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)')
+    if (ref.current) {
+      ref.current.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
+    }
   }
 
   const handleMouseEnter = () => {
@@ -121,9 +122,8 @@ function PhoneMockup({ item, onClick, delay }: { item: ScreenshotItem, onClick: 
         {/* Realistic Android Phone Frame */}
         <div 
           ref={ref}
-          className="relative w-[240px] md:w-[280px] aspect-[9/19.5] rounded-[2.5rem] border-[10px] border-[#18181b] bg-[#09090b] transition-all duration-200 ease-out preserve-3d"
+          className="relative w-[240px] md:w-[280px] aspect-[9/19.5] rounded-[2.5rem] border-[10px] border-[#18181b] bg-[#09090b] transition-transform duration-150 ease-out preserve-3d"
           style={{ 
-            transform, 
             boxShadow: isHovered 
               ? '25px 25px 0px -10px #f4c300, 0 0 0 2px rgba(155,48,255,0.8)' // Neo-brutalist harsh shadow on hover
               : '10px 10px 30px -10px rgba(0,0,0,0.8)' 

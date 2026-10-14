@@ -1,5 +1,6 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
+import { HeroPhoneMockup } from './HeroPhoneMockup'
 
 export function Hero() {
   const handleScroll = (id: string) => {
@@ -11,7 +12,7 @@ export function Hero() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#131313]"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden bg-[#131313]"
       style={{
         backgroundImage: `linear-gradient(rgba(155, 48, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(155, 48, 255, 0.08) 1px, transparent 1px)`,
         backgroundSize: '40px 40px'
@@ -21,7 +22,7 @@ export function Hero() {
         MEME CAPSULE
       </div>
 
-      <div className="flex flex-col items-center z-10 px-4 text-center max-w-4xl mx-auto">
+      <div className="flex flex-col items-center z-10 px-4 text-center max-w-4xl mx-auto w-full">
         {/* Play Store Tag */}
         <div 
           className="border border-gold text-gold text-xs uppercase tracking-widest py-1.5 px-4 rounded-full mb-6 font-oswald font-bold flex items-center gap-2 bg-surface/90 shadow-sm" 
@@ -99,13 +100,19 @@ export function Hero() {
             See it in Action
           </button>
         </div>
+
+        {/* Flagship Phone Mockup (Hims Style Spec Anchor) */}
+        <div className="w-full mt-6" data-rv="up" style={{ transitionDelay: '480ms' }}>
+          <HeroPhoneMockup />
+        </div>
       </div>
       
       {/* Subtle Scroll Down Arrow */}
       <div 
-        className="absolute bottom-6 text-gold/80 hover:text-gold cursor-pointer transition-colors animate-bounce" 
+        className="mt-6 text-gold/80 hover:text-gold cursor-pointer transition-colors animate-bounce flex items-center justify-center" 
         onClick={() => handleScroll('see-it-in-action')}
         data-cursor
+        aria-label="Scroll to see it in action"
       >
         <ChevronDown size={36} strokeWidth={2.5} />
       </div>
