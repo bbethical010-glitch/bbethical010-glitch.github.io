@@ -42,7 +42,7 @@
    - 4.2 [Interactive Live Drop Preview Simulator & Quota Lockout Bumper](#42-interactive-live-drop-preview-simulator--quota-lockout-bumper)
    - 4.3 [3D Interactive Device Mockups with Authentic WebP Screenshots & Lightbox](#43-3d-interactive-device-mockups-with-authentic-webp-screenshots--lightbox)
    - 4.4 [Kage-Inspired Atmospheric Web UI](#44-kage-inspired-atmospheric-web-ui)
-   - 4.5 [Cyberpunk Acid Glitch Mode Switcher](#45-cyberpunk-acid-glitch-mode-switcher)
+   - 4.5 [Complete Removal of Acid Glitch UI Mode](#45-complete-removal-of-acid-glitch-ui-mode)
    - 4.6 [Technical Transparency & "How It Works" Section](#46-technical-transparency--how-it-works-section)
    - 4.7 [Multi-Page Web Routing & Dedicated Pages](#47-multi-page-web-routing--dedicated-pages)
    - 4.8 [Serverless Contact API via Resend Edge Function](#48-serverless-contact-api-via-resend-edge-function)
@@ -468,9 +468,10 @@ Located in `src/components/MemePreview.tsx`:
 - **Film Grain & Vignette (`GrainOverlay.tsx` & `Vignette.tsx`):** GPU-accelerated CRT arcade grain texture optimized for smooth Interaction to Next Paint (INP) with automatic disabling for users with `prefers-reduced-motion`.
 - **Desktop Scroll Rail (`ScrollRail.tsx`):** Fixed vertical navigation indicator reflecting active page sections.
 
-### 4.5 Cyberpunk Acid Glitch Mode Switcher
-- Toggled from the navigation bar (`Navbar.tsx`).
-- Injects `html.theme-glitch` into the DOM, applying CRT scanlines, 115° hue rotation, chromatic aberration, and randomized keyframe skews.
+### 4.5 Complete Removal of Acid Glitch UI Mode
+- **Navigation Cleanup (`Navbar.tsx`):** Completely removed the desktop and mobile Acid Glitch toggle buttons, `Zap` icon, and state management (`isGlitch`, `toggleGlitch`).
+- **CSS Purge (`src/index.css`):** Purged all acid scanline overlays, 115° hue rotation filters, and keyframe skew animations (`html.theme-glitch`, `glitch-anim`, `@keyframes scanlines`) to eliminate visual clutter and ensure a focused, high-contrast Neo-Brutalist presentation.
+- **Client Cache Sanitation:** Automatically clears any legacy `theme-glitch` entries from client `localStorage` and cleanses the `html` root class upon page mount to ensure existing visitors receive the clean interface.
 
 ### 4.6 Technical Transparency & "How It Works" Section
 - **Homepage Summary (`src/components/HowItWorks.tsx`):** High-level 3-step explanation of the single-tap delivery mechanism, local FIFO prefetch, and zero-algorithm philosophy.
@@ -833,7 +834,7 @@ ECOSYSTEM STRUCTURE:
 
 2. PUBLIC WEB PLATFORM (memecapsule.wtf):
    - Tech: React 18, Vite 5, Tailwind CSS v3, React Router DOM v6, static HTML prerendering (vite-plugin-prerender with ReactSSRRenderer) on GitHub Pages.
-   - Core Features: Live Drop Simulator (5-drop quota + lockout bumper with Play Store UTM tracking), 3D interactive phone mockups (5 authentic WebP captures + lightbox zoom), Kage atmospheric UI (Preloader, CustomCursor, GrainOverlay, Vignette, ScrollRail), Acid Glitch mode (html.theme-glitch), Section 04.5 Under the Hood, /about Press Kit (copy kit & brand downloads), /privacy policy, Formspree contact form (xwlenwzr with privacy consent), Google AdSense unit meme1 (slot 6291908699, ca-pub-2093403233028868), and SEO/GEO (llms.txt, Schema.org).
+   - Core Features: Live Drop Simulator (5-drop quota + lockout bumper with Play Store UTM tracking), 3D interactive phone mockups (5 authentic WebP captures + lightbox zoom), Kage atmospheric UI (Preloader, CustomCursor, GrainOverlay, Vignette, ScrollRail), Section 04.5 Under the Hood, /about Press Kit (copy kit & brand downloads), /privacy policy, Formspree contact form (xwlenwzr with privacy consent), Google AdSense unit meme1 (slot 6291908699, ca-pub-2093403233028868), and SEO/GEO (llms.txt, Schema.org).
 
 3. SERVERLESS EDGE BACKEND & INTERNAL WORKBENCHES (meme-capsule-eww.pages.dev - This Repo):
    - Tech: Cloudflare Pages Functions, Cloudflare D1 (SQLite with 13 migrations), Cloudflare R2 (bucket memes, $0.00 egress).

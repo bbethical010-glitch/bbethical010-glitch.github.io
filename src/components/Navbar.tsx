@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
 
 interface NavbarProps {
@@ -10,7 +10,6 @@ interface NavbarProps {
 
 export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [isGlitch, setIsGlitch] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -26,26 +25,13 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
     }
   }, [isOpen])
 
-  // Initialize glitch state from localStorage
+  // Clear any legacy glitch/acid theme from client storage
   useEffect(() => {
-    const saved = localStorage.getItem('theme-glitch')
-    if (saved === 'true') {
-      setIsGlitch(true)
-      document.documentElement.classList.add('theme-glitch')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('theme-glitch')
+      document.documentElement.classList.remove('theme-glitch')
     }
   }, [])
-
-  const toggleGlitch = () => {
-    const nextState = !isGlitch
-    setIsGlitch(nextState)
-    if (nextState) {
-      document.documentElement.classList.add('theme-glitch')
-      localStorage.setItem('theme-glitch', 'true')
-    } else {
-      document.documentElement.classList.remove('theme-glitch')
-      localStorage.setItem('theme-glitch', 'false')
-    }
-  }
 
   const handleScroll = (id: string) => {
     setIsOpen(false)
@@ -155,21 +141,6 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
                 <span>Editorial</span><span className="alt">Editorial</span>
               </Link>
 
-              {/* Glitch Toggle (Desktop) */}
-              <button
-                onClick={toggleGlitch}
-                className={`flex items-center gap-2 font-oswald uppercase font-bold text-xs lg:text-sm px-3 py-1.5 border-2 transition-colors ${
-                  isGlitch
-                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]'
-                    : 'border-purple/50 text-purple hover:border-gold hover:text-gold hover:bg-surface'
-                }`}
-                data-cursor
-                title="Toggle Cyberpunk Glitch Mode"
-              >
-                <Zap size={16} className={isGlitch ? 'animate-pulse' : ''} />
-                <span>{isGlitch ? 'Acid ON' : 'Acid OFF'}</span>
-              </button>
-
               <a
                 href={CONFIG.getPlayStoreUrl('navbar_desktop')}
                 target="_blank"
@@ -183,21 +154,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
             </div>
 
             {/* Mobile Actions */}
-            <div className="md:hidden flex items-center gap-3">
-              {/* Glitch Toggle (Mobile) */}
-              <button
-                onClick={toggleGlitch}
-                className={`p-1.5 sm:p-2 border-2 transition-colors ${
-                  isGlitch
-                    ? 'border-pink text-pink bg-pink/10 shadow-[2px_2px_0px_#dd0061]'
-                    : 'border-purple/50 text-purple bg-surface'
-                }`}
-                aria-label="Toggle Glitch Mode"
-                data-cursor
-              >
-                <Zap size={20} className={isGlitch ? 'animate-pulse' : ''} />
-              </button>
-
+            <div className="md:hidden flex items-center">
               {/* Mobile Hamburger Toggle Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
