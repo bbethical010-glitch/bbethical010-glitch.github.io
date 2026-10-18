@@ -436,7 +436,7 @@ To drive organic Google Play Store reviews while honoring the app's Neo-Brutalis
   - Tailwind CSS v3.4 (`^3.4.19`) with PostCSS & Autoprefixer
   - TypeScript 6 (`~6.0.2`) with strict type checking
 - **Deterministic Static Prerendering (`ReactSSRRenderer`):** 
-  Uses `vite-plugin-prerender` with an in-process headless `ReactSSRRenderer` (leveraging `react-dom/server` and `react-router-dom/server`'s `StaticRouter`) to produce fully-baked, SEO-ready static HTML files for all 9 public routes (`/`, `/about`, `/team`, `/faq`, `/how-it-works`, `/privacy`, `/terms`, `/editorial`, `/guidelines`).
+  Uses `vite-plugin-prerender` with an in-process headless `ReactSSRRenderer` (leveraging `react-dom/server` and `react-router-dom/server`'s `StaticRouter`) to produce fully-baked, SEO-ready static HTML files for all 8 active public routes (`/`, `/about`, `/team`, `/faq`, `/how-it-works`, `/privacy`, `/terms`, `/guidelines`). (Note: `/editorial` is preserved in draft status and excluded from active prerender routes).
 - **Dynamic Route-Specific SEO Metadata Injection:** 
   During build-time prerendering, `ReactSSRRenderer` reads route configurations (`ROUTE_SEO`) and surgically injects route-specific `<title>`, `<meta name="description">`, `<link rel="canonical">`, Open Graph tags (`og:title`, `og:description`, `og:url`), and Twitter card metadata directly into each route's generated `index.html`. This ensures 100% crawl fidelity without relying on JavaScript hydration or client-side redirects (`404.html`).
 
@@ -480,7 +480,10 @@ Located in `src/components/MemePreview.tsx`:
 ### 4.7 Multi-Page Web Routing & Dedicated Pages
 The platform implements full client-side routing and static build prerendering across 9 distinct pages:
 - **Home (`/`):** Full interactive landing experience featuring hero, live drop simulator, 3D screenshots, features grid, How It Works summary, and download CTAs.
-- **Meme Culture & Editorial Hub (`/editorial`):** Dedicated publication hub featuring 4 long-form cultural essays analyzing algorithmic dopamine traps vs. serendipity, a 30-year taxonomy of meme formats (ASCII to post-irony), human curation ethics, and fair use. Delivers substantial original textual substance to satisfy AdSense publisher quality standards.
+- **Meme Culture & Editorial Hub (`/editorial` — DRAFT STATUS):** 
+  > **STATUS: DRAFT / INACTIVE (Preserved in Codebase, Decoupled from Live Site)**  
+  > *Context & Decision:* Implemented in commit `e1293fe` to satisfy AdSense publisher depth standards with 4 long-form cultural essays. However, because core team consensus was not established prior to live deployment, the feature has been placed into **Draft Status**. The source component (`src/pages/Editorial.tsx`), essays, and styling are 100% preserved in the codebase, but the public route, navigation tabs (Desktop & Mobile Navbar, Footer), sitemap entry, and prerendering are deactivated.  
+  > *Reactivation Checklist:* To restore this page to the public site, follow the 6-step checklist in `AGENT_RULES.md`: (1) uncomment route in `src/App.tsx`, (2) uncomment links in `Navbar.tsx` desktop and mobile, (3) uncomment link in `Footer.tsx`, (4) add `'/editorial'` to `routes` in `vite.config.ts`, (5) uncomment in `public/sitemap.xml`, and (6) restore CTA target in `src/pages/ContentGuidelines.tsx`.
 - **Content Guidelines (`/guidelines`):** Transparent editorial guidelines defining core principles, zero-tolerance prohibitions (hate speech, harassment, doxxing, non-consensual imagery), comedic taxonomy, and expedited DMCA takedown procedures.
 - **How It Works (`/how-it-works`):** Standalone route featuring detailed system architecture and anti-algorithm delivery philosophy.
 - **FAQ (`/faq`):** Standalone route housing an exhaustive 15-question accordion grid (`src/constants/faq.ts`) with quick back-navigation and direct app download banners.
@@ -504,9 +507,9 @@ Located in `functions/api/contact.ts` and `src/components/ContactForm.tsx`:
 - Client ID: `ca-pub-2093403233028868`, Ad Slot: `6291908699` (`meme1`).
 - **Policy Compliance & Placement Optimization:**
   - Removed ad unit from interactive client canvas in `MemePreview.tsx` to eliminate low-text/empty canvas ad serving violations.
-  - Placed ad unit in content-dense editorial context (`/editorial`) where substantial original long-form articles maintain a >90% content-to-ad ratio.
+  - Placed ad unit in content-dense editorial context (`src/pages/Editorial.tsx`) where substantial original long-form articles maintain a >90% content-to-ad ratio (preserved in draft status pending team review).
   - Added required Google AdSense and DoubleClick cookie disclosures with opt-out mechanisms in `Privacy.tsx` (v3.5).
-  - Launched comprehensive Terms of Service (`/terms`), Editorial Hub (`/editorial`), and Content Guidelines (`/guidelines`) to resolve thin-content classifications.
+  - Launched comprehensive Terms of Service (`/terms`) and Content Guidelines (`/guidelines`) to resolve thin-content classifications, with Editorial Hub preserved in draft state.
 
 ### 4.10 Search, Generative & AI Engine Optimization (SEO, GEO & AEO)
 1. **Schema.org Structured Data (JSON-LD):**

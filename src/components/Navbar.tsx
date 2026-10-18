@@ -132,6 +132,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 <span>About</span><span className="alt">About</span>
               </Link>
+              {/* [DRAFT FEATURE] Editorial Hub tab removed from live navbar. To reactivate, uncomment below:
               <Link
                 to="/editorial"
                 onClick={() => setIsOpen(false)}
@@ -140,6 +141,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 <span>Editorial</span><span className="alt">Editorial</span>
               </Link>
+              */}
 
               <a
                 href={CONFIG.getPlayStoreUrl('navbar_desktop')}
@@ -214,6 +216,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 About
               </Link>
+              {/* [DRAFT FEATURE] Editorial Hub tab removed from mobile menu. To reactivate, uncomment below:
               <Link
                 to="/editorial"
                 onClick={() => setIsOpen(false)}
@@ -221,6 +224,7 @@ export function Navbar({ isHidden = false, isStuck = false }: NavbarProps) {
               >
                 Editorial
               </Link>
+              */}
               <div className="pt-4 pb-2">
                 <a
                   href={CONFIG.getPlayStoreUrl('navbar_mobile')}
