@@ -15,7 +15,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/how-it-works" element={<HowItWorksPage />} />
-      <Route path="/editorial" element={<Editorial />} />
+      {/* [DRAFT FEATURE] Editorial Hub is preserved in codebase but deactivated from public routing.
+          To reactivate, uncomment the line below: */}
+      {/* <Route path="/editorial" element={<Editorial />} /> */}
       <Route path="/guidelines" element={<ContentGuidelines />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/about" element={<About />} />

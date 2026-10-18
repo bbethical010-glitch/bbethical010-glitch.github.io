@@ -171,13 +171,15 @@ export default function ContentGuidelines() {
 
           {/* Navigation link back */}
           <div className="pt-8 border-t border-purple/30 flex justify-between items-center">
+            {/* [DRAFT NOTE] Original link pointed to /editorial ("EXPLORE OUR EDITORIAL ESSAYS").
+                Updated to /about while Editorial Hub is in draft status. */}
             <Link
-              to="/editorial"
+              to="/about"
               className="font-oswald font-semibold uppercase text-purple hover:text-gold transition-colors inline-flex items-center gap-2 tracking-wider"
               data-cursor
             >
               <ArrowLeft size={18} />
-              EXPLORE OUR EDITORIAL ESSAYS
+              ABOUT MEME CAPSULE
             </Link>
             <Link
               to="/terms"

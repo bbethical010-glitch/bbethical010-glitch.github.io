@@ -53,7 +53,9 @@ export function Footer() {
               <a href="/" onClick={(e) => { e.preventDefault(); handleScroll('hero') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Home</a>
               <a href="/#features" onClick={(e) => { e.preventDefault(); handleScroll('features') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Features</a>
               <Link to="/how-it-works" className="text-muted hover:text-gold uppercase w-fit" data-cursor>How It Works</Link>
+              {/* [DRAFT FEATURE] Editorial link removed from footer. To reactivate, uncomment below:
               <Link to="/editorial" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Editorial &amp; Culture</Link>
+              */}
               <Link to="/guidelines" className="text-muted hover:text-gold uppercase w-fit" data-cursor>Content Guidelines</Link>
               <Link to="/faq" className="text-muted hover:text-gold uppercase w-fit" data-cursor>FAQ</Link>
               <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScroll('contact') }} className="text-muted hover:text-gold uppercase w-fit" data-cursor>Contact</a>

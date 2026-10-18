@@ -112,7 +112,8 @@ export default defineConfig({
     react(),
     vitePrerender({
       staticDir: path.join(process.cwd(), 'dist'),
-      routes: ['/', '/privacy', '/terms', '/about', '/editorial', '/guidelines', '/faq', '/how-it-works', '/team'],
+      // [DRAFT FEATURE] '/editorial' is drafted; to reactivate prerendering, add '/editorial' back to routes:
+      routes: ['/', '/privacy', '/terms', '/about', '/guidelines', '/faq', '/how-it-works', '/team'],
       renderer: new ReactSSRRenderer(),
     })
   ],

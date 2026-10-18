@@ -44,6 +44,19 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 - **Google AdSense Unit `meme1`**: Web monetization banner unit integration.
 - **Official Contact & Social Links**: `support@memecapsule.wtf`, Instagram (`@capsule.meme`), X (`@memecapsule_`), Threads (`@capsule.meme`).
 
+### D. Drafted & Inactive Modules (PRESERVE IN CODEBASE — DO NOT PUBLISH WITHOUT EXPLICIT PERMISSION)
+- **Meme Culture & Editorial Hub (`src/pages/Editorial.tsx`)**:
+  - **Status:** DRAFT / INACTIVE (Decoupled from live website navigation, routing, and prerendering).
+  - **Rule 1 (Preservation Mandate):** DO NOT delete or rename `src/pages/Editorial.tsx`. All 4 original cultural essays, layouts, and styles must remain safely preserved in the codebase as a draft.
+  - **Rule 2 (No Unauthorized Exposure):** DO NOT expose or publish `/editorial` to public navigation (Navbar, Footer), router, prerender routes, or sitemaps unless explicitly commanded by the user.
+  - **Rule 3 (Reactivation Checklist):** When the user explicitly requests to activate/publish the Editorial Hub, follow the standard 6-step reactivation workflow:
+    1. In `src/App.tsx`: Uncomment `<Route path="/editorial" element={<Editorial />} />`.
+    2. In `src/components/Navbar.tsx`: Uncomment the `<Link to="/editorial">` in both Desktop & Mobile menus.
+    3. In `src/components/Footer.tsx`: Uncomment the `<Link to="/editorial">` link.
+    4. In `vite.config.ts`: Add `'/editorial'` to the `routes` array in `vitePrerender`.
+    5. In `public/sitemap.xml`: Uncomment the `/editorial` `<url>` entry.
+    6. In `src/pages/ContentGuidelines.tsx`: Restore the bottom CTA link target to `/editorial`.
+
 ---
 
 ## 3. Exhaustive DO's and DONT's Table
@@ -59,6 +72,7 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 | **Email Privacy** | Use ONLY `support@memecapsule.wtf` or `memecapsule.app@gmail.com`. | DO NOT include personal `@gmail.com` addresses in code, schemas, or docs. |
 | **Dependencies** | Use Vanilla CSS tokens and lightweight React functional components. | DO NOT add heavy UI component libraries (MUI, Chakra, AntD) or runtime state managers (Redux). |
 | **Visual & UI Audits** | Maintain and update the visual baseline in `ui-ux-design-audit/` and `docs/UI_UX_DESIGN_AUDIT.md` whenever visual elements, styling tokens, or layouts change (re-run `node ui-ux-design-audit/capture.mjs`). | DO NOT allow visual documentation or screenshots to drift after altering webpage appearance, themes, or components. |
+| **Editorial Hub (Draft)** | Keep `src/pages/Editorial.tsx` preserved in codebase in draft status. Follow 6-step checklist to reactivate only when requested. | DO NOT delete `src/pages/Editorial.tsx` or re-publish `/editorial` to live navigation/routes without explicit authorization. |
 | **Testing** | Run `npm run build` and verify that both Vite compilation and static HTML prerendering pass cleanly. | DO NOT mark any task complete without running and verifying the production build. |
 
 ---

@@ -1,3 +1,26 @@
+/**
+ * ==============================================================================
+ * [DRAFT STATUS] MEME CULTURE & EDITORIAL HUB
+ * ==============================================================================
+ * Status: DRAFT / INACTIVE (Preserved in codebase, decoupled from live website)
+ * Rationale: Created in commit e1293fe for AdSense content value compliance, but
+ *            placed in draft state pending team consensus and review.
+ *
+ * NOTE FOR AI AGENTS & DEVELOPERS:
+ * DO NOT DELETE THIS FILE. All original essays, cultural commentary, and styling
+ * are fully preserved here. When the team requests re-activation, follow the
+ * 6-step reactivation checklist documented in AGENT_RULES.md and below:
+ *
+ * HOW TO RE-ACTIVATE / PUBLISH THIS PAGE:
+ * 1. In src/App.tsx: Uncomment `<Route path="/editorial" element={<Editorial />} />`
+ * 2. In src/components/Navbar.tsx: Uncomment the `<Link to="/editorial">` in both Desktop & Mobile menus.
+ * 3. In src/components/Footer.tsx: Uncomment the `<Link to="/editorial">` link.
+ * 4. In vite.config.ts: Add `'/editorial'` to the `routes` array in `vitePrerender`.
+ * 5. In public/sitemap.xml: Uncomment the `/editorial` `<url>` entry.
+ * 6. In src/pages/ContentGuidelines.tsx: Restore the CTA link target to `/editorial`.
+ * ==============================================================================
+ */
+
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BookOpen, Clock, Calendar, ArrowRight, Sparkles, Shield, Compass } from 'lucide-react'
