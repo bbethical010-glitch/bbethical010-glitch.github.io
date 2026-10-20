@@ -1,3 +1,23 @@
+/**
+ * ==============================================================================
+ * [DRAFT STATUS] FLAGSHIP HERO PHONE MOCKUP
+ * ==============================================================================
+ * Status: DRAFT / INACTIVE (Preserved in codebase, decoupled from live Hero section)
+ * Rationale: Removed per user/team direction to streamline the landing page hero,
+ *            focusing visitor attention directly on primary CTAs and the interactive
+ *            live drop preview simulator (MemePreview.tsx).
+ *
+ * NOTE FOR AI AGENTS & DEVELOPERS:
+ * DO NOT DELETE THIS FILE. All obsidian chassis styling, Dynamic Island notch,
+ * auto-cycling screen carousel, and zero-lag RAF mouse parallax tilt mathematics
+ * are 100% preserved here.
+ *
+ * HOW TO RE-ACTIVATE ON THE WEBSITE:
+ * 1. In src/components/Hero.tsx: Uncomment `import { HeroPhoneMockup } from './HeroPhoneMockup'`
+ * 2. In src/components/Hero.tsx: Uncomment `<HeroPhoneMockup />` below the primary CTA buttons.
+ * ==============================================================================
+ */
+
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Sparkles, ArrowRight, ShieldCheck, Play, Pause } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
