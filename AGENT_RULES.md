@@ -57,6 +57,14 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
     5. In `public/sitemap.xml`: Uncomment the `/editorial` `<url>` entry.
     6. In `src/pages/ContentGuidelines.tsx`: Restore the bottom CTA link target to `/editorial`.
 
+- **Flagship Hero Phone Mockup (`src/components/HeroPhoneMockup.tsx`)**:
+  - **Status:** DRAFT / INACTIVE (Preserved in codebase, decoupled from live `src/components/Hero.tsx`).
+  - **Rule 1 (Preservation Mandate):** DO NOT delete or rename `src/components/HeroPhoneMockup.tsx`. All obsidian chassis styling, Dynamic Island notch, carousel mechanics, and zero-lag RAF tilt mathematics must remain safely preserved in the codebase as a draft module.
+  - **Rule 2 (No Unauthorized Exposure):** DO NOT re-enable `<HeroPhoneMockup />` in `src/components/Hero.tsx` unless explicitly commanded by the user.
+  - **Rule 3 (Reactivation Workflow):** When the user explicitly requests to re-activate the phone mockup on the website:
+    1. In `src/components/Hero.tsx`: Uncomment `import { HeroPhoneMockup } from './HeroPhoneMockup'`.
+    2. In `src/components/Hero.tsx`: Uncomment `<HeroPhoneMockup />` below the primary CTA buttons.
+
 ---
 
 ## 3. Exhaustive DO's and DONT's Table
@@ -73,6 +81,7 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 | **Dependencies** | Use Vanilla CSS tokens and lightweight React functional components. | DO NOT add heavy UI component libraries (MUI, Chakra, AntD) or runtime state managers (Redux). |
 | **Visual & UI Audits** | Maintain and update the visual baseline in `ui-ux-design-audit/` and `docs/UI_UX_DESIGN_AUDIT.md` whenever visual elements, styling tokens, or layouts change (re-run `node ui-ux-design-audit/capture.mjs`). | DO NOT allow visual documentation or screenshots to drift after altering webpage appearance, themes, or components. |
 | **Editorial Hub (Draft)** | Keep `src/pages/Editorial.tsx` preserved in codebase in draft status. Follow 6-step checklist to reactivate only when requested. | DO NOT delete `src/pages/Editorial.tsx` or re-publish `/editorial` to live navigation/routes without explicit authorization. |
+| **Hero Phone Mockup (Draft)** | Keep `src/components/HeroPhoneMockup.tsx` preserved in codebase in draft status. Re-enable in `Hero.tsx` only when requested. | DO NOT delete `HeroPhoneMockup.tsx` or re-enable it in `Hero.tsx` without explicit user authorization. |
 | **Testing** | Run `npm run build` and verify that both Vite compilation and static HTML prerendering pass cleanly. | DO NOT mark any task complete without running and verifying the production build. |
 
 ---

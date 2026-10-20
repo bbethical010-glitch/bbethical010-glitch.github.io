@@ -1,6 +1,8 @@
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { CONFIG, trackInstallClick } from '../constants/config'
-import { HeroPhoneMockup } from './HeroPhoneMockup'
+// [DRAFT FEATURE] HeroPhoneMockup is preserved in codebase but deactivated from live hero.
+// To reactivate, uncomment below:
+// import { HeroPhoneMockup } from './HeroPhoneMockup'
 
 export function Hero() {
   const handleScroll = (id: string) => {
@@ -101,15 +103,16 @@ export function Hero() {
           </button>
         </div>
 
-        {/* Flagship Phone Mockup (Hims Style Spec Anchor) */}
+        {/* [DRAFT FEATURE] Flagship Phone Mockup (deactivated; see HeroPhoneMockup.tsx to reactivate):
         <div className="w-full mt-6" data-rv="up" style={{ transitionDelay: '480ms' }}>
           <HeroPhoneMockup />
         </div>
+        */}
       </div>
       
       {/* Subtle Scroll Down Arrow */}
       <div 
-        className="mt-6 text-gold/80 hover:text-gold cursor-pointer transition-colors animate-bounce flex items-center justify-center" 
+        className="mt-12 text-gold/80 hover:text-gold cursor-pointer transition-colors animate-bounce flex items-center justify-center" 
         onClick={() => handleScroll('see-it-in-action')}
         data-cursor
         aria-label="Scroll to see it in action"
