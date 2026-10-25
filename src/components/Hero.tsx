@@ -93,7 +93,7 @@ export function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackInstallClick('hero_badge')}
-            className="transform hover:scale-[1.03] transition-transform duration-300"
+            className="google-play-badge-btn inline-block"
             data-cursor
           >
             <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-[64px] md:h-[72px] w-auto" width="200" height="60" />
