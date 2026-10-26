@@ -564,6 +564,7 @@ Located in `src/components/MemePreview.tsx`:
 - **Zero-Wait & Zero-Loading Screen Interaction:**
   - Tapping **"HIT ME"** instantly pops the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
   - The intrusive *"Dropping Capsule..."* loader screen has been completely eliminated from inter-drop transitions; the active card updates immediately with snappy arcade scale micro-feedback.
+  - **Scroll-Reveal Reconciliation Fix:** Removed `data-rv` attribute from the dynamic meme card container and action buttons, and hardened `useScrollReveal` with persistent `[data-rv-done="true"]` attribute tracking. This permanently prevents React re-renders from stripping `.rv-in` and erroneously resetting the card to `opacity: 0` after the first drop.
 - **10-Drop Quota Counter:** Users can experience 10 authentic live preview drops on the web (`10 -> 9 -> ... -> 0`).
 - **Conversion Lockout Bumper:** Upon opening the 10th capsule, a Neo-Brutalist lockout bumper covers the card:
   - Header: `CAPSULE DEPLETED!`

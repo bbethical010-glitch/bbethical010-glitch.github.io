@@ -80,11 +80,11 @@ export function MemePreview() {
   const [meme, setMeme] = useState<MemeResponse>(FALLBACK_MEMES[0])
   const [dropCount, setDropCount] = useState<number>(1)
   const [isLocked, setIsLocked] = useState<boolean>(false)
-  const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
-  // In-memory FIFO queue holding preloaded memes for zero-latency drops
-  const fifoQueueRef = useRef<MemeResponse[]>([])
+  // In-memory FIFO queue initialized with fallback items immediately to guarantee 0ms wait
+  const fifoQueueRef = useRef<MemeResponse[]>([...FALLBACK_MEMES.slice(1)])
   const initializedRef = useRef<boolean>(false)
+  const userInteractedRef = useRef<boolean>(false)
 
   // Pre-cache image assets directly into browser HTTP/bitmap cache
   const preloadImage = (url: string) => {
@@ -148,14 +148,21 @@ export function MemePreview() {
           }
         }
 
-        // Update active meme and initialize FIFO queue with remaining 9
+        // Only update initial meme if user hasn't clicked "HIT ME" yet
         if (validMemes.length > 0) {
-          setMeme(validMemes[0])
-          fifoQueueRef.current = validMemes.slice(1)
+          if (!userInteractedRef.current) {
+            setMeme(validMemes[0])
+            fifoQueueRef.current = validMemes.slice(1)
+          } else {
+            // Merge newly fetched live memes into remaining queue slots
+            fifoQueueRef.current = validMemes
+          }
         }
       } catch (err) {
         console.warn('Batch prefetch fallback active:', err)
-        fifoQueueRef.current = FALLBACK_MEMES.slice(1)
+        if (!userInteractedRef.current) {
+          fifoQueueRef.current = [...FALLBACK_MEMES.slice(1)]
+        }
       }
     }
 
@@ -163,6 +170,8 @@ export function MemePreview() {
   }, [])
 
   const handleHitMe = () => {
+    userInteractedRef.current = true
+
     if (dropCount >= MAX_PREVIEW_DROPS) {
       setIsLocked(true)
       try {
@@ -170,10 +179,6 @@ export function MemePreview() {
       } catch {}
       return
     }
-
-    // Trigger snappy arcade tactile feedback
-    setIsAnimating(true)
-    setTimeout(() => setIsAnimating(false), 150)
 
     // Track GA4 engagement
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -224,7 +229,7 @@ export function MemePreview() {
         </p>
 
         {/* Drops Counter Badge */}
-        <div className="mb-8 font-oswald text-sm font-semibold" data-rv="up" style={{ transitionDelay: '200ms' }}>
+        <div className="mb-8 font-oswald text-sm font-semibold">
           {dropCount >= MAX_PREVIEW_DROPS ? (
             <span className="text-pink bg-surfaceHigh px-4 py-1.5 border border-pink uppercase tracking-wide">
               Web Preview Quota Reached (0 Drops Left)
@@ -236,11 +241,10 @@ export function MemePreview() {
           )}
         </div>
 
-        {/* Meme Display Card */}
+        {/* Meme Display Card — Protected against scroll reveal opacity unmounting */}
         <div 
-          className={`w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col transition-transform duration-150 ${isAnimating ? 'scale-[0.98]' : 'scale-100'}`} 
-          style={{ boxShadow: '6px 6px 0px #f4c300', transitionDelay: '300ms' }}
-          data-rv="up"
+          className="w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col transition-all duration-200" 
+          style={{ boxShadow: '6px 6px 0px #f4c300' }}
         >
           <div className="w-full aspect-[4/5] relative bg-[#131313] flex items-center justify-center overflow-hidden">
             {meme && (
@@ -249,7 +253,7 @@ export function MemePreview() {
                   key={meme.url}
                   src={meme.url} 
                   alt={meme.title} 
-                  className="w-full h-full object-cover select-none pointer-events-none" 
+                  className="w-full h-full object-cover select-none pointer-events-none animate-fadeIn" 
                   width="400"
                   height="500"
                   decoding="async"
@@ -312,7 +316,6 @@ export function MemePreview() {
             onClick={() => trackInstallClick('preview_quota_btn')}
             className="neo-button-secondary mt-8 px-10 py-4 text-xl flex items-center gap-2"
             data-cursor
-            data-rv="up" style={{ transitionDelay: '400ms' }}
           >
             <Download size={22} />
             Download App for Unlimited Drops
@@ -320,9 +323,8 @@ export function MemePreview() {
         ) : (
           <button 
             onClick={handleHitMe} 
-            className="neo-button-primary mt-8 px-12 py-4 text-2xl active:translate-x-1 active:translate-y-1 transition-transform"
+            className="neo-button-primary mt-8 px-12 py-4 text-2xl active:translate-x-1 active:translate-y-1 active:scale-[0.98] transition-transform"
             data-cursor
-            data-rv="up" style={{ transitionDelay: '400ms' }}
           >
             HIT ME
           </button>
