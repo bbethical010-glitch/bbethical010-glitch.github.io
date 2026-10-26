@@ -15,13 +15,13 @@ const MAX_PREVIEW_DROPS = 10
 // Curated backup memes with verified 200 OK Cloudflare R2 URLs
 const FALLBACK_MEMES: MemeResponse[] = [
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Dal4WDODYI-_1.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C7VeMb0tjUg.jpg',
     title: 'Capsule Drop #101',
     category: 'Synced',
     rarity: 'Common'
   },
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DatCw2NGlOu_3.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C3Qfq0wrNY6.jpg',
     title: 'Unhinged Drop #102',
     category: 'Synced',
     rarity: 'Rare'
@@ -81,16 +81,23 @@ export function MemePreview() {
   const [meme, setMeme] = useState<MemeResponse | null>(null)
   const [dropCount, setDropCount] = useState<number>(0)
   const [isLocked, setIsLocked] = useState<boolean>(false)
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null)
 
   // In-memory FIFO queue initialized with fallback items immediately to guarantee 0ms wait
   const fifoQueueRef = useRef<MemeResponse[]>([...FALLBACK_MEMES])
   const initializedRef = useRef<boolean>(false)
   const userInteractedRef = useRef<boolean>(false)
+  const aspectCacheRef = useRef<Map<string, number>>(new Map())
 
-  // Pre-cache image assets directly into browser HTTP/bitmap cache
+  // Pre-cache image assets directly into browser HTTP/bitmap cache and record aspect ratios
   const preloadImage = (url: string) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && url) {
       const img = new Image()
+      img.onload = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          aspectCacheRef.current.set(url, img.naturalWidth / img.naturalHeight)
+        }
+      }
       img.src = url
     }
   }
@@ -196,6 +203,12 @@ export function MemePreview() {
       nextMeme = FALLBACK_MEMES[fallbackIndex]
     }
 
+    // Immediately resolve pre-cached aspect ratio if available
+    const cachedRatio = aspectCacheRef.current.get(nextMeme.url)
+    if (cachedRatio) {
+      setAspectRatio(cachedRatio)
+    }
+
     // Instant swap without any loading screen
     setMeme(nextMeme)
     const nextCount = dropCount + 1
@@ -211,6 +224,49 @@ export function MemePreview() {
   }
 
   const remaining = Math.max(0, MAX_PREVIEW_DROPS - dropCount)
+
+  // Dynamic card max-width based on meme orientation
+  const getCardMaxWidthClass = () => {
+    if (!meme) return 'max-w-[400px]'
+    if (isLocked || dropCount >= MAX_PREVIEW_DROPS) return 'max-w-[420px]'
+    if (!aspectRatio) return 'max-w-[400px]'
+    
+    // Landscape / Widescreen: expand width so landscape memes have ample room to be read clearly
+    if (aspectRatio >= 1.25) {
+      return 'max-w-[480px]'
+    }
+    // Square / Standard proportions
+    if (aspectRatio >= 0.9) {
+      return 'max-w-[420px]'
+    }
+    // Portrait / Vertical: focused width
+    return 'max-w-[390px]'
+  }
+
+  // Dynamic canvas container styling
+  const getCanvasStyle = (): React.CSSProperties => {
+    if (!meme || isLocked || dropCount >= MAX_PREVIEW_DROPS) {
+      return {
+        aspectRatio: '4 / 5',
+        minHeight: '380px'
+      }
+    }
+
+    if (aspectRatio) {
+      // Clamp aspect ratio between 0.65 (tall vertical 9:14) and 1.85 (widescreen 16:9)
+      const clampedRatio = Math.max(0.65, Math.min(1.85, aspectRatio))
+      return {
+        aspectRatio: `${clampedRatio}`,
+        maxHeight: 'min(70vh, 560px)'
+      }
+    }
+
+    return {
+      aspectRatio: '4 / 5',
+      minHeight: '320px',
+      maxHeight: 'min(70vh, 560px)'
+    }
+  }
 
   return (
     <section id="see-it-in-action" className="py-20 px-4 border-t border-purple/20 bg-bg relative">
@@ -240,12 +296,15 @@ export function MemePreview() {
           )}
         </div>
 
-        {/* Meme Display Card — Protected against scroll reveal opacity unmounting */}
+        {/* Meme Display Card — Protected against scroll reveal opacity unmounting & dynamic to image size */}
         <div 
-          className="w-full max-w-[400px] border-2 border-purple bg-[#1c1b1b] relative flex flex-col transition-all duration-200" 
+          className={`w-full ${getCardMaxWidthClass()} border-2 border-purple bg-[#1c1b1b] relative flex flex-col transition-[max-width,box-shadow] duration-300 ease-out`} 
           style={{ boxShadow: '6px 6px 0px #f4c300' }}
         >
-          <div className="w-full aspect-[4/5] relative bg-[#131313] flex items-center justify-center overflow-hidden">
+          <div 
+            className="w-full relative bg-[#131313] flex items-center justify-center overflow-hidden transition-[aspect-ratio,min-height] duration-300 ease-out"
+            style={getCanvasStyle()}
+          >
             {!meme ? (
               // Initial State: Capsule Sealed with manual dispense button
               <div 
@@ -278,16 +337,22 @@ export function MemePreview() {
                 </button>
               </div>
             ) : (
-              // Dispensed Meme State
+              // Dispensed Meme State: Dynamic canvas matching image dimensions with zero cropping
               <>
                 <img 
                   key={meme.url}
                   src={meme.url} 
                   alt={meme.title} 
-                  className="w-full h-full object-cover select-none pointer-events-none animate-fadeIn" 
-                  width="400"
-                  height="500"
+                  className="w-full h-full object-contain select-none pointer-events-none animate-fadeIn transition-opacity duration-300" 
                   decoding="async"
+                  onLoad={(e) => {
+                    const { naturalWidth, naturalHeight } = e.currentTarget
+                    if (naturalWidth && naturalHeight) {
+                      const ratio = naturalWidth / naturalHeight
+                      aspectCacheRef.current.set(meme.url, ratio)
+                      setAspectRatio(ratio)
+                    }
+                  }}
                   onError={(e) => {
                     const target = e.currentTarget
                     const nextFallback = FALLBACK_MEMES[Math.floor(Math.random() * FALLBACK_MEMES.length)].url
@@ -296,7 +361,7 @@ export function MemePreview() {
                     }
                   }}
                 />
-                <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2.5 py-1 uppercase text-xs border border-surface shadow-sm">
+                <div className="absolute bottom-2 left-2 bg-pink text-bg font-anton px-2.5 py-1 uppercase text-xs border border-surface shadow-sm z-10 pointer-events-none">
                   {meme.rarity || 'Fresh Drop'}
                 </div>
               </>

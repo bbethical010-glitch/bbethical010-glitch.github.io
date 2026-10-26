@@ -567,6 +567,13 @@ Located in `src/components/MemePreview.tsx`:
   - Subsequent taps on **"HIT ME"** instantly pop the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
   - The intrusive *"Dropping Capsule..."* loader screen has been completely eliminated from inter-drop transitions; the active card updates immediately with snappy arcade scale micro-feedback.
   - **Scroll-Reveal Reconciliation Fix:** Removed `data-rv` attribute from the dynamic meme card container and action buttons, and hardened `useScrollReveal` with persistent `[data-rv-done="true"]` attribute tracking. This permanently prevents React re-renders from stripping `.rv-in` and erroneously resetting the card to `opacity: 0` after the first drop.
+- **Dynamic Canvas Sizing & Natural Aspect-Ratio Adaptation:**
+  - Replaced hardcoded `aspect-[4/5]` and `object-cover` with an intelligent dynamic canvas architecture that adapts in real-time to each meme's natural image aspect ratio (`naturalWidth / naturalHeight`).
+  - **Dynamic Card Sizing:** Automatically expands landscape memes (`aspectRatio >= 1.25`) to `max-w-[480px]` so wide memes and text captions are large and legible; standard/square memes (`0.9 <= aspectRatio < 1.25`) adopt `max-w-[420px]`; portrait memes (`aspectRatio < 0.9`) adopt `max-w-[390px]`.
+  - **Zero-Cropping `object-contain` Display:** The canvas container dynamically applies `aspectRatio: clampedRatio` (clamped safely between `0.65` and `1.85`) with `maxHeight: min(70vh, 560px)` and CSS `object-contain`. This guarantees 100% of the meme image (punchlines, watermarks, top/bottom text) is rendered crisp without letterboxing, pillarboxing, or cropping.
+  - **Pre-Cache Aspect Map:** Populates an in-memory `aspectCacheRef` map during the upfront FIFO prefetch phase so image dimensions are known ahead of time, ensuring 0ms layout settlement on drop transitions.
+  - **Depleted Bumper Safety:** Lockout and sealed states automatically retain `aspectRatio: '4 / 5'` with `minHeight: '380px'` to ensure full visibility and breathing room for all conversion CTA buttons.
+  - **Verified Fallback R2 Assets:** Replaced obsolete fallback entries with active 200 OK Cloudflare R2 image objects (`C7VeMb0tjUg.jpg`, `C3Qfq0wrNY6.jpg`).
 - **10-Drop Quota Counter:** Users can experience 10 authentic live preview drops on the web (`10 -> 9 -> ... -> 0`).
 - **Conversion Lockout Bumper:** Upon opening the 10th capsule, a Neo-Brutalist lockout bumper covers the card:
   - Header: `CAPSULE DEPLETED!`
