@@ -133,7 +133,7 @@ Below is the visual audit of each section rendered on the live production landin
 
 ### 3.9 Global Footer & Attribution
 - **Screenshot:** `assets/ui-audit/desktop-home.png` (Bottom)
-- **Rendered Appearance:** Features official platform links, direct social links (Instagram `@capsule.meme`, X `@memecapsule_`, Threads `@capsule.meme`), official support contacts (`support@memecapsule.wtf`, `memecapsule.app@gmail.com`), and engineering leadership attributions.
+- **Rendered Appearance:** Features official platform links, direct social links (Instagram `@meme__capsule`, X `@memecapsule_`, Threads `@capsule.meme`), official support contacts (`support@memecapsule.wtf`, `memecapsule.app@gmail.com`), and engineering leadership attributions.
 
 ---
 

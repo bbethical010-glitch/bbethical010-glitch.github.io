@@ -9,6 +9,7 @@ import { Vignette } from '../components/Vignette'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useNavbarScroll } from '../hooks/useNavbarScroll'
 import { CONFIG, trackInstallClick } from '../constants/config'
+import { AboutOfficialChannels } from '../components/SocialConnect'
 
 const DESCRIPTIONS = [
   {
@@ -27,7 +28,7 @@ const DESCRIPTIONS = [
 
 const QUICK_FACTS: { label: string; value: string; href?: string }[] = [
   { label: 'PLATFORM', value: 'Android' },
-  { label: 'DEVELOPER', value: 'Pratham Pandey and team', href: '/team' },
+  { label: 'DEVELOPER', value: 'Team Meme_Capsule', href: '/team' },
   { label: 'VERSION', value: 'v3.4 (Build 25)' },
   { label: 'LAUNCHED', value: '2026' },
   { label: 'PRICE', value: 'Free' },
@@ -121,7 +122,7 @@ export default function About() {
                 Meme Capsule is a free Android application available on the Google Play Store,
                 developed by{' '}
                 <Link to="/team" className="text-gold underline hover:text-purple transition-colors" data-cursor>
-                  Pratham Pandey and team
+                  Team Meme_Capsule
                 </Link>{' '}
                 and launched in 2026. It delivers random memes to users with a single button press.
                 The app has no social feed, no algorithm, and no content personalisation of any kind.
@@ -279,19 +280,8 @@ export default function About() {
               </div>
             </div>
 
-            {/* Subsection C — Contact */}
-            <div className="border-t border-purple/20 pt-8">
-              <p className="font-oswald text-text text-base">
-                For press enquiries, review copies, or collaborations:{' '}
-                <a
-                  href={`mailto:${CONFIG.contactEmail}`}
-                  className="text-purple underline-offset-4 hover:underline"
-                  data-cursor
-                >
-                  {CONFIG.contactEmail}
-                </a>
-              </p>
-            </div>
+            {/* Subsection C — Official Channels */}
+            <AboutOfficialChannels />
           </div>
         </section>
 
@@ -307,7 +297,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackInstallClick('about_page')}
-              className="inline-block transform hover:scale-[1.03] transition-transform duration-300"
+              className="google-play-badge-btn inline-block"
               data-cursor
             >
               <img

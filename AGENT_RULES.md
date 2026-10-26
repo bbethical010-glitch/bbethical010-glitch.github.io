@@ -42,7 +42,7 @@ The following components and systems are **STRICTLY PROTECTED**. Agents **MUST N
 - **Neo-Brutalist Aesthetic**: Heavy black borders (`border: 2px/4px solid #000`), hard offset box-shadows (`box-shadow: 4px 4px 0px #000`), high-contrast color palettes (yellow `#f4c300`, purple `#9b30ff`, pink `#FF2A85`, cyan `#00E5FF`, dark `#121212`), and bold typography (`Anton`, `JetBrains Mono`, `Public Sans`).
 - **Google Play Store Linkages**: All download badges and CTAs must link to the official package: `https://play.google.com/store/apps/details?id=com.meme.capsule`.
 - **Google AdSense Unit `meme1`**: Web monetization banner unit integration.
-- **Official Contact & Social Links**: `support@memecapsule.wtf`, Instagram (`@capsule.meme`), X (`@memecapsule_`), Threads (`@capsule.meme`).
+- **Official Contact & Social Links**: `support@memecapsule.wtf`, Instagram (`@meme__capsule`), X (`@memecapsule_`), Threads (`@capsule.meme`).
 
 ### D. Drafted & Inactive Modules (PRESERVE IN CODEBASE — DO NOT PUBLISH WITHOUT EXPLICIT PERMISSION)
 - **Meme Culture & Editorial Hub (`src/pages/Editorial.tsx`)**:

@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { CONFIG, trackInstallClick } from '../constants/config'
+import { FooterSocialStrip } from './SocialConnect'
 
 export function Footer() {
   const location = useLocation()
@@ -76,6 +77,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        <FooterSocialStrip />
+
         <div className="border-t border-surfaceHigh pt-6 flex flex-col sm:flex-row justify-between items-center gap-4" data-rv="fade" style={{ transitionDelay: '300ms' }}>
           <div className="font-oswald text-muted text-xs">© {new Date().getFullYear()} Meme Capsule</div>
           <div className="font-oswald text-purple text-xs font-bold uppercase tracking-wide">Made with chaos</div>
