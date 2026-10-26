@@ -77,12 +77,13 @@ const FALLBACK_MEMES: MemeResponse[] = [
 ]
 
 export function MemePreview() {
-  const [meme, setMeme] = useState<MemeResponse>(FALLBACK_MEMES[0])
-  const [dropCount, setDropCount] = useState<number>(1)
+  // Initially null so the user can load the first meme on their own
+  const [meme, setMeme] = useState<MemeResponse | null>(null)
+  const [dropCount, setDropCount] = useState<number>(0)
   const [isLocked, setIsLocked] = useState<boolean>(false)
 
   // In-memory FIFO queue initialized with fallback items immediately to guarantee 0ms wait
-  const fifoQueueRef = useRef<MemeResponse[]>([...FALLBACK_MEMES.slice(1)])
+  const fifoQueueRef = useRef<MemeResponse[]>([...FALLBACK_MEMES])
   const initializedRef = useRef<boolean>(false)
   const userInteractedRef = useRef<boolean>(false)
 
@@ -94,7 +95,7 @@ export function MemePreview() {
     }
   }
 
-  // Preload all 10 memes upfront on component mount
+  // Preload all 10 memes upfront on component mount in background
   useEffect(() => {
     if (initializedRef.current) return
     initializedRef.current = true
@@ -148,20 +149,18 @@ export function MemePreview() {
           }
         }
 
-        // Only update initial meme if user hasn't clicked "HIT ME" yet
+        // Keep queue refreshed without auto-loading the meme
         if (validMemes.length > 0) {
           if (!userInteractedRef.current) {
-            setMeme(validMemes[0])
-            fifoQueueRef.current = validMemes.slice(1)
-          } else {
-            // Merge newly fetched live memes into remaining queue slots
             fifoQueueRef.current = validMemes
+          } else {
+            fifoQueueRef.current = validMemes.slice(dropCount)
           }
         }
       } catch (err) {
         console.warn('Batch prefetch fallback active:', err)
         if (!userInteractedRef.current) {
-          fifoQueueRef.current = [...FALLBACK_MEMES.slice(1)]
+          fifoQueueRef.current = [...FALLBACK_MEMES]
         }
       }
     }
@@ -247,7 +246,39 @@ export function MemePreview() {
           style={{ boxShadow: '6px 6px 0px #f4c300' }}
         >
           <div className="w-full aspect-[4/5] relative bg-[#131313] flex items-center justify-center overflow-hidden">
-            {meme && (
+            {!meme ? (
+              // Initial State: Capsule Sealed with manual dispense button
+              <div 
+                className="flex flex-col items-center justify-center h-full w-full p-6 text-center cursor-pointer group select-none"
+                onClick={handleHitMe}
+                data-cursor
+              >
+                <div className="w-20 h-20 bg-surface border-2 border-gold flex items-center justify-center mb-5 shadow-[4px_4px_0px_#9b30ff] group-hover:scale-105 group-hover:rotate-3 transition-transform">
+                  <Sparkles size={36} className="text-gold animate-pulse" />
+                </div>
+                
+                <span className="font-anton text-3xl text-gold uppercase tracking-wider mb-2">
+                  Capsule Sealed
+                </span>
+                
+                <p className="font-oswald text-muted text-sm max-w-[260px] leading-relaxed mb-6">
+                  10 unhinged memes primed in memory. Tap below to dispense your first drop.
+                </p>
+
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleHitMe()
+                  }}
+                  className="neo-button-primary px-8 py-3 text-lg font-bold flex items-center gap-2 transform group-hover:scale-105 transition-transform"
+                  data-cursor
+                >
+                  <Sparkles size={18} />
+                  <span>Open Capsule</span>
+                </button>
+              </div>
+            ) : (
+              // Dispensed Meme State
               <>
                 <img 
                   key={meme.url}
@@ -298,13 +329,12 @@ export function MemePreview() {
             )}
           </div>
 
-          {meme && (
-            <div className="p-4 border-t-2 border-purple bg-[#1c1b1b]">
-              <div className="font-oswald font-bold text-gold truncate text-left text-base">
-                {meme.title}
-              </div>
+          {/* Footer title label */}
+          <div className="p-4 border-t-2 border-purple bg-[#1c1b1b]">
+            <div className="font-oswald font-bold text-gold truncate text-left text-base">
+              {meme ? meme.title : 'Ready to Dispense'}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Action Button */}
@@ -323,10 +353,17 @@ export function MemePreview() {
         ) : (
           <button 
             onClick={handleHitMe} 
-            className="neo-button-primary mt-8 px-12 py-4 text-2xl active:translate-x-1 active:translate-y-1 active:scale-[0.98] transition-transform"
+            className="neo-button-primary mt-8 px-12 py-4 text-2xl active:translate-x-1 active:translate-y-1 active:scale-[0.98] transition-transform flex items-center gap-2.5"
             data-cursor
           >
-            HIT ME
+            {dropCount === 0 ? (
+              <>
+                <Sparkles size={24} />
+                <span>OPEN CAPSULE</span>
+              </>
+            ) : (
+              <span>HIT ME</span>
+            )}
           </button>
         )}
       </div>

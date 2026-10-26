@@ -560,9 +560,11 @@ Located in `src/components/MemePreview.tsx`:
 - **Upfront 10-Meme FIFO Batch Prefetch Engine:**
   - On initial mount, concurrently fetches 10 memes from the Cloudflare edge API (`GET /api/random-meme`) with deduplication against URL/ID and an expanded 10-item verified Cloudflare R2 fallback pool (`FALLBACK_MEMES`).
   - Automatically primes browser bitmap caches using HTML `new Image().src = url` so all 10 images are preloaded and decoded in memory.
-  - Mounts the 1st meme immediately and enqueues the remaining 9 into an in-memory First-In, First-Out (`fifoQueueRef`) buffer.
-- **Zero-Wait & Zero-Loading Screen Interaction:**
-  - Tapping **"HIT ME"** instantly pops the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
+  - Keeps all 10 memes queued in an in-memory First-In, First-Out (`fifoQueueRef`) buffer without automatically loading or displaying any meme on page load.
+- **Manual User-Initiated Capsule Opening & Zero-Wait Interaction:**
+  - **Initial "Capsule Sealed" Idle State:** When a user lands on the website, no meme is auto-loaded (`meme === null`, `dropCount === 0`). The card displays an authentic Neo-Brutalist "Capsule Sealed" badge with an interactive **"Open Capsule"** button, and the primary bottom action button displays **"OPEN CAPSULE"** (with sparkles icon).
+  - Tapping either the card button or bottom button triggers the first drop, popping from the pre-cached FIFO queue with zero network latency (0ms delay) and transitioning smoothly into the meme viewing flow with `dropCount = 1`, `remaining = 9`, and the bottom action button changing to **"HIT ME"**.
+  - Subsequent taps on **"HIT ME"** instantly pop the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
   - The intrusive *"Dropping Capsule..."* loader screen has been completely eliminated from inter-drop transitions; the active card updates immediately with snappy arcade scale micro-feedback.
   - **Scroll-Reveal Reconciliation Fix:** Removed `data-rv` attribute from the dynamic meme card container and action buttons, and hardened `useScrollReveal` with persistent `[data-rv-done="true"]` attribute tracking. This permanently prevents React re-renders from stripping `.rv-in` and erroneously resetting the card to `opacity: 0` after the first drop.
 - **10-Drop Quota Counter:** Users can experience 10 authentic live preview drops on the web (`10 -> 9 -> ... -> 0`).
