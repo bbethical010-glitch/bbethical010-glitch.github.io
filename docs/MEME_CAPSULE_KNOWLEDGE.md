@@ -5,7 +5,7 @@
 > **Classification:** Living Project Context & Reusable AI Operating Reference Across All Codebases  
 > **App / System Name:** Meme Capsule  
 > **Android Package Identifier:** `com.meme.capsule`  
-> **Mobile App Version:** `v3.6` (`versionCode 27`) — Built APKs in `builds/`  
+> **Mobile App Version:** `v3.8` (`versionCode 29`) — Built APKs and AABs in `builds/` (`meme-capsule-v3.8.apk`, `meme-capsule-v3.8.aab`, `app-release.apk`) and `android/app/build/outputs/`  
 > **Official Web Platform:** [https://memecapsule.wtf](https://memecapsule.wtf) (Vite / React Multi-Page Static Prerendered)  
 > **Serverless Edge Backend:** [https://meme-capsule-eww.pages.dev](https://meme-capsule-eww.pages.dev) (Cloudflare Pages, D1 SQLite, R2 CDN)  
 > **Project Team & Engineering Leadership:**  
@@ -34,12 +34,14 @@
    - 3.6 [Native Android Bridge & Scoped MediaStore Storage (`MainActivity.java`)](#36-native-android-bridge--scoped-mediastore-storage-mainactivityjava)
    - 3.7 [Meme Vault, Mood Boards ("Pinned Energy") & Offline Collections](#37-meme-vault-mood-boards-pinned-energy--offline-collections)
    - 3.8 [Mobile Monetization (AdMob + Google Play In-App Purchases & Neo-Brutalist Store)](#38-mobile-monetization-admob--google-play-in-app-purchases--neo-brutalist-store)
-   - 3.9 [Mobile Safety, Age Verification (DOB) & Content Reporting](#39-mobile-safety-age-verification-dob--content-reporting)
-   - 3.10 [Google Play Store In-App Rating & Review Engine (`RatingModal.tsx`)](#310-google-play-store-in-app-rating--review-engine-ratingmodaltsx)
-   - 3.11 [Critical Engineering Guardrails & Styling Gotchas (Tailwind v4)](#311-critical-engineering-guardrails--styling-gotchas-tailwind-v4)
+   - 3.10 [Mobile Safety, Age Verification (DOB) & Content Reporting](#310-mobile-safety-age-verification-dob--content-reporting)
+   - 3.11 [Google Play Store In-App Rating & Review Engine (`RatingModal.tsx`)](#311-google-play-store-in-app-rating--review-engine-ratingmodaltsx)
+   - 3.12 [Critical Engineering Guardrails & Styling Gotchas (Tailwind v4)](#312-critical-engineering-guardrails--styling-gotchas-tailwind-v4)
+   - 3.13 [Phase 1 Android Analytics Instrumentation (Offline SQLite Queue, Consent & Diagnostics)](#313-phase-1-android-analytics-instrumentation-offline-sqlite-queue-consent--diagnostics)
+   - 3.14 [First-Class Settings Tab Architecture & Redesign (v3.8)](#314-first-class-settings-tab-architecture--redesign-v38)
 4. [PART B: PROMOTIONAL, PRESS & WEB PLATFORM (`memecapsule.wtf`)](#4-part-b-promotional-press--web-platform-memecapsulewtf)
    - 4.1 [Platform Architecture, Modernized Stack & Static HTML Prerendering](#41-platform-architecture-modernized-stack--static-html-prerendering)
-   - 4.2 [Interactive Live Drop Preview Simulator & Quota Lockout Bumper](#42-interactive-live-drop-preview-simulator--quota-lockout-bumper)
+   - 4.2 [Interactive Live Drop Preview Simulator, Upfront 10-Meme FIFO Buffer & Quota Lockout Bumper](#42-interactive-live-drop-preview-simulator-upfront-10-meme-fifo-buffer--quota-lockout-bumper)
    - 4.3 [3D Interactive Device Mockups with Authentic WebP Screenshots & Lightbox](#43-3d-interactive-device-mockups-with-authentic-webp-screenshots--lightbox)
    - 4.4 [Kage-Inspired Atmospheric Web UI](#44-kage-inspired-atmospheric-web-ui)
    - 4.5 [Complete Removal of Acid Glitch UI Mode](#45-complete-removal-of-acid-glitch-ui-mode)
@@ -80,8 +82,8 @@
 
 ### Q1: What is Meme Capsule?
 **Meme Capsule** is an anti-algorithm, single-action meme delivery platform engineered for immediate entertainment without feeds, doomscrolling, or social clutter.
-- **Public Mobile Product:** A native Android application (`com.meme.capsule`, current version `v3.6` / `versionCode 27`) available on Google Play. Built with React 19, Vite 6, Tailwind CSS v4, and Capacitor 8, it operates like a digital arcade vending machine: tapping the **`HIT ME`** button dispenses exactly one hand-screened, high-variance meme onto a 4-card 3D perspective spring stack.
-- **Public Web Platform:** A multi-page, statically prerendered web platform at [https://memecapsule.wtf](https://memecapsule.wtf) featuring a live interactive drop preview simulator (with a 5-drop quota and Google Play install bumper), 3D interactive phone mockups with authentic WebP screenshots, Section 04.5 "Under the Hood" technical transparency, an official `/about` Press Kit, and Google AdSense monetization (`meme1`).
+- **Public Mobile Product:** A native Android application (`com.meme.capsule`, current version `v3.7` / `versionCode 28`) available on Google Play. Built with React 19, Vite 6, Tailwind CSS v4, and Capacitor 8, it operates like a digital arcade vending machine: tapping the **`HIT ME`** button dispenses exactly one hand-screened, high-variance meme onto a 4-card 3D perspective spring stack.
+- **Public Web Platform:** A multi-page, statically prerendered web platform at [https://memecapsule.wtf](https://memecapsule.wtf) featuring a live interactive drop preview simulator (with an upfront 10-meme FIFO prefetch buffer and Google Play install bumper), 3D interactive phone mockups with authentic WebP screenshots, Section 04.5 "Under the Hood" technical transparency, an official `/about` Press Kit, and Google AdSense monetization (`meme1`).
 - **Developer / Serverless Edge Backend:** A serverless edge architecture on Cloudflare Pages (`https://meme-capsule-eww.pages.dev`), Cloudflare D1 (SQLite database), and Cloudflare R2 (media bucket), coupled with Neo-Brutalist internal tools for human multi-judge curation (`/curate`), admin database syncing (`/admin`), user safety moderation (`/reports`), and AI-assisted pre-evaluation (`/ai-judge`).
 
 ### Q2: Why does Meme Capsule exist?
@@ -107,7 +109,7 @@ Modern internet culture is trapped inside social media feeds (Instagram, TikTok,
    - Instant-touch overlay buttons (`38px × 38px` Download & Share on top-right, `34px × 34px` Report on bottom-right) and a 4-button CTA bar (**LIKE**, **VAULT**, **PIN**, **SHARE**) provide immediate one-tap utility.
    - Tapping **SHARE** opens the Neo-Brutalist Share Bottom Sheet with live thumbnail preview, an auto-attached promotional message with Google Play Store download link, and 6 animated social media SVG dispatch buttons (WhatsApp, Instagram, Facebook, X, Telegram, Discord).
 2. **Public Web Flow (`memecapsule.wtf`):**
-   - Visitors explore an authentic live drop preview simulator with a 5-drop quota counter. After 5 drops, a conversion lockout bumper prompts Google Play app installation with UTM campaign tracking.
+   - Visitors explore an authentic live drop preview simulator powered by an upfront 10-meme FIFO prefetch buffer. After 10 drops, a conversion lockout bumper prompts Google Play app installation with UTM campaign tracking.
    - Visitors can tilt 3D interactive phone mockups showcasing real WebP screenshots, open a full-resolution lightbox zoom modal, review technical breakdowns under Section 04.5 "Under the Hood", access the official Press Kit on `/about`, and consult an expanded 15-question FAQ.
 3. **Internal Backend Flow:**
    - Unreviewed memes ingested into Cloudflare D1 and R2 storage are assigned `status = 'archived'`, `is_active = 0`, and `curation_status = NULL` (Uncurated Backlog).
@@ -125,7 +127,7 @@ Modern internet culture is trapped inside social media feeds (Instagram, TikTok,
 - **Targeted Social Share Intent Bridge:** `shareImageToApp()` targeting specific package names with automatic fallback to native chooser.
 - **Meme Vault & Mood Boards:** Local offline favorites gallery (free tier limit 20, Pro unlimited) and color-coded themed binders ("Pinned Energy") with synchronized pinboard/favorites storage.
 - **Arcade Hacker Decryption Console:** Terminal animations, erratic countdowns, and diagnostic logs (`CHECKING REDDIT RELAY...`, `HARVESTING D1 SHARDS...`).
-- **Interactive Web Live Preview:** Web simulator on `memecapsule.wtf` with 5-drop quota counter, automated fallback recovery, and Google Play install bumper.
+- **Interactive Web Live Preview:** Web simulator on `memecapsule.wtf` with an upfront 10-meme FIFO prefetch buffer, automated fallback recovery, zero loading screen transitions, and Google Play install bumper.
 - **3D Interactive Phone Mockups:** 5 authentic Android app screenshots in modern WebP + JPEG format with mouse-tilt 3D physics and fullscreen lightbox zoom.
 - **Kage-Inspired Atmospheric Web UI:** Preloader animation, magnetic circular cursor, GPU-accelerated film grain overlay, vignette shading, and desktop scroll rail.
 - **Cyberpunk Acid Glitch Mode:** High-saturation chromatic aberration theme toggle with CRT scanlines.
@@ -242,7 +244,7 @@ The Meme Capsule engineering ecosystem is organized into **three distinct, decou
 2. **Promotional, Press & Web Platform (`memecapsule.wtf`):**
    - Multi-page web repository deployed on GitHub Pages with custom domain DNS routing.
    - Built with React 18, Vite 5, Tailwind CSS v3, and static HTML prerendering via `vite-plugin-prerender`.
-   - Focus: Live interactive drop preview simulator (5-drop quota + lockout bumper), 3D phone mockups with authentic WebP screenshots and lightbox zoom, Kage-inspired atmospheric UI, Section 04.5 Under the Hood, `/about` Press Kit, 15-question accordion FAQ, Formspree contact form, and Google AdSense monetization (`meme1`).
+   - Focus: Live interactive drop preview simulator (upfront 10-meme FIFO prefetch buffer + lockout bumper), 3D phone mockups with authentic WebP screenshots and lightbox zoom, Kage-inspired atmospheric UI, Section 04.5 Under the Hood, `/about` Press Kit, 15-question accordion FAQ, Formspree contact form, and Google AdSense monetization (`meme1`).
 3. **Serverless Edge Backend, Database & Internal Workbenches (This Repository):**
    - Deployed on Cloudflare Pages (`https://meme-capsule-eww.pages.dev`).
    - Built with Cloudflare Pages Functions, Cloudflare D1 (SQLite), Cloudflare R2 (media bucket), and internal React 19 Neo-Brutalist workbenches.
@@ -431,6 +433,110 @@ To drive organic Google Play Store reviews while honoring the app's Neo-Brutalis
 2. **Touch Events in Draggable Cards:** Always use `onPointerDown`/`onTouchStart` with debounce timestamp guards and `pointer-events-none` on SVG icons for overlay action buttons.
 3. **Android Build Commands:** Run `npm run lint` (`tsc --noEmit`), then `npm run build:android`, followed by `cd android && ./gradlew assembleDebug`.
 
+### 3.13 Phase 1 Android Analytics Instrumentation (Offline SQLite Queue, Consent & Diagnostics)
+Implemented full Phase 1 behavioral telemetry pipeline adhering to strict privacy guardrails:
+1. **Consent Management (`ConsentManager.java` & `PrivacyConsentModal.tsx`):**
+   - Explicitly records `analytics_consent`, `advertising_consent`, `consent_version` (1), and `consent_timestamp_utc`.
+   - Accessible and editable anytime via **Settings Tab 3 (Privacy & Data)**.
+   - If `analytics_consent` is denied or not granted, event creation and transmission are strictly blocked.
+2. **Anonymous Identity (`IdentityManager.java` & `deviceId.ts`):**
+   - On first launch, generates a persistent cryptographically random UUID (`anon_install_id`).
+   - Generates `user_hash` as a 64-character lowercase SHA-256 hash (`user_hash = sha256(anon_install_id)`).
+   - Strictly zero collection of PII (email, phone, contacts, IMEI, MAC address, GPS coordinates, or local gallery files).
+3. **Event Contract & Schema Version 1:**
+   - 19 allowlisted event names: `app_open`, `app_background`, `session_start`, `session_end`, `meme_view`, `meme_like`, `meme_share`, `meme_save`, `meme_scroll`, `category_click`, `onboarding_complete`, `profile_open`, `subscription_click`, `screen_view`, `feed_refresh`, `meme_reported`, `ad_impression`, `ad_reward_viewed`, `retention_checkin`.
+   - Standard payload: `schema_version` (1), `event_id` (UUID), `event_name`, `user_hash`, `session_id`, `timestamp_utc` (ISO-8601), `platform: "android"`, `app_version` ("3.7"), `os_version`, optional dimensions, sanitized `properties`, and `consent_status: "granted"`.
+4. **Local Offline SQLite Queue (`AnalyticsDbHelper.java`):**
+   - Backed by SQLite (`meme_capsule_analytics.db`) in Android native storage; thread-safe background execution.
+   - Bounded maximum queue capacity: 1,000 events. Oldest events are evicted via FIFO when capacity is reached, incrementing a local dropped events counter.
+   - Flush triggers: queue threshold reaching 50 events, periodic 30s timer, app backgrounding (`onPause`), and app exit / session destruction (`onDestroy`).
+5. **Network Delivery & Exponential Backoff (`AnalyticsUploader.java` & `analyticsFlush.ts`):**
+   - Delivers POST batches (max 200 events) to `https://meme-capsule-eww.pages.dev/api/analytics/events`.
+   - Authenticated via build-configured `X-Analytics-App-Token` header.
+   - Distinct HTTP status handling:
+     - `200 OK`: Atomically removes accepted events from queue.
+     - `400 Bad Request`: Discards invalid events to prevent indefinite retry loops.
+     - `401 Unauthorized`: Disables transmission and records configuration error.
+     - `429 Too Many Requests`: Retains events and applies exponential backoff with jitter.
+     - `5xx / Network Failures`: Retains events and schedules backoff retry (up to 120s).
+   - Strict logging protection: Payload contents, user hashes, and authorization tokens are NEVER printed to logs.
+6. **Native Android Bridge (`MemeCapsuleAnalyticsBridge.java`):**
+   - Registered on Android WebView as `window.MemeCapsuleAnalytics`.
+   - Bridges `trackEvent()`, `setConsent()`, `getConsentStatus()`, `flushQueue()`, and `getDiagnostics()`.
+7. **Debug-Only Analytics Inspector:**
+   - Visible in development builds in Settings Tab 3 (`PRIVACY & DATA`) via `import.meta.env.DEV` gating; completely removed from production release bundles.
+   - Displays real-time queue count, last flush timestamp, accepted / rejected / dropped event counters, and sanitized last error message without exposing hashes, tokens, or raw payloads.
+8. **Authentication Hardening & Abstraction (`AnalyticsAuthProvider`):**
+   - Decoupled network delivery from static credentials via pluggable `AnalyticsAuthProvider` interface (`com.meme.capsule.analytics.auth` and `src/analytics/analyticsAuth.ts`).
+   - Active provider: `StaticTokenAuthProvider` supporting environment-injected `X-Analytics-App-Token`.
+   - Security classification: Any APK-compiled token is public and recoverable by reverse engineering; it functions strictly as temporary coarse abuse throttling, not as proof of app identity or durable secret.
+   - Future attestation: `PlayIntegrityAuthProvider` architecture stub prepared for hardware-backed attestation / short-lived session token exchange once backend attestation is deployed. It is explicitly unsupported and never claimed as active, and does not silently fall back to static tokens in release builds.
+   - Strict build enforcement: Gradle release tasks (`assembleRelease`, `bundleRelease`) strictly require a valid, non-placeholder `ANALYTICS_APP_TOKEN`. The `ALLOW_EMPTY_ANALYTICS_TOKEN` bypass is strictly prohibited and forbidden for release packaging (`assembleRelease`, `bundleRelease`).
+   - Web bundle security: `VITE_ANALYTICS_APP_TOKEN` removed entirely; no tokens embedded in production web assets or source maps; browser analytics remains disabled on non-native web runtimes without configured credentials.
+   - Zero token leakage & release diagnostics: Tokens, user hashes, and payloads are strictly excluded from logs, error diagnostics, and production bundles. All bridge and manager exception logs are guarded behind `BuildConfig.DEBUG`.
+9. **Phase 4 Consent Lineage Implementation:**
+   - Contract adherence: `consent_version` is included in every analytics event payload across Android Java (`AnalyticsEvent.java`) and TypeScript (`analyticsTypes.ts`).
+   - Current policy version: Default and initial consent version is `"v1"`.
+   - Dynamic policy version updates: When policy updates occur, version persists as string (e.g. `"v2"`) and attaches to all subsequent event payloads.
+   - Backward compatibility: Legacy SharedPreferences integer storage and numeric strings (e.g. `1`, `"1"`) automatically normalize to `"v1"`. Deserialization of payloads lacking `consent_version` safely defaults to `"v1"`.
+   - Consent enforcement: Behavioral events are strictly blocked when `analytics_consent` is denied or revoked. Consent denial or revocation is NEVER logged or transmitted as a behavioral analytics event.
+   - Immediate queue purging: Revoking analytics consent immediately purges all pending events from the SQLite queue and in-memory diagnostics without transmission.
+   - Privacy protection: Zero logging of consent values, `user_hash`, auth tokens, or raw payloads across all release and debug channels.
+10. **Backend Contract Integration & Client Hardening (Phases 1–7):**
+   - Full contract adherence: Every emitted event contains `schema_version: 1`, `platform: "android"`, `consent_status: "granted"`, and a normalized `consent_version` string (`"v1"`, `"v2"`, etc.).
+   - Recursive sanitization: `AnalyticsEvent.java` and `deviceId.ts` recursively sanitize nested JSON objects and arrays, stripping prohibited PII (`email`, `phone`, `imei`, `mac`, `latitude`, `longitude`, `gallery`, `raw_name`) and secret keys (`token`, `auth`, `authorization`, `secret`, `password`, `api_key`, `app_token`, `device_id`, `bearer`).
+   - Request size & batch limits: Enforces $\le 200$ events per batch and $\le 2\text{ MiB}$ request body size limit with automatic chunking before transmission.
+   - Non-infinite error recovery: HTTP 401 & 403 trigger auth failure notifications and disable transmission; HTTP 404 & 405 disable transmission on endpoint configuration errors; HTTP 400 permanently drops invalid batches; HTTP 429 & 500 apply exponential backoff capped at 120s.
+   - Atomic revocation: Revoking consent purges SQLite and in-memory queues immediately and blocks both pending and future uploads.
+   - Idempotent retries: Event IDs are immutable and stable across retry attempts and process restarts.
+   - Release configuration security: Packaging strictly fails if `ANALYTICS_APP_TOKEN` is missing, placeholder, or points to local/unencrypted endpoints (`localhost`, `127.0.0.1`, `http://`).
+   - BuildConfig literal escaping: In `build.gradle`, environment-injected tokens and endpoints are sanitized with backslash and quote escaping (`replace('\\', '\\\\').replace('"', '\\"')`) so complex tokens containing quotes, symbols, and special characters generate valid Java string literals in `BuildConfig.java` without compiler errors.
+11. **Phase 5 Real-Time Dashboard Compatibility & Ingestion Hardening (v3.8 / versionCode 29):**
+    - **Flush Cadence Optimization:**
+      - Session start: Flushes immediately after the first event of a session (`session_start`) once consent is granted.
+      - Foreground cadence: Flushes every 20 s (+0 to 5 s jitter) if the queue is non-empty. Automatically debounces 2 s when $\ge 10$ events are queued to coalesce rapid user bursts.
+      - Backgrounding / Exit: Flushes immediately on background transition and enqueues Android `WorkManager` one-time background work (`AnalyticsUploadWorker`, network-constrained; expedited when allowed, otherwise standard). Consent is verified at execution time.
+      - Single-flight concurrency: At most one flush in flight enforced via atomic locks (`AtomicBoolean` / `isFlushInFlight`).
+      - Chunking: Large queues are split into sequential chunks of at most 100 events and 1 MiB, sent with $\ge 1$ s pacing between chunks.
+      - Idle efficiency: Zero timers or wake-ups when the queue is empty or the app is in the background.
+    - **Resilient Upload & Poison-Batch Bisection:**
+      - `2xx`: Deletes accepted events and resets consecutive error counts.
+      - `400` / `422`: Never retried as-is. Recursively bisects batches into halves to isolate offending event(s), confirms with a single-event send, drops and counts only the poison event, and delivers valid events. Poison events never block the queue.
+      - `401` / `403`: Token rejection pauses uploads for 6 hours (doubling to 24 hours), retaining events up to the queue cap without hot loops.
+      - `413`: Halves current chunk limit (100 -> 50 -> 25 -> ...).
+      - `429`: Honours `Retry-After` header (integer seconds or RFC 1123 HTTP-date); defaults to 60 s if missing. Zero retry attempts before cooldown expires.
+      - `5xx` / Network Errors: Exponential backoff (5 s, 10 s, 20 s, 40 s ... capped at 15 min with jitter); resets on success.
+    - **Queue Caps, Expiry & Rate Limits:**
+      - Stale drop: Drops events older than 23 hours prior to sending and increments local dropped counter.
+      - Queue cap: Expanded to 5,000 events with oldest-first (FIFO) eviction on overflow.
+      - Hourly rate limiter: Client-side sliding-window cap of 600 events per hour (`HourlyRateLimiter`) prevents runaway loops from reaching the server 1,500/hr quota.
+    - **Clock Skew Detection & Timestamp Clamping:**
+      - Inspects HTTP `Date` header on every successful response: computes `offset = serverTime - deviceTime`.
+      - If $\|offset\| > 60\text{ s}$, persists offset and applies to subsequent event generation.
+      - Clamps any event timestamped $> 60\text{ s}$ ahead of `(device now + offset)` to that threshold before transmission.
+      - Adds `X-Client-Sent-At` header (corrected UTC now) to all upload requests.
+    - **Input Hygiene & Allowlist Enforcement:**
+      - `app_version`: Sanitized from `BuildConfig.VERSION_NAME` to strictly match `^[0-9A-Za-z.+_-]{1,32}$` (disallowed characters replaced with "-", truncated to 32 chars).
+      - Property validation: Strictly validates event names and property keys against ONE local constant allowlist (`ALLOWED_EVENTS` and `ALLOWED_PROPERTY_KEYS`). Unknown keys/events are dropped and counted locally. Values must be scalars truncated to 256 characters. No nested objects or arrays.
+    - **Session Continuity & Deduplication:**
+      - Sessions persist across brief backgrounding (such as share sheet handoffs). A new session starts only after 30 minutes in the background.
+      - `meme_view` events are deduplicated to fire once per displayed meme card, preventing duplicate fires on React component re-renders.
+    - **Missing Role Proposals:**
+      - Missing roles documented in `ANALYTICS_BACKEND_REQUEST.md` (`meme_pin`, `ad_reward_offered`, `client_error`, `meme_download`) without emitting unapproved names.
+
+### 3.14 First-Class Settings Tab Architecture & Redesign (v3.8)
+Settings was refactored from an ephemeral popup modal into an authentic first-class tab matching the design and layout of Meme Vault and Mood Boards:
+1. **Removal of Modal Overlay Behaviors:**
+   - Deleted the full-screen dimmed backdrop overlay (`fixed inset-0 bg-black/55 z-20`) that previously caught taps outside the card and dismissed settings.
+   - Removed the header close (`[X]`) dismiss button, replacing it with a Neo-Brutalist `CONFIG` badge featuring an animated gear indicator (`Settings size={17}`).
+   - Removed modal dialog history trapping (`window.history.pushState({ memeCapsuleSettings: true })`) and Escape key / popstate auto-dismiss listeners.
+   - Removed `closeSettings()` and `toggleSettings()`; switching tabs is now purely direct and declarative via `setActiveTab('settings')`.
+2. **First-Class Tab Layout:**
+   - Container updated to `w-full max-w-[700px] flex flex-col gap-md animate-in slide-in-from-bottom-6 duration-200`, sitting directly in `<main>` with standard tab padding and z-index.
+   - Bottom navigation bar Settings icon button now functions symmetrically to Home, Vault, and Mood Boards: direct navigation to `'settings'` with active tab highlight (`bg-primary text-on-primary shadow-[3px_3px_0px_0px_var(--color-secondary-container)]`).
+   - Home landing page top-left Settings button directly navigates to `setActiveTab('settings')`.
+   - Category segmented control (`EXPERIENCE`, `MEMBERSHIP`, `PRIVACY`) acts as clean sub-navigation within the tab, preserving all feed customization toggles, Store & entitlement checks, footprint KPIs, data wiping modals, and analytics consent management.
+
 ---
 
 ## 4. PART B: PROMOTIONAL, PRESS & WEB PLATFORM (`memecapsule.wtf`)
@@ -449,14 +555,20 @@ To drive organic Google Play Store reviews while honoring the app's Neo-Brutalis
 - **Dynamic Route-Specific SEO Metadata Injection:** 
   During build-time prerendering, `ReactSSRRenderer` reads route configurations (`ROUTE_SEO`) and surgically injects route-specific `<title>`, `<meta name="description">`, `<link rel="canonical">`, Open Graph tags (`og:title`, `og:description`, `og:url`), and Twitter card metadata directly into each route's generated `index.html`. This ensures 100% crawl fidelity without relying on JavaScript hydration or client-side redirects (`404.html`).
 
-### 4.2 Interactive Live Drop Preview Simulator & Quota Lockout Bumper
+### 4.2 Interactive Live Drop Preview Simulator, Upfront 10-Meme FIFO Buffer & Quota Lockout Bumper
 Located in `src/components/MemePreview.tsx`:
-- **Functional Simulator:** Connects directly to the live Cloudflare edge API (`GET /api/random-meme`) with an automated fallback recovery pool (`FALLBACK_MEMES`).
-- **5-Drop Quota Counter:** Users can experience 5 authentic live drops on the web (`5 -> 4 -> 3 -> 2 -> 1 -> 0`).
-- **Conversion Lockout Bumper:** Upon opening the 5th capsule, a Neo-Brutalist lockout bumper covers the card:
-  - Header: `CAPSULE DEPLETED`
-  - Body: Encourages installing the Android app for unlimited daily drops with rolling prefetch.
-  - CTA Button: Direct Google Play install button with UTM campaign attribution (`getPlayStoreUrl('web_preview_bumper')`).
+- **Upfront 10-Meme FIFO Batch Prefetch Engine:**
+  - On initial mount, concurrently fetches 10 memes from the Cloudflare edge API (`GET /api/random-meme`) with deduplication against URL/ID and an expanded 10-item verified Cloudflare R2 fallback pool (`FALLBACK_MEMES`).
+  - Automatically primes browser bitmap caches using HTML `new Image().src = url` so all 10 images are preloaded and decoded in memory.
+  - Mounts the 1st meme immediately and enqueues the remaining 9 into an in-memory First-In, First-Out (`fifoQueueRef`) buffer.
+- **Zero-Wait & Zero-Loading Screen Interaction:**
+  - Tapping **"HIT ME"** instantly pops the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
+  - The intrusive *"Dropping Capsule..."* loader screen has been completely eliminated from inter-drop transitions; the active card updates immediately with snappy arcade scale micro-feedback.
+- **10-Drop Quota Counter:** Users can experience 10 authentic live preview drops on the web (`10 -> 9 -> ... -> 0`).
+- **Conversion Lockout Bumper:** Upon opening the 10th capsule, a Neo-Brutalist lockout bumper covers the card:
+  - Header: `CAPSULE DEPLETED!`
+  - Body: Encourages installing the Android app for unlimited daily drops, rolling FIFO prefetch, and your personal Meme Vault.
+  - CTA Button: Direct Google Play install button with UTM campaign attribution (`getPlayStoreUrl('preview_depleted')`).
 
 ### 4.3 Interactive Device Mockups, Flagship Hero Phone & Zero-Lag Architecture
 - **Flagship Hero Phone Mockup (`src/components/HeroPhoneMockup.tsx` — DRAFT STATUS):**
@@ -662,6 +774,7 @@ Standalone, token-protected dashboard rendering directly from `functions/reports
 ### 5.9 Telemetry Pipeline & Edge Ranking Recalculation Engine
 - **Client Side:** Client actions (`view`, `skip`, `like`, `share`, `download`) are enqueued into a local circular buffer and flushed every 30 seconds to `POST /api/events`.
 - **Edge Side:** Events are written into `meme_events` with timestamps and session identifiers.
+- **Android KPI Contract:** Consent-granted Android events use `POST /api/analytics/events` and are stored separately in `android_analytics_events`. Migration 016 requires `schema_version: 1`; the server validates event IDs, anonymous SHA-256 user hashes, UTC timestamps, event names, and consent before idempotent insertion. Curator-session-protected aggregate readers power the internal analytics dashboard without returning hashes or raw properties.
 - **Recalculation:** The recalculation worker aggregates events across time windows, computing:
   - *Engagement Score:* Weighted combination of likes, shares, and downloads against views.
   - *Virality Score:* Ratio of external shares to total views.
@@ -704,7 +817,7 @@ All three codebases share a unified **Neo-Brutalist Cyber-Arcade** design langua
 
 | System / Codebase | Specific Module | Status | Verification Evidence & Location |
 |---|---|---|---|
-| **Mobile App (APK)** | Capacitor 8 Container & React 19 UI | `[IMPLEMENTED]` | `com.meme.capsule`, `v3.6` (`versionCode 27`) |
+| **Mobile App (APK)** | Capacitor 8 Container & React 19 UI | `[IMPLEMENTED]` | `com.meme.capsule`, `v3.7` (`versionCode 28`) |
 | **Mobile App (APK)** | 4-Card 3D Perspective Spring Deck | `[IMPLEMENTED]` | `MemeStack.tsx` (`@react-spring/web` & `@use-gesture/react`) |
 | **Mobile App (APK)** | 7-Meme FIFO Background Prefetch Buffer| `[IMPLEMENTED]` | `src/App.tsx` (`PIPELINE_TARGET_SIZE = 7`) |
 | **Mobile App (APK)** | Instant-Touch Overlay Buttons | `[IMPLEMENTED]` | `MemeCard.tsx` (`onPointerDown` with debounce guard) |
@@ -717,7 +830,7 @@ All three codebases share a unified **Neo-Brutalist Cyber-Arcade** design langua
 | **Mobile App (APK)** | In-App Purchases (3 Packs: Ads ₹199, Boards ₹49, Combo ₹199) | `[IMPLEMENTED]` | `@capgo/native-purchases` (`StoreScreen.tsx`) |
 | **Mobile App (APK)** | UGC Reporting & Local Blocklist | `[IMPLEMENTED]` | `ReportModal.tsx` + `localStorage('reported_memes')` |
 | **Promo Web (`.wtf`)** | Official Multi-Page Site (`memecapsule.wtf`)| `[IMPLEMENTED]` | React 19, Vite 8, React Router v7, GitHub Pages |
-| **Promo Web (`.wtf`)** | Interactive Live Drop Preview Simulator | `[IMPLEMENTED]` | `MemePreview.tsx` (5-drop quota & fallback pool) |
+| **Promo Web (`.wtf`)** | Interactive Live Drop Preview Simulator | `[IMPLEMENTED]` | `MemePreview.tsx` (upfront 10-meme FIFO prefetch buffer) |
 | **Promo Web (`.wtf`)** | Conversion Lockout Bumper | `[IMPLEMENTED]` | Bumper overlay with Play Store UTM tracking |
 | **Promo Web (`.wtf`)** | 3D Interactive Phone Mockups (WebP) | `[IMPLEMENTED]` | `Screenshots.tsx` (5 authentic WebP captures + lightbox) |
 | **Promo Web (`.wtf`)** | Kage Atmospheric UI (Preloader, Cursor) | `[IMPLEMENTED]` | `Preloader.tsx`, `CustomCursor.tsx`, `ScrollRail.tsx` |
@@ -795,7 +908,7 @@ All three codebases share a unified **Neo-Brutalist Cyber-Arcade** design langua
 - **3-Tier Partitioning:** The database architecture segregating memes into `Active (Keep)` (111), `Superadmin Excluded` (53), and `Uncurated Backlog` (4,947) via `curation_status`.
 - **Content Blacklist:** Permanent platform ban table (`content_blacklist`) used by moderators to suppress unsafe media.
 - **Under the Hood:** Section 04.5 on the website providing honest architectural transparency.
-- **Bumper:** The modal locking web preview after 5 drops to encourage Google Play app downloads.
+- **Bumper:** The modal locking web preview after 10 drops to encourage Google Play app downloads.
 - **Acid / Glitch Theme:** The alternative CRT scanline and high-saturation website theme (`html.theme-glitch`).
 
 ---
@@ -821,7 +934,7 @@ All three codebases share a unified **Neo-Brutalist Cyber-Arcade** design langua
 === PORTABLE CONTEXT: MEME CAPSULE (ALL THREE CODEBASES) ===
 APP NAME: Meme Capsule
 PACKAGE ID: com.meme.capsule
-CURRENT ANDROID VERSION: v3.6 (versionCode 27)
+CURRENT ANDROID VERSION: v3.7 (versionCode 28)
 OFFICIAL WEBSITES: https://memecapsule.wtf (Web Platform) | https://meme-capsule-eww.pages.dev (Edge Backend)
 DEVELOPERS & LEADERSHIP:
 - Anmol Verma (GitHub: editorav010-dev)
@@ -837,7 +950,7 @@ Social Media:
   Threads: https://www.threads.com/@capsule.meme
 
 ECOSYSTEM STRUCTURE:
-1. PUBLIC MOBILE APP (com.meme.capsule - v3.6 / versionCode 27):
+1. PUBLIC MOBILE APP (com.meme.capsule - v3.7 / versionCode 28):
    - Tech: React 19, TypeScript, Vite 6, Tailwind CSS v4, Capacitor 8 Android container.
    - Core UX: 4-card 3D perspective spring deck (@react-spring/web, @use-gesture/react), 12-meme rolling FIFO prefetch buffer (STACK_BATCH_SIZE = 10, PIPELINE_TARGET_SIZE = 12) with 60%-70% stack consumption prefetch trigger (STACK_PREFETCH_CONSUMPTION_RATIO = 0.6 / FIFO_REFILL_TRIGGER_SIZE = 4) and streaming per-meme enqueueing (enqueueMemeToFifo + advanceInlineWithoutLoadingScreen so viewing flow never breaks with a full-screen loading screen), zero floating action buttons over the Meme Box, and horizontal 4-column CTA row (nav#ctaRow, max-w-[356px] w-full mt-3.5) directly below the Meme Box: LIKE (#FF2A85) -> VAULT (#A855F7) -> PIN (#FACC15) -> MORE (⋮) (#00E5FF) with translate(3px, 3px) active press, ink-spread ripple (@keyframes inkSpread), 6-tick radial shockwave bursts (@keyframes burstSparks), and pop icon animations (@keyframes neoBurst). Tapping MORE opens #moreMenu (w-48 bg-white border-4 border-black) containing SHARE (#A855F7), DOWNLOAD (#FACC15), and REPORT (#FF2A85).
    - Google Play Rating Feature (RatingModal.tsx - v3.6): Interval-based rating prompt (first triggers at >= 8 memes viewed, then every 15 memes). Features a Neo-Brutalist 5-star interactive rating deck with dynamic reaction labels ("GOD-TIER DANKNESS!", "CERTIFIED BANGERS!", etc.). Redirects to Google Play Store via native bridge `openPlayStoreListing()` (`market://details?id=com.meme.capsule` with fallback to `https://play.google.com/store/apps/details?id=com.meme.capsule`) and sets `meme_capsule_rating_completed = 'true'` so it permanently never pops up again once feedback is registered. Provides a 24-hour deferral option (`REMIND ME IN 24 HOURS`) setting `meme_capsule_rating_deferred_until`. Also includes a manual trigger button in App Settings under "MEMBERSHIP & APP GUIDE".
@@ -849,7 +962,7 @@ ECOSYSTEM STRUCTURE:
 
 2. PUBLIC WEB PLATFORM (memecapsule.wtf):
    - Tech: React 18, Vite 5, Tailwind CSS v3, React Router DOM v6, static HTML prerendering (vite-plugin-prerender with ReactSSRRenderer) on GitHub Pages.
-   - Core Features: Live Drop Simulator (5-drop quota + lockout bumper with Play Store UTM tracking), 3D interactive phone mockups (5 authentic WebP captures + lightbox zoom), Kage atmospheric UI (Preloader, CustomCursor, GrainOverlay, Vignette, ScrollRail), Section 04.5 Under the Hood, /about Press Kit (copy kit & brand downloads), /privacy policy, Formspree contact form (xwlenwzr with privacy consent), Google AdSense unit meme1 (slot 6291908699, ca-pub-2093403233028868), and SEO/GEO (llms.txt, Schema.org).
+   - Core Features: Live Drop Simulator (upfront 10-meme FIFO prefetch buffer + lockout bumper with Play Store UTM tracking), 3D interactive phone mockups (5 authentic WebP captures + lightbox zoom), Kage atmospheric UI (Preloader, CustomCursor, GrainOverlay, Vignette, ScrollRail), Section 04.5 Under the Hood, /about Press Kit (copy kit & brand downloads), /privacy policy, Formspree contact form (xwlenwzr with privacy consent), Google AdSense unit meme1 (slot 6291908699, ca-pub-2093403233028868), and SEO/GEO (llms.txt, Schema.org).
 
 3. SERVERLESS EDGE BACKEND & INTERNAL WORKBENCHES (meme-capsule-eww.pages.dev - This Repo):
    - Tech: Cloudflare Pages Functions, Cloudflare D1 (SQLite with 13 migrations), Cloudflare R2 (bucket memes, $0.00 egress).
@@ -872,7 +985,6 @@ CRITICAL RULES & CONSTRAINTS:
 4. CLEAR CODEBASE BOUNDARIES: Maintain strict separation between Mobile APK, Promo Web, and Edge Backend.
 =========================================================
 ```
-
 
 
 
