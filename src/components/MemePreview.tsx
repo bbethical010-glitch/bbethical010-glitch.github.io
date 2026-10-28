@@ -277,7 +277,7 @@ export function MemePreview() {
             </div>
           )
         ) : (
-          {/* Pre-click Resting State (Prerender-safe, styled to match reference specification) */}
+          /* Pre-click Resting State (Prerender-safe, styled to match reference specification) */
           <div className="flex flex-col items-center">
             <div
               className="w-[300px] h-[400px] sm:w-[340px] sm:h-[440px] border-2 border-purple bg-[#121212] relative flex flex-col justify-between shadow-[8px_8px_0px_#f4c300] cursor-pointer group transition-all duration-300"
