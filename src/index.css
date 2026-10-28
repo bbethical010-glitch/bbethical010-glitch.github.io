@@ -95,7 +95,8 @@
   [data-rv] { opacity: 0; }
   [data-rv="up"] { transform: translate3d(0, 30px, 0); }
   [data-rv="fade"] { transform: none; }
-  [data-rv].rv-in {
+  [data-rv].rv-in,
+  [data-rv][data-rv-done="true"] {
     opacity: 1; transform: none;
     transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);

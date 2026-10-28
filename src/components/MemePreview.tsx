@@ -5,16 +5,16 @@ import { MemeStack } from './MemeStack'
 import { type MemeItem } from './MemeCard'
 import { sniffImageDimensions } from '../utils/memeDimensions'
 
-// Curated backup memes with verified 200 OK URLs
+// Curated backup memes with verified 200 OK Cloudflare R2 URLs
 const FALLBACK_MEMES: Omit<MemeItem, 'id'>[] = [
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Dal4WDODYI-_1.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C7VeMb0tjUg.jpg',
     title: 'Capsule Drop #101',
     category: 'Synced',
     rarity: 'Common',
   },
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DatCw2NGlOu_3.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C3Qfq0wrNY6.jpg',
     title: 'Unhinged Drop #102',
     category: 'Synced',
     rarity: 'Rare',
@@ -36,6 +36,36 @@ const FALLBACK_MEMES: Omit<MemeItem, 'id'>[] = [
     title: 'Random Capsule Drop #402',
     category: 'Synced',
     rarity: 'Common',
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Daggq7NjzJX_3.jpg',
+    title: 'Unhinged Drop #205',
+    category: 'Everyday Life',
+    rarity: 'Common',
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C-1AoAgSZdK_2.jpg',
+    title: 'Capsule Drop #206',
+    category: 'Everyday Life',
+    rarity: 'Rare',
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZ_zoyFl2ll_2.jpg',
+    title: 'Dank Core #207',
+    category: 'Everyday Life',
+    rarity: 'Epic',
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DKIzIp1N67i_4.jpg',
+    title: 'Chaos Drop #208',
+    category: 'Pop Culture',
+    rarity: 'Common',
+  },
+  {
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZThR9GjcbE_2.jpg',
+    title: 'Capsule Vault #209',
+    category: 'Everyday Life',
+    rarity: 'Rare',
   },
 ]
 
@@ -63,40 +93,48 @@ export function MemePreview() {
       const data = await res.json()
       const item = data?.meme || data
 
-      if (item && item.url) {
-        const id = String(item.id || item.url)
-        if (seenIds.current.has(id) && retriesLeft > 0) {
-          return await fetchSingleMeme(retriesLeft - 1)
-        }
-        seenIds.current.add(id)
+      const url = item?.url || item?.imageUrl
+      const title = item?.title || 'Capsule Drop'
+      const rarity = item?.rarity || 'Common'
+      const category = item?.category || 'Synced'
+      const id = item?.id || `meme-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
 
-        // Sniff image dimensions
-        const dims = await sniffImageDimensions(item.url)
-
-        return {
-          id,
-          url: item.url,
-          title: item.title,
-          rarity: item.rarity || 'Fresh Drop',
-          category: item.category || 'Synced',
-          naturalWidth: dims.width,
-          naturalHeight: dims.height,
-        }
+      // De-duplication check within current session
+      if (seenIds.current.has(id) && retriesLeft > 0) {
+        return await fetchSingleMeme(retriesLeft - 1)
       }
-      throw new Error('Invalid meme structure')
-    } catch {
-      // Pick random fallback meme
-      const randomFallback = FALLBACK_MEMES[Math.floor(Math.random() * FALLBACK_MEMES.length)]
-      const fallbackId = `${randomFallback.url}_${Math.random().toString(36).slice(2, 6)}`
-      seenIds.current.add(fallbackId)
-      const dims = await sniffImageDimensions(randomFallback.url)
+
+      seenIds.current.add(id)
+
+      // Pre-sniff dimensions for instant canvas sizing
+      const dims = await sniffImageDimensions(url)
 
       return {
+        id,
+        url,
+        title,
+        rarity,
+        category,
+        naturalWidth: dims.width,
+        naturalHeight: dims.height,
+      }
+    } catch {
+      // Gracefully fall back to local curated Cloudflare R2 backup array
+      const availableFallbacks = FALLBACK_MEMES.filter(
+        (_, i) => !seenIds.current.has(`fb-${i}`)
+      )
+      const pool = availableFallbacks.length > 0 ? availableFallbacks : FALLBACK_MEMES
+      const chosen = pool[Math.floor(Math.random() * pool.length)]
+      const fallbackId = `fb-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`
+
+      seenIds.current.add(fallbackId)
+
+      // Pre-sniff fallback dimensions
+      const dims = await sniffImageDimensions(chosen.url)
+
+      return {
+        ...chosen,
         id: fallbackId,
-        url: randomFallback.url,
-        title: randomFallback.title,
-        rarity: randomFallback.rarity || 'Fresh Drop',
-        category: randomFallback.category || 'Synced',
         naturalWidth: dims.width,
         naturalHeight: dims.height,
       }
@@ -104,7 +142,8 @@ export function MemePreview() {
   }, [])
 
   /**
-   * Background progressive prefetch of memes #3 through #7.
+   * Progressive background prefetch loop for memes #3 through #7.
+   * Runs sequentially without blocking the UI or first 2 cards.
    */
   const startProgressivePrefetch = useCallback(async () => {
     if (isFetchingProgressiveRef.current) return
@@ -120,7 +159,7 @@ export function MemePreview() {
   }, [fetchSingleMeme])
 
   /**
-   * Primary entry point when user clicks "HIT ME".
+   * Primary entry point when user clicks "OPEN CAPSULE" or "HIT ME".
    * Eagerly fetches meme #1 and #2, immediately mounts the deck, and starts progressive background prefetch.
    */
   const handleStart = async () => {
@@ -132,7 +171,7 @@ export function MemePreview() {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       ;(window as any).gtag('event', 'meme_preview_click', {
         event_category: 'engagement',
-        event_label: 'hit_me_button_card_stack',
+        event_label: 'open_capsule_card_stack',
       })
     }
 
@@ -251,7 +290,7 @@ export function MemePreview() {
               <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
                 {/* Icon Box with Gold Border & Purple Shadow */}
                 <div className="w-16 h-16 bg-[#1a1a1a] border-2 border-gold flex items-center justify-center shadow-[4px_4px_0px_#9b30ff] mb-4 group-hover:rotate-6 transition-transform">
-                  <Sparkles size={28} className="text-gold" />
+                  <Sparkles size={28} className="text-gold animate-pulse" />
                 </div>
 
                 {/* Primary Title */}

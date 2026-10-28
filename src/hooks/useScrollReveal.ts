@@ -13,6 +13,7 @@ export function useScrollReveal() {
         if (entry.isIntersecting) {
           const el = entry.target as HTMLElement;
           el.classList.add('rv-in');
+          el.setAttribute('data-rv-done', 'true');
           obs.unobserve(el);
         }
       });
@@ -21,7 +22,7 @@ export function useScrollReveal() {
     const observeElements = () => {
       const elements = document.querySelectorAll('[data-rv]');
       elements.forEach((el) => {
-        if (!el.classList.contains('rv-in')) {
+        if (!el.classList.contains('rv-in') && el.getAttribute('data-rv-done') !== 'true') {
           observer.observe(el);
         }
       });
