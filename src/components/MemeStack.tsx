@@ -82,7 +82,7 @@ const SPRING_CONFIG_FLING = {
 export function MemeStack({
   queue,
   totalSwiped,
-  maxTotalMemes = 7,
+  maxTotalMemes = 10,
   onDismiss,
   onDimensionsLoaded,
 }: MemeStackProps) {
@@ -121,7 +121,7 @@ export function MemeStack({
   )
 
   /**
-   * Setup exactly 7 springs — one dedicated spring per card in the session.
+   * Setup exactly 10 springs — one dedicated spring per card in the session.
    * This guarantees that when a card is swiped away, its spring flings off,
    * while the next card's spring was ALWAYS at x: 0 and smoothly pulls forward
    * from behind with ZERO recoil or pulling from the side of the webpage!
@@ -172,7 +172,7 @@ export function MemeStack({
       if (isAnimatingRef.current || activeIdx >= maxTotalMemes) return
       isAnimatingRef.current = true
 
-      // 1. Silent 7-Swipe Redirect: MUST fire synchronously in the gesture/action release
+      // 1. Silent 10-Swipe Redirect: MUST fire synchronously in the gesture/action release
       const currentSwipeNumber = activeIdx + 1
       if (currentSwipeNumber >= maxTotalMemes) {
         const storeUrl = CONFIG.getPlayStoreUrl('web_preview_full_swipe_complete')

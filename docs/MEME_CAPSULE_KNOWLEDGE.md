@@ -555,30 +555,23 @@ Settings was refactored from an ephemeral popup modal into an authentic first-cl
 - **Dynamic Route-Specific SEO Metadata Injection:** 
   During build-time prerendering, `ReactSSRRenderer` reads route configurations (`ROUTE_SEO`) and surgically injects route-specific `<title>`, `<meta name="description">`, `<link rel="canonical">`, Open Graph tags (`og:title`, `og:description`, `og:url`), and Twitter card metadata directly into each route's generated `index.html`. This ensures 100% crawl fidelity without relying on JavaScript hydration or client-side redirects (`404.html`).
 
-### 4.2 Interactive Live Drop Preview Simulator, Upfront 10-Meme FIFO Buffer & Quota Lockout Bumper
-Located in `src/components/MemePreview.tsx`:
-- **Upfront 10-Meme FIFO Batch Prefetch Engine:**
-  - On initial mount, concurrently fetches 10 memes from the Cloudflare edge API (`GET /api/random-meme`) with deduplication against URL/ID and an expanded 10-item verified Cloudflare R2 fallback pool (`FALLBACK_MEMES`).
-  - Automatically primes browser bitmap caches using HTML `new Image().src = url` so all 10 images are preloaded and decoded in memory.
-  - Keeps all 10 memes queued in an in-memory First-In, First-Out (`fifoQueueRef`) buffer without automatically loading or displaying any meme on page load.
-- **Manual User-Initiated Capsule Opening & Zero-Wait Interaction:**
-  - **Initial "Capsule Sealed" Idle State:** When a user lands on the website, no meme is auto-loaded (`meme === null`, `dropCount === 0`). The card displays an authentic Neo-Brutalist "Capsule Sealed" badge with an interactive **"Open Capsule"** button, and the primary bottom action button displays **"OPEN CAPSULE"** (with sparkles icon).
-  - Tapping either the card button or bottom button triggers the first drop, popping from the pre-cached FIFO queue with zero network latency (0ms delay) and transitioning smoothly into the meme viewing flow with `dropCount = 1`, `remaining = 9`, and the bottom action button changing to **"HIT ME"**.
-  - Subsequent taps on **"HIT ME"** instantly pop the next meme (`fifoQueueRef.current.shift()`) with zero network latency (0ms delay).
-  - The intrusive *"Dropping Capsule..."* loader screen has been completely eliminated from inter-drop transitions; the active card updates immediately with snappy arcade scale micro-feedback.
-  - **Scroll-Reveal Reconciliation Fix:** Removed `data-rv` attribute from the dynamic meme card container and action buttons, and hardened `useScrollReveal` with persistent `[data-rv-done="true"]` attribute tracking. This permanently prevents React re-renders from stripping `.rv-in` and erroneously resetting the card to `opacity: 0` after the first drop.
+### 4.2 Interactive Live Drop Preview Simulator, 4-Card 3D Spring Stack & 10-Meme Session Quota
+Located in `src/components/MemePreview.tsx`, `src/components/MemeStack.tsx`, `src/components/MemeCard.tsx`, and `src/components/GestureTeachingHand.tsx`:
+- **10-Meme Preview Stack Quota (`MAX_SESSION_MEMES = 10`):**
+  - Expanded web preview session limit to a full 10 memes (`MAX_SESSION_MEMES = 10`).
+  - Users can experience all 10 unhinged drops sequentially through gesture swiping (Right to Keep, Left to Skip, Up to Vault) or arrow keys.
+  - Upon completing all 10 swipes, the deck transitions cleanly into an authentic Neo-Brutalist "All 10 Memes Dropped" completion state with direct Google Play install CTA.
+- **Eager Prefetch & Progressive Pipeline:**
+  - Eagerly fetches the first 2 candidate memes concurrently on "OPEN CAPSULE" click for instantaneous mounting.
+  - Sequentially streams memes #3 through #10 via background progressive prefetch loop (`startProgressivePrefetch`) without blocking main thread animations.
+  - Backfilled with 10 verified 200 OK Cloudflare R2 fallback objects (including `Db5adb1w0rf.webp`, `C7VeMb0tjUg.jpg`, `DbXOjEERFrR.jpg`) to guarantee a non-breaking offline fallback experience.
+- **4-Card 3D Perspective Spring Stack (`@react-spring/web` & `@use-gesture/react`):**
+  - Maintains a 4-card physical stack with realistic depth perspective (z-distance, y-offset, scale scaling, and shadow layering).
+  - Dedicated spring physics per card with zero drag recoil or side-page pulling during swipe flings.
+  - Includes `GestureTeachingHand` animated tutorial overlay on the first card guiding users through Right (Keep), Left (Skip), and Up (Vault) interactions.
 - **Dynamic Canvas Sizing & Natural Aspect-Ratio Adaptation:**
-  - Replaced hardcoded `aspect-[4/5]` and `object-cover` with an intelligent dynamic canvas architecture that adapts in real-time to each meme's natural image aspect ratio (`naturalWidth / naturalHeight`).
-  - **Dynamic Card Sizing:** Automatically expands landscape memes (`aspectRatio >= 1.25`) to `max-w-[480px]` so wide memes and text captions are large and legible; standard/square memes (`0.9 <= aspectRatio < 1.25`) adopt `max-w-[420px]`; portrait memes (`aspectRatio < 0.9`) adopt `max-w-[390px]`.
-  - **Zero-Cropping `object-contain` Display:** The canvas container dynamically applies `aspectRatio: clampedRatio` (clamped safely between `0.65` and `1.85`) with `maxHeight: min(70vh, 560px)` and CSS `object-contain`. This guarantees 100% of the meme image (punchlines, watermarks, top/bottom text) is rendered crisp without letterboxing, pillarboxing, or cropping.
-  - **Pre-Cache Aspect Map:** Populates an in-memory `aspectCacheRef` map during the upfront FIFO prefetch phase so image dimensions are known ahead of time, ensuring 0ms layout settlement on drop transitions.
-  - **Depleted Bumper Safety:** Lockout and sealed states automatically retain `aspectRatio: '4 / 5'` with `minHeight: '380px'` to ensure full visibility and breathing room for all conversion CTA buttons.
-  - **Verified Fallback R2 Assets:** Replaced obsolete fallback entries with active 200 OK Cloudflare R2 image objects (`C7VeMb0tjUg.jpg`, `C3Qfq0wrNY6.jpg`).
-- **10-Drop Quota Counter:** Users can experience 10 authentic live preview drops on the web (`10 -> 9 -> ... -> 0`).
-- **Conversion Lockout Bumper:** Upon opening the 10th capsule, a Neo-Brutalist lockout bumper covers the card:
-  - Header: `CAPSULE DEPLETED!`
-  - Body: Encourages installing the Android app for unlimited daily drops, rolling FIFO prefetch, and your personal Meme Vault.
-  - CTA Button: Direct Google Play install button with UTM campaign attribution (`getPlayStoreUrl('preview_depleted')`).
+  - Pre-sniffs image dimensions (`sniffImageDimensions`) and dynamically morphs the stack container with a smooth 0.22s cubic-bezier transition matching each meme's exact proportions without cropping or distortion.
+- **Conversion Lockout Bumper:** Upon completing the 10th meme swipe, a Neo-Brutalist completion state and Play Store redirect bridge (`web_preview_full_swipe_complete`) invite users to download the full Android app.
 
 ### 4.3 Interactive Device Mockups, Flagship Hero Phone & Zero-Lag Architecture
 - **Flagship Hero Phone Mockup (`src/components/HeroPhoneMockup.tsx` — DRAFT STATUS):**

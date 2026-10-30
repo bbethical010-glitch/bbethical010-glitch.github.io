@@ -14,7 +14,7 @@ const FALLBACK_MEMES: Omit<MemeItem, 'id'>[] = [
     rarity: 'Common',
   },
   {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C3Qfq0wrNY6.jpg',
+    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Db5adb1w0rf.webp',
     title: 'Unhinged Drop #102',
     category: 'Synced',
     rarity: 'Rare',
@@ -69,7 +69,7 @@ const FALLBACK_MEMES: Omit<MemeItem, 'id'>[] = [
   },
 ]
 
-const MAX_SESSION_MEMES = 7
+const MAX_SESSION_MEMES = 10
 
 export function MemePreview() {
   const [isStarted, setIsStarted] = useState(false)
@@ -142,7 +142,7 @@ export function MemePreview() {
   }, [])
 
   /**
-   * Progressive background prefetch loop for memes #3 through #7.
+   * Progressive background prefetch loop for memes #3 through #10.
    * Runs sequentially without blocking the UI or first 2 cards.
    */
   const startProgressivePrefetch = useCallback(async () => {
@@ -181,7 +181,7 @@ export function MemePreview() {
     setQueue([m1, m2])
     setLoadingEager(false)
 
-    // Kick off background progressive fetch for memes #3..#7
+    // Kick off background progressive fetch for memes #3..#10
     startProgressivePrefetch()
   }
 
@@ -242,13 +242,13 @@ export function MemePreview() {
               </div>
             </div>
           ) : totalSwiped >= MAX_SESSION_MEMES ? (
-            /* Silent 7-Swipe Completed: Deck is clear */
+            /* Silent 10-Swipe Completed: Deck is clear */
             <div
               className="w-[320px] h-[360px] border-2 border-purple bg-surface p-8 flex flex-col items-center justify-center text-center shadow-[6px_6px_0px_#f4c300]"
               data-rv="up"
             >
               <span className="font-anton text-3xl text-gold uppercase mb-3">
-                All 7 Memes Dropped
+                All 10 Memes Dropped
               </span>
               <p className="font-oswald text-muted text-sm leading-relaxed mb-6">
                 You've experienced the full web stack. Download the official app for unlimited random drops and your personal Meme Vault.
