@@ -29,7 +29,7 @@ const DESCRIPTIONS = [
 const QUICK_FACTS: { label: string; value: string; href?: string }[] = [
   { label: 'PLATFORM', value: 'Android' },
   { label: 'DEVELOPER', value: 'Team Meme_Capsule', href: '/team' },
-  { label: 'VERSION', value: 'v3.4 (Build 25)' },
+  { label: 'VERSION', value: 'v3.8 (Build 30)' },
   { label: 'LAUNCHED', value: '2026' },
   { label: 'PRICE', value: 'Free' },
   { label: 'CATEGORY', value: 'Entertainment' },

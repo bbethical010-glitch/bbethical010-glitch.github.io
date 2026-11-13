@@ -314,7 +314,7 @@ export function MemePreview() {
                   data-cursor
                 >
                   <Sparkles size={16} className="text-black" />
-                  OPEN CAPSULE
+                  HIT ME
                 </button>
               </div>
 
@@ -326,7 +326,7 @@ export function MemePreview() {
               </div>
             </div>
 
-            {/* External OPEN CAPSULE Button (Centered below card) */}
+            {/* External HIT ME Button (Centered below card) */}
             <button
               onClick={handleStart}
               className="bg-gold text-black font-anton uppercase text-xl sm:text-2xl tracking-wider px-10 py-3.5 border-2 border-black shadow-[5px_5px_0px_#9b30ff] flex items-center justify-center gap-2.5 mt-8 hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
@@ -335,7 +335,7 @@ export function MemePreview() {
               style={{ transitionDelay: '400ms' }}
             >
               <Sparkles size={20} className="text-black" />
-              OPEN CAPSULE
+              HIT ME
             </button>
           </div>
         )}

@@ -6,7 +6,7 @@ import './Changelog.css'
  * CELEBRATION TARGET CONFIGURATION
  * Single obvious constant to toggle celebration target:
  * - 'v1.0.0' (Default: Celebrates foundational Launch)
- * - 'v3.4'   (Option: Celebrates the latest current release)
+ * - 'v3.8'   (Option: Celebrates the latest current release)
  */
 export const CELEBRATION_TARGET = 'v1.0.0'
 
@@ -215,11 +215,11 @@ export function Changelog() {
               const isRight = idx % 2 === 0
               return (
                 <li
-                  key={release.version}
+                  key={`${release.version}-${idx}`}
                   ref={(el) => { itemRefs.current[idx] = el }}
                   className={`timeline-item ${isRight ? 'side-right' : 'side-left'}`}
                   data-version={release.version}
-                  id={`item-${release.version.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  id={`item-${release.version.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${idx}`}
                 >
                   <div className="timeline-anchor-node" aria-hidden="true"></div>
                   <div className="timeline-connector" aria-hidden="true"></div>

@@ -1,20 +1,53 @@
 export const CHANGELOG = [
   {
-    version: 'v3.4',
-    date: 'September 2026',
-    tag: 'SETTINGS UPDATE',
+    version: 'v3.8 (Build 30)',
+    date: 'November 2026',
+    tag: 'PHONE GALLERY & DOCKED REACTIONS',
     tagColor: 'purple',
     changes: [
-      'Settings is now cleaner and easier to navigate — everything you need is one tap away.',
-      'Your Privacy Policy is now accessible with a single button directly from Settings.',
-      'Minor interface clean-up across the app for a tidier experience.',
+      'Overhauled the Meme Vault into an authentic mobile photo gallery featuring square grid layouts, multi-column switching, full-screen lightbox viewing, and batch actions.',
+      'Relocated the reaction picker directly above the main action bar with long-press support and harmonized the navigation dock icons.',
+      'Added an interactive Reddit info tag for community attribution without cluttering the meme artwork.',
+    ],
+  },
+  {
+    version: 'v3.8 (Build 30)',
+    date: 'October 2026',
+    tag: 'ZERO-REPEAT ENGINE & PUSH DROPS',
+    tagColor: 'gold',
+    changes: [
+      'Upgraded the feed pipeline with a persistent dual-registry deduplication engine that mathematically prevents repeat memes across sessions.',
+      'Added Firebase Cloud Messaging (FCM) push notifications with instant deep-link routing into fresh drops, vault, and boards.',
+      'Refined app lifecycle behavior to retain active memes during external sharing while resetting cleanly on cold restarts.',
+    ],
+  },
+  {
+    version: 'v3.6 – v3.7',
+    date: 'October 2026',
+    tag: 'RATING DECK & OPTIMIZATION',
+    tagColor: 'pink',
+    changes: [
+      'New Neo-Brutalist 5-star rating deck lets you rate your favorite drops directly on Google Play.',
+      'Battery-efficient offline queuing ensures silky-smooth meme delivery without background drain.',
+      'Polished ad cooldown timers ensure smooth, uninterrupted meme browsing sessions.',
+    ],
+  },
+  {
+    version: 'v3.4 – v3.5',
+    date: 'September 2026',
+    tag: 'PRIVACY & INTERFACE CLEANUP',
+    tagColor: 'purple',
+    changes: [
+      'Updated privacy transparency disclosures and direct privacy policy controls.',
+      'Settings layout refined for faster access to data clearing and cache management.',
+      'Interface micro-optimizations across all supported Android screen sizes.',
     ],
   },
   {
     version: 'v3.2 – v3.3',
     date: 'September 2026',
     tag: 'SMARTER APP BEHAVIOUR',
-    tagColor: 'pink',
+    tagColor: 'gold',
     changes: [
       'The app now remembers exactly which meme you were on when you switch to WhatsApp, Instagram, or any other app — no more losing your place mid-share.',
       'When you fully close and reopen the app, it starts fresh from the home screen as expected.',
@@ -25,7 +58,7 @@ export const CHANGELOG = [
     version: 'v3.1',
     date: 'September 2026',
     tag: 'ZERO LOADING SCREENS',
-    tagColor: 'gold',
+    tagColor: 'pink',
     changes: [
       'Memes now load silently in the background before you even ask for them — no more waiting between drops.',
       'The app quietly lines up your next memes while you are viewing the current one.',

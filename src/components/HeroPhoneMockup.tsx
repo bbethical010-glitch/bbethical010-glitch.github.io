@@ -197,7 +197,7 @@ export function HeroPhoneMockup() {
         data-rv="fade"
       >
         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-        <span className="text-gold font-bold">Android v3.4</span>
+        <span className="text-gold font-bold">Android v3.8</span>
         <span className="text-muted">•</span>
         <span className="text-text">{SCREENS[activeIdx].badge}</span>
       </div>

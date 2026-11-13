@@ -69,11 +69,10 @@ export function Footer() {
           <div className="flex flex-col" data-rv="up" style={{ transitionDelay: '200ms' }}>
             <span className="font-anton text-xl text-text mb-4 uppercase">App Highlights</span>
             <ul className="flex flex-col gap-2 font-oswald text-sm text-muted">
-              <li>⚡ 100% Free on Android</li>
-              <li>🎲 Zero Algorithm · Pure Randomness</li>
-              <li>💾 Save Directly to Phone Gallery</li>
-              <li>🔒 Personal Meme Vault</li>
-              <li>🚀 Instant Social Sharing</li>
+              <li>Android Only</li>
+              <li>Free to use</li>
+              <li>No Sign up required</li>
+              <li>Occasional Ads</li>
             </ul>
           </div>
         </div>
