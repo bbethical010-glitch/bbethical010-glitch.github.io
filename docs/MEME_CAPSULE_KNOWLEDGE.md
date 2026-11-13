@@ -571,10 +571,11 @@ Located in `src/components/MemePreview.tsx`, `src/components/MemeStack.tsx`, `sr
   - Expanded web preview session limit to a full 10 memes (`MAX_SESSION_MEMES = 10`).
   - Users can experience all 10 unhinged drops sequentially through gesture swiping (Right to Keep, Left to Skip, Up to Vault) or arrow keys.
   - Upon completing all 10 swipes, the deck transitions cleanly into an authentic Neo-Brutalist "All 10 Memes Dropped" completion state with direct Google Play install CTA.
-- **Eager Prefetch & Progressive Pipeline:**
-  - Eagerly fetches the first 2 candidate memes concurrently on primary CTA ("HIT ME") click for instantaneous mounting.
-  - Sequentially streams memes #3 through #10 via background progressive prefetch loop (`startProgressivePrefetch`) without blocking main thread animations.
-  - Backfilled with 10 verified 200 OK Cloudflare R2 fallback objects (including `Db5adb1w0rf.webp`, `C7VeMb0tjUg.jpg`, `DbXOjEERFrR.jpg`) to guarantee a non-breaking offline fallback experience.
+- **Concurrent Batch Loading & Pre-Warmed Queue Architecture:**
+  - Initializes the 10-meme preview stack with pre-warmed fallback memes so the queue is never undefined across any of the 4 deck positions.
+  - Concurrently batch-fetches all 10 live candidate memes via `Promise.all` on component mount and warms the browser image cache upfront.
+  - Completely eliminated the sequential prefetch loop, eager loading shimmers, and the "PREFETCHING DROP..." placeholder card.
+  - Primary CTA ("HIT ME") click mounts the 4-card 3D perspective spring stack instantly with zero network delay.
 - **Streamlined App Highlights & Primary CTA:**
   - Inscribed primary CTA button with "HIT ME" replacing "OPEN CAPSULE" for direct arcade-action consistency with the mobile application.
   - Streamlined App Highlights in footer to four focused truths: Android Only, Free to use, No Sign up required, and Occasional Ads.

@@ -63,22 +63,29 @@ export function sniffImageDimensions(url: string): Promise<{ width: number; heig
     return Promise.resolve(memeDimensionCache.get(url)!)
   }
   return new Promise((resolve) => {
+    let resolved = false
+    const finish = (dims: { width: number; height: number }) => {
+      if (resolved) return
+      resolved = true
+      clearTimeout(timer)
+      memeDimensionCache.set(url, dims)
+      resolve(dims)
+    }
+
+    const timer = setTimeout(() => {
+      finish({ width: 400, height: 500 })
+    }, 1500)
+
     const img = new Image()
     img.src = url
     if (img.complete && img.naturalWidth > 0) {
-      const dims = { width: img.naturalWidth, height: img.naturalHeight }
-      memeDimensionCache.set(url, dims)
-      resolve(dims)
+      finish({ width: img.naturalWidth, height: img.naturalHeight })
     } else {
       img.onload = () => {
-        const dims = { width: img.naturalWidth, height: img.naturalHeight }
-        memeDimensionCache.set(url, dims)
-        resolve(dims)
+        finish({ width: img.naturalWidth, height: img.naturalHeight })
       }
       img.onerror = () => {
-        const dims = { width: 400, height: 500 }
-        memeDimensionCache.set(url, dims)
-        resolve(dims)
+        finish({ width: 400, height: 500 })
       }
     }
   })

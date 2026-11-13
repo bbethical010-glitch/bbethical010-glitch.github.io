@@ -1,86 +1,30 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { CONFIG } from '../constants/config'
 import { Sparkles, Download } from 'lucide-react'
 import { MemeStack } from './MemeStack'
 import { type MemeItem } from './MemeCard'
 import { sniffImageDimensions } from '../utils/memeDimensions'
+import { FALLBACK_MEMES } from '../constants/fallbackMemes'
 
-// Curated backup memes with verified 200 OK Cloudflare R2 URLs
-const FALLBACK_MEMES: Omit<MemeItem, 'id'>[] = [
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C7VeMb0tjUg.jpg',
-    title: 'Capsule Drop #101',
-    category: 'Synced',
-    rarity: 'Common',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Db5adb1w0rf.webp',
-    title: 'Unhinged Drop #102',
-    category: 'Synced',
-    rarity: 'Rare',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DbXOjEERFrR.jpg',
-    title: 'Chaos Vault #103',
-    category: 'Synced',
-    rarity: 'Epic',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZjBSX5lHFz_2.jpg',
-    title: 'Unhinged Drop #108',
-    category: 'Synced',
-    rarity: 'Rare',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C5_UT-ExBuw.jpg',
-    title: 'Random Capsule Drop #402',
-    category: 'Synced',
-    rarity: 'Common',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/Daggq7NjzJX_3.jpg',
-    title: 'Unhinged Drop #205',
-    category: 'Everyday Life',
-    rarity: 'Common',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/C-1AoAgSZdK_2.jpg',
-    title: 'Capsule Drop #206',
-    category: 'Everyday Life',
-    rarity: 'Rare',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZ_zoyFl2ll_2.jpg',
-    title: 'Dank Core #207',
-    category: 'Everyday Life',
-    rarity: 'Epic',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DKIzIp1N67i_4.jpg',
-    title: 'Chaos Drop #208',
-    category: 'Pop Culture',
-    rarity: 'Common',
-  },
-  {
-    url: 'https://pub-3e7961a132964ff581b779a5dad40771.r2.dev/DZThR9GjcbE_2.jpg',
-    title: 'Capsule Vault #209',
-    category: 'Everyday Life',
-    rarity: 'Rare',
-  },
-]
+export { FALLBACK_MEMES }
 
-const MAX_SESSION_MEMES = 10
+export const MAX_SESSION_MEMES = 10
+
+const INITIAL_FALLBACK_QUEUE: MemeItem[] = FALLBACK_MEMES.slice(0, MAX_SESSION_MEMES).map((fb, idx) => ({
+  ...fb,
+  id: `fb-init-${idx}`,
+  naturalWidth: 400,
+  naturalHeight: 500,
+}))
 
 export function MemePreview() {
   const [isStarted, setIsStarted] = useState(false)
-  const [loadingEager, setLoadingEager] = useState(false)
-  const [queue, setQueue] = useState<MemeItem[]>([])
+  const [queue, setQueue] = useState<MemeItem[]>(INITIAL_FALLBACK_QUEUE)
   const [totalSwiped, setTotalSwiped] = useState(0)
 
   // Session tracking refs
-  const seenIds = useRef<Set<string>>(new Set())
-  const totalFetchedRef = useRef(0)
-  const isFetchingProgressiveRef = useRef(false)
+  const seenIds = useRef<Set<string>>(new Set(INITIAL_FALLBACK_QUEUE.map((m) => m.id)))
+  const batchStartedRef = useRef(false)
 
   /**
    * Fetches a single unique meme from the API (or fallback), sniffing dimensions.
@@ -106,7 +50,7 @@ export function MemePreview() {
 
       seenIds.current.add(id)
 
-      // Pre-sniff dimensions for instant canvas sizing
+      // Pre-sniff dimensions for instant canvas sizing (with 1.5s timeout)
       const dims = await sniffImageDimensions(url)
 
       return {
@@ -142,47 +86,62 @@ export function MemePreview() {
   }, [])
 
   /**
-   * Progressive background prefetch loop for memes #3 through #10.
-   * Runs sequentially without blocking the UI or first 2 cards.
+   * Batch load all 10 memes concurrently on component mount.
+   * All 10 memes are fetched and their image assets are cached in browser memory upfront.
    */
-  const startProgressivePrefetch = useCallback(async () => {
-    if (isFetchingProgressiveRef.current) return
-    isFetchingProgressiveRef.current = true
+  useEffect(() => {
+    if (batchStartedRef.current) return
+    batchStartedRef.current = true
 
-    while (totalFetchedRef.current < MAX_SESSION_MEMES) {
-      const nextMeme = await fetchSingleMeme()
-      totalFetchedRef.current += 1
-      setQueue((prev) => [...prev, nextMeme])
+    // 1. Immediately warm browser cache for all 10 fallback images
+    FALLBACK_MEMES.forEach((fb) => {
+      const img = new Image()
+      img.src = fb.url
+    })
+
+    // 2. Concurrently batch-fetch all 10 candidate memes from Cloudflare edge API
+    let isCancelled = false
+
+    const loadAllMemesBatch = async () => {
+      try {
+        const fetchPromises = Array.from({ length: MAX_SESSION_MEMES }, () => fetchSingleMeme())
+        const batchResults = await Promise.all(fetchPromises)
+
+        if (!isCancelled && batchResults.length === MAX_SESSION_MEMES) {
+          // Pre-cache newly fetched image assets
+          batchResults.forEach((m) => {
+            const img = new Image()
+            img.src = m.url
+          })
+          setQueue(batchResults)
+        }
+      } catch (err) {
+        console.warn('Batch meme prefetch failed, staying on curated fallbacks:', err)
+      }
     }
 
-    isFetchingProgressiveRef.current = false
+    loadAllMemesBatch()
+
+    return () => {
+      isCancelled = true
+    }
   }, [fetchSingleMeme])
 
   /**
-   * Primary entry point when user clicks "OPEN CAPSULE" or "HIT ME".
-   * Eagerly fetches meme #1 and #2, immediately mounts the deck, and starts progressive background prefetch.
+   * Primary entry point when user clicks "HIT ME".
+   * Mounts the 4-card 3D perspective spring stack instantly without loading screens.
    */
-  const handleStart = async () => {
+  const handleStart = () => {
     if (isStarted) return
     setIsStarted(true)
-    setLoadingEager(true)
 
     // Track GA4 event
     if (typeof window !== 'undefined' && (window as any).gtag) {
       ;(window as any).gtag('event', 'meme_preview_click', {
         event_category: 'engagement',
-        event_label: 'open_capsule_card_stack',
+        event_label: 'hit_me_card_stack',
       })
     }
-
-    // Eagerly fetch first 2 memes
-    const [m1, m2] = await Promise.all([fetchSingleMeme(), fetchSingleMeme()])
-    totalFetchedRef.current = 2
-    setQueue([m1, m2])
-    setLoadingEager(false)
-
-    // Kick off background progressive fetch for memes #3..#10
-    startProgressivePrefetch()
   }
 
   /**
@@ -226,22 +185,7 @@ export function MemePreview() {
 
         {/* Live Deck Area */}
         {isStarted ? (
-          loadingEager ? (
-            /* Eager Prefetch Shimmer (Meme 1 & 2 loading) */
-            <div
-              className="w-[320px] h-[400px] border-2 border-black bg-[#1c1b1b] relative flex flex-col items-center justify-center shadow-[6px_6px_0px_#f4c300]"
-              data-rv="up"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple/30 via-pink/30 to-purple/30 animate-pulse flex flex-col items-center justify-center p-6 text-center">
-                <span className="font-anton text-gold text-2xl tracking-wider uppercase animate-bounce mb-2">
-                  Dropping Capsule...
-                </span>
-                <span className="font-oswald text-muted text-xs uppercase tracking-widest">
-                  Decrypting live card stack
-                </span>
-              </div>
-            </div>
-          ) : totalSwiped >= MAX_SESSION_MEMES ? (
+          totalSwiped >= MAX_SESSION_MEMES ? (
             /* Silent 10-Swipe Completed: Deck is clear */
             <div
               className="w-[320px] h-[360px] border-2 border-purple bg-surface p-8 flex flex-col items-center justify-center text-center shadow-[6px_6px_0px_#f4c300]"

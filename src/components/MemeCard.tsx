@@ -17,7 +17,12 @@ interface MemeCardProps {
 }
 
 export function MemeCard({ meme, isFront = false, onDimensionsLoaded }: MemeCardProps) {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(() => {
+    if (!meme?.url || typeof window === 'undefined') return false
+    const testImg = new Image()
+    testImg.src = meme.url
+    return testImg.complete && testImg.naturalWidth > 0
+  })
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -32,24 +37,18 @@ export function MemeCard({ meme, isFront = false, onDimensionsLoaded }: MemeCard
     }
   }, [meme?.url, meme?.id, onDimensionsLoaded])
 
-  // Watchdog timer (2.5s) to prevent permanent stuck loading state
+  // Watchdog timer (1.5s) to prevent permanent stuck loading state
   useEffect(() => {
     if (loaded || !meme?.url) return
     const timer = setTimeout(() => {
       setLoaded(true)
-    }, 2500)
+    }, 1500)
     return () => clearTimeout(timer)
   }, [loaded, meme?.url])
 
   if (!meme) {
-    // Placeholder shimmer card for position 3 if next item still loading
     return (
-      <div className="w-full h-full bg-[#1c1b1b] border-2 border-black flex items-center justify-center relative overflow-hidden select-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple/10 via-gold/10 to-purple/10 animate-pulse" />
-        <span className="font-anton text-xs text-muted/60 uppercase tracking-widest animate-pulse">
-          PREFETCHING DROP...
-        </span>
-      </div>
+      <div className="w-full h-full bg-[#18181b] border-2 border-black flex items-center justify-center relative overflow-hidden select-none" />
     )
   }
 

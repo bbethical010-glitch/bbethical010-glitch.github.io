@@ -5,6 +5,7 @@ import { MemeCard, type MemeItem } from './MemeCard'
 import { GestureTeachingHand } from './GestureTeachingHand'
 import { computeCanvasDimensions } from '../utils/memeDimensions'
 import { CONFIG } from '../constants/config'
+import { FALLBACK_MEMES } from '../constants/fallbackMemes'
 
 interface MemeStackProps {
   queue: MemeItem[]
@@ -110,7 +111,16 @@ export function MemeStack({
     setActiveIdx(totalSwiped)
   }, [totalSwiped])
 
-  const activeMeme = queue[activeIdx]
+  const fallbackActive = FALLBACK_MEMES[activeIdx % FALLBACK_MEMES.length]
+  const activeMeme = queue[activeIdx] || {
+    id: `fallback-active-${activeIdx}`,
+    url: fallbackActive.url,
+    title: fallbackActive.title,
+    category: fallbackActive.category,
+    rarity: fallbackActive.rarity,
+    naturalWidth: 400,
+    naturalHeight: 500,
+  }
 
   // Dynamic canvas dimensions based on current active meme
   const canvasDims = computeCanvasDimensions(
@@ -410,7 +420,16 @@ export function MemeStack({
           .map((cardIndex) => {
             const style = springs[cardIndex]
             if (!style) return null
-            const cardMeme = queue[cardIndex]
+            const fallbackItem = FALLBACK_MEMES[cardIndex % FALLBACK_MEMES.length]
+            const cardMeme = queue[cardIndex] || {
+              id: `fallback-slot-${cardIndex}`,
+              url: fallbackItem.url,
+              title: fallbackItem.title,
+              category: fallbackItem.category,
+              rarity: fallbackItem.rarity,
+              naturalWidth: 400,
+              naturalHeight: 500,
+            }
             const isFront = cardIndex === activeIdx
 
             return (
