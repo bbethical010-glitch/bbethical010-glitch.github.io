@@ -579,6 +579,10 @@ Located in `src/components/MemePreview.tsx`, `src/components/MemeStack.tsx`, `sr
 - **Streamlined App Highlights & Primary CTA:**
   - Inscribed primary CTA button with "HIT ME" replacing "OPEN CAPSULE" for direct arcade-action consistency with the mobile application.
   - Streamlined App Highlights in footer to four focused truths: Android Only, Free to use, No Sign up required, and Occasional Ads.
+- **Copy Refresh & Sectional Microcopy Alignment:**
+  - Hero Subtitle: "Experience the internet the way it was supposed to be: Chaotic, Fun & random. No AI. No algorithm. Just pure memes and the people who actually get them."
+  - Feature Cards: ONE BUTTON ("Just one button. One tap. Teleports you into internet chaos."), CURATED CHAOS ("Handpicked memes served with pinch of randomness."), MEME VAULT with Lucide `Vault` icon ("Save memes into Vault: Your personal offline Kuber ka Khazana."), and ZERO SIGN-UP REQUIRED ("No sign-up required to start. Open the app and dive straight into the drops.").
+  - Section 03 Screenshots Subtext: Updated to "Peek-a-boo!".
 - **Rolling Updates Timeline (`src/constants/changelog.ts`):**
   - Updated with official v3.8 (Build 30) milestones: "PHONE GALLERY & DOCKED REACTIONS" (Vault photo gallery overhaul, docked reaction picker above action bar, Reddit community attribution) and "ZERO-REPEAT ENGINE & PUSH DROPS" (dual-registry deduplication engine, FCM push notification deep-linking, resilient sharing lifecycle retention), alongside v3.6 – v3.7 ratings and prior releases.
 - **4-Card 3D Perspective Spring Stack (`@react-spring/web` & `@use-gesture/react`):**

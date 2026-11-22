@@ -1,7 +1,7 @@
 export const CONFIG = {
   appName:         'Meme Capsule',
   tagline:         'One tap. One capsule drop. Pure chaos.',
-  description:     'The randomest meme delivery app on Android. No algorithm. No feed. Just one button and pure unhinged entertainment.',
+  description:     'Experience the internet the way it was supposed to be: Chaotic, Fun & random. No AI. No algorithm. Just pure memes and the people who actually get them.',
   playStoreUrl:    'https://play.google.com/store/apps/details?id=com.meme.capsule',
   packageId:       'com.meme.capsule',
   apiBase:         'https://meme-capsule-eww.pages.dev',

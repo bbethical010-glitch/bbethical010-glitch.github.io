@@ -263,7 +263,7 @@ export function Screenshots() {
           </div>
           <h2 className="font-anton text-5xl md:text-6xl text-text uppercase mt-4" data-rv="up">Explore the App</h2>
           <p className="font-mono text-xs md:text-sm text-muted uppercase tracking-widest mt-3" data-rv="fade">
-            9 High-Resolution App Views • Interactive 3D Perspective
+            Peek-a-boo!
           </p>
         </div>
         

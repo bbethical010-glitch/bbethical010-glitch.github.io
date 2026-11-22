@@ -2,13 +2,13 @@ export const FEATURES = [
   {
     icon: 'Zap',
     title: 'ONE BUTTON',
-    description: 'No feed. No scroll. No algorithm. Just one button and whatever comes out.',
+    description: 'Just one button. One tap. Teleports you into internet chaos.',
     color: 'gold',
   },
   {
     icon: 'Shuffle',
-    title: 'PURE RANDOM',
-    description: 'Every meme is completely random. You have zero control. That is the point.',
+    title: 'CURATED CHAOS',
+    description: 'Handpicked memes served with pinch of randomness.',
     color: 'purple',
   },
   {
@@ -24,15 +24,15 @@ export const FEATURES = [
     color: 'gold',
   },
   {
-    icon: 'Heart',
+    icon: 'Vault',
     title: 'MEME VAULT',
-    description: 'Like a meme and it goes into your personal vault. Find it again whenever.',
+    description: 'Save memes into Vault: Your personal offline Kuber ka Khazana.',
     color: 'purple',
   },
   {
     icon: 'Sparkles',
-    title: 'ZERO SIGN-UP',
-    description: 'No account, no login, no passwords. Open the app and start dropping memes immediately.',
+    title: 'ZERO SIGN-UP REQUIRED',
+    description: 'No sign-up required to start. Open the app and dive straight into the drops.',
     color: 'pink',
   },
 ]
